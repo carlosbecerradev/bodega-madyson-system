@@ -70,27 +70,27 @@ public class ModeloCliente extends Conexion implements CRUD {
             
             int fila = jfCliente.tblCliente.getSelectedRow();
             if (fila < 0) {
-                jfCliente.txtCodigo.setText((String) jfCliente.tblCliente.getValueAt(fila, 0));
+                jfCliente.txtCodigoCli.setText((String) jfCliente.tblCliente.getValueAt(fila, 0));
                 /**/
                 String nombres = (String) jfCliente.tblCliente.getValueAt(fila, 1);
                 String separarNombres[] = nombres.split(" ");
-                jfCliente.txtNombre.setText(separarNombres[0]);
-                jfCliente.txtApePat.setText(separarNombres[1]);
-                jfCliente.txtApeMat.setText(separarNombres[2]);
+                jfCliente.txtNombreCli.setText(separarNombres[0]);
+                jfCliente.txtApePatCli.setText(separarNombres[1]);
+                jfCliente.txtApeMatCli.setText(separarNombres[2]);
                 /**/
-                jfCliente.txtDni.setText((String) jfCliente.tblCliente.getValueAt(fila, 2));
-                jfCliente.txtRuc.setText((String) jfCliente.tblCliente.getValueAt(fila, 3));
+                jfCliente.txtDniCli.setText((String) jfCliente.tblCliente.getValueAt(fila, 2));
+                jfCliente.txtRucCli.setText((String) jfCliente.tblCliente.getValueAt(fila, 3));
                 /**/
                 String genero = (String) jfCliente.tblCliente.getValueAt(fila, 4);
                 switch (genero) {
                     case "M":
-                        jfCliente.cboGenero.setSelectedIndex(1);
+                        jfCliente.cboGeneroCli.setSelectedIndex(1);
                         break;
                     case "F":
-                        jfCliente.cboGenero.setSelectedIndex(2);
+                        jfCliente.cboGeneroCli.setSelectedIndex(2);
                         break;
                     default:
-                        jfCliente.cboGenero.setSelectedIndex(0);
+                        jfCliente.cboGeneroCli.setSelectedIndex(0);
                         break;
                 }
 
@@ -174,42 +174,42 @@ public class ModeloCliente extends Conexion implements CRUD {
 
     @Override
     public void limpiar() throws Exception {
-        jfCliente.txtCodigo.setText("");
-        jfCliente.txtNombre.setText("");
-        jfCliente.txtApePat.setText("");
-        jfCliente.txtApeMat.setText("");
-        jfCliente.txtDni.setText("");
-        jfCliente.txtRuc.setText("");
-        jfCliente.cboGenero.setSelectedIndex(0);
+        jfCliente.txtCodigoCli.setText("");
+        jfCliente.txtNombreCli.setText("");
+        jfCliente.txtApePatCli.setText("");
+        jfCliente.txtApeMatCli.setText("");
+        jfCliente.txtDniCli.setText("");
+        jfCliente.txtRucCli.setText("");
+        jfCliente.cboGeneroCli.setSelectedIndex(0);
     }
 
     private int codigo() {
-        return Integer.parseInt(jfCliente.txtCodigo.getText());
+        return Integer.parseInt(jfCliente.txtCodigoCli.getText());
     }
 
     private String nombre() {
-        return jfCliente.txtNombre.getText();
+        return jfCliente.txtNombreCli.getText();
     }
 
     private String apePat() {
-        return jfCliente.txtApePat.getText();
+        return jfCliente.txtApePatCli.getText();
     }
 
     private String apeMat() {
-        return jfCliente.txtApeMat.getText();
+        return jfCliente.txtApeMatCli.getText();
     }
 
     private String dni() {
-        return jfCliente.txtDni.getText();
+        return jfCliente.txtDniCli.getText();
     }
 
     private String ruc() {
-        return jfCliente.txtRuc.getText();
+        return jfCliente.txtRucCli.getText();
     }
 
     private String genero() {
         String genero = null;
-        switch (jfCliente.cboGenero.getSelectedIndex()) {
+        switch (jfCliente.cboGeneroCli.getSelectedIndex()) {
             case 1:
                 genero = "M";
                 break;

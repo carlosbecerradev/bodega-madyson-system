@@ -46,13 +46,13 @@ public class Modelo {
         }
     }
     public void jpVenta(){
-        cambiarJP(JFPrincipal.jpCard, JFPrincipal.jpVenta);
+        cambiarJP(JFPrincipal.jpCardMant, JFPrincipal.jpVenta);
     }
     public void jpReporte(){
-        cambiarJP(JFPrincipal.jpCard, JFPrincipal.jpReportes);
+        cambiarJP(JFPrincipal.jpCardMant, JFPrincipal.jpReportes);
     }
     public void jpMantenimiento(){
-        cambiarJP(JFPrincipal.jpCard, JFPrincipal.jpMantenimiento);
+        cambiarJP(JFPrincipal.jpCardMant, JFPrincipal.jpMantenimiento);
     }
     /* Mantenimiento */
 }
