@@ -11,17 +11,18 @@ public class Conexion {
     // JDBC Driver, nombre y nombre de la base de datos
     private final String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private final String BD_NOMBRE = "BodegaMadyson";
-    private final String BD_URL = "jdbc:sqlserver://localhost:1433;databaseName=" + BD_NOMBRE + ";integratedSecurity=true";
-    /*Credenciales
-    * USER 
-    * PASS
-    */
+    private final String HOSTNAME = "PROGRAN-IDAT"; // cambiar
+    private final String BD_URL = "jdbc:sqlserver://" + HOSTNAME + ":1433;databaseName=" + BD_NOMBRE;
+    /*Credenciales*/
+    private final String USER = "sa";
+    private final String PASS = "123";
+    
     public void conectarBD() {
         try {
             Class.forName(JDBC_DRIVER);
-            conexion = DriverManager.getConnection(BD_URL);
+            conexion = DriverManager.getConnection(BD_URL, USER, PASS);
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
+            JOptionPane.showConfirmDialog(null, "conectarBD " + e.getMessage());
         }
     }
 
@@ -33,8 +34,9 @@ public class Conexion {
                 }
             }
         } catch (SQLException e) {
-            JOptionPane.showConfirmDialog(null, e.getMessage());
+            JOptionPane.showConfirmDialog(null, "desconectarBD " +  e.getMessage());
         }
     }
 
 }
+;

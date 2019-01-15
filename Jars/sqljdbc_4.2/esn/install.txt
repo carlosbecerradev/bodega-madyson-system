@@ -1,0 +1,39 @@
+Instrucciones de instalación
+Microsoft JDBC Driver 4.2 para SQL Server
+
+
+INTRODUCCIÓN
+------------
+Estas instrucciones sirven para desempaquetar sqljdbc_<version>_enu.exe y 
+sqljdbc_<version>_enu.tar.gz.
+
+
+WINDOWS
+-------
+1. Lea el archivo license.txt. La descarga y el uso de Microsoft JDBC Driver 4.2 para SQL Server implica la aceptación de esta licencia.
+
+2. Descargue sqljdbc_<version>_enu.exe en un directorio temporal.
+
+3. Ejecute sqljdbc_<version>_enu.exe
+
+4. Escriba un directorio de instalación cuando se le solicite; se recomienda que desempaquete
+   este archivo zip en %ProgramFiles% con el directorio predeterminado:
+
+	Microsoft JDBC DRIVER 4.2 para SQL Server
+
+
+UNIX
+----
+1. Lea el archivo license.txt. La descarga y el uso de Microsoft JDBC Driver 4.2 para SQL Server implica la aceptación de esta licencia.
+
+2. Descargue sqljdbc_<version>_enu.tar.gz en un directorio temporal.
+
+3. Para desempaquetar el archivo tar comprimido, navegue hasta el directorio donde desea
+   desempaquetar el controlador y escriba:
+
+	gzip -d sqljdbc_<version>_enu.tar.gz
+
+4. Para desempaquetar el archivo tar, muévalo hasta el directorio en que desea instalar el controlador 
+   y escriba:
+
+	tar -xf sqljdbc_<version>_enu.tar

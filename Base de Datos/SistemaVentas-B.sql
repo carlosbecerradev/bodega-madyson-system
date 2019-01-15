@@ -121,7 +121,7 @@ insert into Cliente values('Maritza Vela', 51427532, null,'F')
 insert into Proveedor values (10111213141, 'Grupo Terra', 2851302, 'Calle 13', null)
 
 ------ACTUALIZAR----
-update Cliente set nombApeCli = 'Maritza Vela champ', dniCli = '15', rucCli = '125', genCli = 'T'
+update Cliente set nombApeCli = 'Maritza Vela champ', dniCli = '11242145', rucCli = '125', genCli = 'T' where codCli = 1
 	where codCli = 1
 
 	--LIKE --

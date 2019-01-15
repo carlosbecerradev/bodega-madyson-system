@@ -9,28 +9,28 @@ import dao.CRUD;
 import java.awt.Color;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import vista.JFCliente;
+import vista.JFPrincipal;
 
 public class ModeloCliente extends Conexion implements CRUD {
 
     private DefaultTableModel mdlTblCli;
-    private JFCliente jfCliente;
+    private JFPrincipal vp;
 
     public void inicioJFCliente() {
         tabla();
     }
 
     public void tabla() {
-        mdlTblCli = (DefaultTableModel) jfCliente.tblCliente.getModel();
-        jfCliente.jScrollPane1.getViewport().setBackground(Color.white);
+        mdlTblCli = (DefaultTableModel) vp.tblCliente.getModel();
+        vp.jScrollPane1.getViewport().setBackground(Color.white);
     }
 
     @Override
     public void registrar() throws Exception {
         try {
-            Cliente cli = new Cliente(nombre() + " " + apePat() + " " + apeMat(), dni(), ruc(), genero());
-
+            Cliente cli = new Cliente(nombreR() + " " + apePatR() + " " + apeMatR(), dniR(), rucR(), generoR());
             this.conectarBD();
             PreparedStatement ps = this.conexion.prepareStatement("insert into Cliente values (?, ?, ?, ?)");
             ps.setString(1, cli.getNombCli());
@@ -40,26 +40,10 @@ public class ModeloCliente extends Conexion implements CRUD {
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos Registrados en SQL SERVER");
         } catch (Exception e) {
-            throw e;
+            JOptionPane.showMessageDialog(null, "registrar " + e);
         } finally {
             this.desconectarBD();
         }
-    }
-
-    @Override
-    public String buscar(String filtro) throws Exception {
-        String consultar = "";
-
-        try {
-            if (filtro.equals("")) {
-                consultar = "select * from Cliente";
-            } else {
-                consultar = "select * from Cliente where dniCli  like '" + filtro + "%'";
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo mostrar los datos");
-        }
-        return consultar;
     }
 
     @Override
@@ -67,40 +51,40 @@ public class ModeloCliente extends Conexion implements CRUD {
         try {
             this.conectarBD();
             Statement st = this.conexion.createStatement();
-            
-            int fila = jfCliente.tblCliente.getSelectedRow();
-            if (fila < 0) {
-                jfCliente.txtCodigoCli.setText((String) jfCliente.tblCliente.getValueAt(fila, 0));
+
+            int fila = vp.tblCliente.getSelectedRow();
+            if (fila >= 0) {
+                vp.txtCodigoCliM.setText((String) vp.tblCliente.getValueAt(fila, 0));
                 /**/
-                String nombres = (String) jfCliente.tblCliente.getValueAt(fila, 1);
+                String nombres = (String) vp.tblCliente.getValueAt(fila, 1);
                 String separarNombres[] = nombres.split(" ");
-                jfCliente.txtNombreCli.setText(separarNombres[0]);
-                jfCliente.txtApePatCli.setText(separarNombres[1]);
-                jfCliente.txtApeMatCli.setText(separarNombres[2]);
+                vp.txtNombreCliM.setText(separarNombres[0]);
+                vp.txtApePatCliM.setText(separarNombres[1]);
+                vp.txtApeMatCliM.setText(separarNombres[2]);
                 /**/
-                jfCliente.txtDniCli.setText((String) jfCliente.tblCliente.getValueAt(fila, 2));
-                jfCliente.txtRucCli.setText((String) jfCliente.tblCliente.getValueAt(fila, 3));
+                vp.txtDniCliM.setText((String) vp.tblCliente.getValueAt(fila, 2));
+                vp.txtRucCliM.setText((String) vp.tblCliente.getValueAt(fila, 3));
                 /**/
-                String genero = (String) jfCliente.tblCliente.getValueAt(fila, 4);
+                String genero = (String) vp.tblCliente.getValueAt(fila, 4);
                 switch (genero) {
                     case "M":
-                        jfCliente.cboGeneroCli.setSelectedIndex(1);
+                        vp.cboGeneroCliM.setSelectedIndex(1);
                         break;
                     case "F":
-                        jfCliente.cboGeneroCli.setSelectedIndex(2);
+                        vp.cboGeneroCliM.setSelectedIndex(2);
                         break;
                     default:
-                        jfCliente.cboGeneroCli.setSelectedIndex(0);
+                        vp.cboGeneroCliM.setSelectedIndex(0);
                         break;
                 }
-
+                cambiarJP(JFPrincipal.jpCardCli, JFPrincipal.jpModificar);
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila de la tabla para modificar.");
             }
 
             //JOptionPane.showMessageDialog(null, "Datos extraidos.");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo encontrar los datos");
+            JOptionPane.showMessageDialog(null, "extraer " + e);
         } finally {
             this.desconectarBD();
         }
@@ -110,12 +94,12 @@ public class ModeloCliente extends Conexion implements CRUD {
     public void actualizar() throws Exception {
         try {
             this.conectarBD();
-            PreparedStatement st = this.conexion.prepareStatement("update Cliente set nombApeCli = '" + nombre() + " " + apePat() + " " + apeMat() + "',"
-                    + " dniCli = '" + dni() + "', rucCli = '" + ruc() + "', genCli = '" + genero() + "'");
+            PreparedStatement st = this.conexion.prepareStatement("update Cliente set nombApeCli = '" + nombreM() + " " + apePatM() + " " + apeMatM() + "',"
+                    + " dniCli = '" + dniM() + "' , rucCli = '" + rucM() + "', genCli = '" + generoM() + "'  where codCli = " + codigoM());
             st.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos Actualizados");
         } catch (Exception e) {
-            throw e;
+            JOptionPane.showMessageDialog(null, "actualizar " + e);
         } finally {
             this.desconectarBD();
         }
@@ -123,35 +107,61 @@ public class ModeloCliente extends Conexion implements CRUD {
 
     @Override
     public void eliminar() throws Exception {
-        int confirmar = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar el empleado?");
-        if (confirmar == 0) {
-            int fila = jfCliente.tblCliente.getSelectedRow();
-            int codigo = (int)jfCliente.tblCliente.getValueAt(fila, 0);
-            try {
-                this.conectarBD();
-                PreparedStatement ppt = this.conexion.prepareStatement("delete from Cliente where codCli = " + codigo);
-                ppt.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Cliente eliminado");
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Error" + e);
-            } finally {
-                this.desconectarBD();
+
+        int fila = JFPrincipal.tblCliente.getSelectedRow();
+        if (fila >= 0) {
+            int confirmar = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar el empleado?");
+            if (confirmar == 0) {
+                String cod = (String)JFPrincipal.tblCliente.getValueAt(fila, 0);
+                int codigo =  Integer.parseInt(cod);
+                try {
+                    this.conectarBD();
+                    PreparedStatement ppt = this.conexion.prepareStatement("delete from Cliente where codCli = " + codigo);
+                    ppt.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Cliente eliminado");
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "eliminar " + e);
+                } finally {
+                    this.desconectarBD();
+                }
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila.");
         }
     }
 
+
+public void consultar(){
+        cambiarJP(JFPrincipal.jpCardCli, JFPrincipal.jpConsultaCli);
+    }
+    
     @Override
-    public void listar() throws Exception {
+        public String buscar(String filtro) throws Exception {
+        String consultar = "";
+        try {
+            if (filtro.equals("")) {
+                consultar = "select * from Cliente";
+            } else {
+                consultar = "select * from Cliente where nombApeCli  like '%" + filtro + "%'";
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo mostrar los datos");
+        }
+        return consultar;
+    }
+
+    @Override
+        public void listar() throws Exception {
         //limpiar la tabla
         int filas = mdlTblCli.getRowCount();
         for (int i = 0; i < filas; i++) {
             mdlTblCli.removeRow(0);
-        }
+        }        
         /**
          * ** TRAER DATOS DE SQL SERVER HACIA LA TABLA ***
          */
-        String datos[] = new String[5];
         try {
+            String datos[] = new String[5];
             this.conectarBD();
             Statement st = this.conexion.createStatement();
             ResultSet rs = st.executeQuery(buscar(filtroNombre()));
@@ -164,52 +174,69 @@ public class ModeloCliente extends Conexion implements CRUD {
                 datos[4] = rs.getString(5);
                 mdlTblCli.addRow(datos);
             }
-            jfCliente.txtFiltroNombre.requestFocus();
+            vp.txtFiltroNombre.requestFocus();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Recuerde, los codigos son números.");
+            JOptionPane.showMessageDialog(null, "listar " + e);
         } finally {
             this.desconectarBD();
         }
     }
 
     @Override
-    public void limpiar() throws Exception {
-        jfCliente.txtCodigoCli.setText("");
-        jfCliente.txtNombreCli.setText("");
-        jfCliente.txtApePatCli.setText("");
-        jfCliente.txtApeMatCli.setText("");
-        jfCliente.txtDniCli.setText("");
-        jfCliente.txtRucCli.setText("");
-        jfCliente.cboGeneroCli.setSelectedIndex(0);
+        public void nuevo() throws Exception {
+        //vp.txtCodigoCliM.setText("");
+        vp.txtNombreCli.setText("");
+        vp.txtApePatCli.setText("");
+        vp.txtApeMatCli.setText("");
+        vp.txtDniCli.setText("");
+        vp.txtRucCli.setText("");
+        vp.cboGeneroCli.setSelectedIndex(0);
+        cambiarJP(JFPrincipal.jpCardCli, JFPrincipal.jpDatosCli);
+    }
+        /* Registrar */
+    private String nombreR() {
+        String tr = null;
+        if (tr == null) {
+            tr = vp.txtNombreCli.getText();
+        }
+        return tr;
     }
 
-    private int codigo() {
-        return Integer.parseInt(jfCliente.txtCodigoCli.getText());
+    private String apePatR() {
+        String tr = null;
+        if (tr == null) {
+            tr = vp.txtApePatCli.getText();
+        }
+        return tr;
     }
 
-    private String nombre() {
-        return jfCliente.txtNombreCli.getText();
+    private String apeMatR() {
+        String tr = null;
+        if (tr == null) {
+            tr = vp.txtApeMatCli.getText();
+        }
+        return tr;
     }
 
-    private String apePat() {
-        return jfCliente.txtApePatCli.getText();
+    private String dniR() {
+        String tr = null;
+        if (tr == null) {
+            tr = vp.txtDniCli.getText();
+        }
+        return tr;
     }
 
-    private String apeMat() {
-        return jfCliente.txtApeMatCli.getText();
+    private String rucR() {
+        String tr = null;
+        if (tr == null) {
+            tr = vp.txtRucCli.getText();
+        }
+        return tr;
     }
 
-    private String dni() {
-        return jfCliente.txtDniCli.getText();
-    }
-
-    private String ruc() {
-        return jfCliente.txtRucCli.getText();
-    }
-
-    private String genero() {
+    private String generoR() {
         String genero = null;
-        switch (jfCliente.cboGeneroCli.getSelectedIndex()) {
+        switch (vp.cboGeneroCli.getSelectedIndex()) {
             case 1:
                 genero = "M";
                 break;
@@ -224,6 +251,55 @@ public class ModeloCliente extends Conexion implements CRUD {
 
     /* Filtros de busqueda */
     private String filtroNombre() {
-        return jfCliente.txtFiltroNombre.getText();
+        return vp.txtFiltroNombre.getText();
     }
+
+    /* Modificar */
+    private int codigoM() {
+        return Integer.parseInt(vp.txtCodigoCliM.getText());
+    }
+
+    private String nombreM() {
+        return vp.txtNombreCli.getText();
+    }
+
+    private String apePatM() {
+        return vp.txtApePatCli.getText();
+    }
+
+    private String apeMatM() {
+        return vp.txtApeMatCli.getText();
+    }
+
+    private String dniM() {
+        return vp.txtDniCli.getText();
+    }
+
+    private String rucM() {
+        return vp.txtRucCli.getText();
+    }
+
+    private String generoM() {
+        String genero = null;
+        switch (vp.cboGeneroCli.getSelectedIndex()) {
+            case 1:
+                genero = "M";
+                break;
+            case 2:
+                genero = "F";
+                break;
+            default:
+                break;
+        }
+        return genero;
+    }
+
+    private void cambiarJP(JPanel card, JPanel jp) {
+        card.removeAll();
+        card.repaint();
+        card.add(jp);
+        card.repaint();
+        card.revalidate();
+    }
+
 }

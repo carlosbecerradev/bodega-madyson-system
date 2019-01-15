@@ -27,7 +27,9 @@ public class Principal {
 
         JFPrincipal vst = new JFPrincipal();
         Modelo mdl = new Modelo();
-        Controlador ctrl = new Controlador(vst, mdl);
+        ModeloCliente mdlCli = new ModeloCliente();
+        
+        Controlador ctrl = new Controlador(vst, mdl, mdlCli);
         ctrl.iniciar();
 
     }

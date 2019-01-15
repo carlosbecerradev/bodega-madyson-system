@@ -13,6 +13,7 @@ public class Modelo {
         if (usuario().equals("admin") && contrasenia().equals("12345")) {
             JOptionPane.showMessageDialog(null, "correcto");
             cambiarJP(JFPrincipal.jpBase, JFPrincipal.jpSistemaon);
+            JFPrincipal.lblNombUser.setText("Administrador");
         } else {
             JOptionPane.showMessageDialog(null, "?");
         }

@@ -24,6 +24,6 @@ public interface CRUD {
     public void listar() throws Exception;
 
     /* Limpiar campos R */
-    public void limpiar() throws Exception;
+    public void nuevo() throws Exception;
 
 }
