@@ -19,28 +19,26 @@ public class Principal {
     
     private static JFIniciarSesion vstIni;
     private static ModeloInicio mdlInicio;
-    private static CtrlInicio ctrlInicio;
+    private static ControladorInicio ci;
     
     private static JFMenuPrincipal vstMnPri;
     private static ModeloMnPri mdlMnPri;
-    private static CtrlMnPri ctrlMnPri;
+    private static ControladorMnPri cmp;
     
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: " + e);
-        }
-         
+         }  
         
         vstMnPri = new JFMenuPrincipal();
         mdlMnPri = new ModeloMnPri();
-        ctrlMnPri = new CtrlMnPri(vstMnPri, mdlMnPri);  
+        cmp = new ControladorMnPri(vstMnPri, mdlMnPri);
         
         vstIni = new JFIniciarSesion();
         mdlInicio = new ModeloInicio();
-        ctrlInicio = new CtrlInicio(vstIni, mdlInicio, vstMnPri);
+        ci = new ControladorInicio(vstIni, mdlInicio, vstMnPri);
 
-        
     } 
 }

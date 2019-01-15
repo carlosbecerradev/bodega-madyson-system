@@ -14,7 +14,18 @@ import vista.JFMenuPrincipal;
  */
 public class ModeloMnPri {
     
-    private JFMenuPrincipal vstMnPri;
+    public JFMenuPrincipal v;
     
+    public void jpMantenimiento() {
+        cambiarCard(v.jpCard, v.jpMantenimiento);
+    }
 
+    public void cambiarCard(JPanel card, JPanel panel) {
+        card.removeAll();
+        card.repaint();
+        card.revalidate();
+        card.add(panel);/**/
+        card.repaint();
+        card.revalidate();
+    }
 }

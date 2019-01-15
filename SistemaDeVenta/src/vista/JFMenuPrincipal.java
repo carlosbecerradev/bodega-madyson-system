@@ -5,8 +5,6 @@
  */
 package vista;
 
-import javax.swing.JPanel;
-
 /**
  *
  * @author Administrador
@@ -33,7 +31,7 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         btnJpCompra = new javax.swing.JButton();
         btnJpReportes = new javax.swing.JButton();
         btnJpMantenimiento = new javax.swing.JButton();
-        jpCarrusel = new javax.swing.JPanel();
+        jpCard = new javax.swing.JPanel();
         jpVenta = new javax.swing.JPanel();
         jpCompra = new javax.swing.JPanel();
         jpReportes = new javax.swing.JPanel();
@@ -71,7 +69,6 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1300, 680));
-        setPreferredSize(new java.awt.Dimension(1300, 680));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpMenu.setBackground(new java.awt.Color(51, 51, 51));
@@ -162,10 +159,10 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jpMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 160, 600));
 
-        jpCarrusel.setLayout(new java.awt.CardLayout());
-        jpCarrusel.add(jpVenta, "card2");
-        jpCarrusel.add(jpCompra, "card3");
-        jpCarrusel.add(jpReportes, "card4");
+        jpCard.setLayout(new java.awt.CardLayout());
+        jpCard.add(jpVenta, "card2");
+        jpCard.add(jpCompra, "card3");
+        jpCard.add(jpReportes, "card4");
 
         jpMantenimiento.setBackground(new java.awt.Color(255, 255, 255));
         jpMantenimiento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -319,10 +316,10 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         jLabel20.setText("MANTENIMIENTO");
         jpMantenimiento.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 840, 30));
 
-        jpCarrusel.add(jpMantenimiento, "card2");
-        jpCarrusel.add(jpConfiguracion, "card6");
+        jpCard.add(jpMantenimiento, "card2");
+        jpCard.add(jpConfiguracion, "card6");
 
-        getContentPane().add(jpCarrusel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 1140, 600));
+        getContentPane().add(jpCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 1140, 600));
 
         jpTitulo.setBackground(new java.awt.Color(0, 0, 0));
         jpTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -479,7 +476,7 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuBar jMenuBar1;
-    public javax.swing.JPanel jpCarrusel;
+    public javax.swing.JPanel jpCard;
     private javax.swing.JPanel jpClientes;
     public javax.swing.JPanel jpCompra;
     public javax.swing.JPanel jpConfiguracion;
