@@ -16,29 +16,19 @@ import controlador.*;
  * @author Administrador
  */
 public class Principal {
-    
-    private static JFIniciarSesion vstIni;
-    private static ModeloInicio mdlInicio;
-    private static ControladorInicio ci;
-    
-    private static JFMenuPrincipal vstMnPri;
-    private static ModeloMnPri mdlMnPri;
-    private static ControladorMnPri cmp;
-    
+
     public static void main(String[] args) {
+        
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
-         }  
-        
-        vstMnPri = new JFMenuPrincipal();
-        mdlMnPri = new ModeloMnPri();
-        cmp = new ControladorMnPri(vstMnPri, mdlMnPri);
-        
-        vstIni = new JFIniciarSesion();
-        mdlInicio = new ModeloInicio();
-        ci = new ControladorInicio(vstIni, mdlInicio, vstMnPri);
+        }
 
-    } 
+        JFPrincipal vst = new JFPrincipal();
+        Modelo mdl = new Modelo();
+        Controlador ctrl = new Controlador(vst, mdl);
+        ctrl.iniciar();
+
+    }
 }

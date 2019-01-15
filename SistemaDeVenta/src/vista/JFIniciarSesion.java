@@ -5,6 +5,8 @@
  */
 package vista;
 
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -113,7 +115,12 @@ public class JFIniciarSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        
+        if (txtUsuario.getText().equals("admin") && txtContrasenia.getText().equals("12345")) {
+            JOptionPane.showMessageDialog(null, "correcto");
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "?");
+        }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void txtContraseniaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseniaKeyTyped

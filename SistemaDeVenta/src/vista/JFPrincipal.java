@@ -9,10 +9,10 @@ package vista;
  *
  * @author Administrador
  */
-public class JFMenuPrincipal extends javax.swing.JFrame {
+public class JFPrincipal extends javax.swing.JFrame {
 
     
-    public JFMenuPrincipal() {
+    public JFPrincipal() {
         initComponents();
     }
 
@@ -25,6 +25,18 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jpBase = new javax.swing.JPanel();
+        jpIniciarSesion = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtContrasenia = new javax.swing.JPasswordField();
+        txtUsuario = new javax.swing.JTextField();
+        btnIngresar = new javax.swing.JButton();
+        icoPass = new javax.swing.JLabel();
+        icoUser = new javax.swing.JLabel();
+        jpSistemaon = new javax.swing.JPanel();
         jpMenu = new javax.swing.JPanel();
         btnJpVenta = new javax.swing.JButton();
         btnJpConfiguracion = new javax.swing.JButton();
@@ -70,6 +82,66 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1300, 680));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jpBase.setLayout(new java.awt.CardLayout());
+
+        jpIniciarSesion.setBackground(new java.awt.Color(255, 255, 255));
+        jpIniciarSesion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("INICIAR SESIÓN");
+        jpIniciarSesion.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 279, 26));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/users.png"))); // NOI18N
+        jpIniciarSesion.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, 250));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("USUARIO:");
+        jpIniciarSesion.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 140, 30));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("CONTRASEÑA:");
+        jpIniciarSesion.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 140, 30));
+
+        txtContrasenia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtContrasenia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtContrasenia.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtContrasenia.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtContrasenia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtContraseniaKeyTyped(evt);
+            }
+        });
+        jpIniciarSesion.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, 200, 30));
+
+        txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jpIniciarSesion.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, 200, 30));
+
+        btnIngresar.setBackground(new java.awt.Color(255, 255, 255));
+        btnIngresar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnIngresar.setForeground(new java.awt.Color(51, 51, 51));
+        btnIngresar.setText("INGRESAR");
+        btnIngresar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
+        jpIniciarSesion.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 430, 200, 40));
+        jpIniciarSesion.add(icoPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 193, 26, 26));
+        jpIniciarSesion.add(icoUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 114, 26, 26));
+
+        jpBase.add(jpIniciarSesion, "card2");
+
+        jpSistemaon.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpMenu.setBackground(new java.awt.Color(51, 51, 51));
         jpMenu.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 255, 255)));
@@ -157,7 +229,7 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         });
         jpMenu.add(btnJpMantenimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 250, 150, 70));
 
-        getContentPane().add(jpMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 160, 600));
+        jpSistemaon.add(jpMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 600));
 
         jpCard.setLayout(new java.awt.CardLayout());
         jpCard.add(jpVenta, "card2");
@@ -319,7 +391,11 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         jpCard.add(jpMantenimiento, "card2");
         jpCard.add(jpConfiguracion, "card6");
 
-        getContentPane().add(jpCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 1140, 600));
+        jpSistemaon.add(jpCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 1140, 600));
+
+        jpBase.add(jpSistemaon, "card3");
+
+        getContentPane().add(jpBase, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1300, 600));
 
         jpTitulo.setBackground(new java.awt.Color(0, 0, 0));
         jpTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -414,6 +490,24 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
     
     }//GEN-LAST:event_mnItemCerrarSesionActionPerformed
 
+    private void txtContraseniaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseniaKeyTyped
+        //        Character c = evt.getKeyChar();
+        //
+        //        if (c == '\n') {
+            //            if (txtUsuario.getText().equals("admin") && txtContrasenia.getText().equals("12345")) {
+                //            JFMenuPrincipal menuP = new JFMenuPrincipal();
+                //            this.setVisible(false);
+                //            menuP.setVisible(true);
+                //        } else {
+                //            JOptionPane.showMessageDialog(null, "Ingresaste la clave o contraseña erronea");
+                //        }
+            //        }
+    }//GEN-LAST:event_txtContraseniaKeyTyped
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -431,14 +525,22 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -451,7 +553,7 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFMenuPrincipal().setVisible(true);
+                new JFPrincipal().setVisible(true);
             }
         });
     }
@@ -461,33 +563,43 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnEntrarProductos;
     private javax.swing.JButton btnEntrarProveedor;
     private javax.swing.JButton btnEntrarUsuario;
+    public static javax.swing.JButton btnIngresar;
     public static javax.swing.JButton btnJpCompra;
     public static javax.swing.JButton btnJpConfiguracion;
     public static javax.swing.JButton btnJpMantenimiento;
     public static javax.swing.JButton btnJpReportes;
     public static javax.swing.JButton btnJpVenta;
+    private javax.swing.JLabel icoPass;
+    private javax.swing.JLabel icoUser;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JMenuBar jMenuBar1;
-    public javax.swing.JPanel jpCard;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    public static javax.swing.JMenuBar jMenuBar1;
+    public static javax.swing.JPanel jpBase;
+    public static javax.swing.JPanel jpCard;
     private javax.swing.JPanel jpClientes;
-    public javax.swing.JPanel jpCompra;
-    public javax.swing.JPanel jpConfiguracion;
-    public javax.swing.JPanel jpMantenimiento;
-    private javax.swing.JPanel jpMenu;
+    public static javax.swing.JPanel jpCompra;
+    public static javax.swing.JPanel jpConfiguracion;
+    public static javax.swing.JPanel jpIniciarSesion;
+    public static javax.swing.JPanel jpMantenimiento;
+    public javax.swing.JPanel jpMenu;
     private javax.swing.JPanel jpProductos;
     private javax.swing.JPanel jpProveedores;
-    public javax.swing.JPanel jpReportes;
+    public static javax.swing.JPanel jpReportes;
+    public static javax.swing.JPanel jpSistemaon;
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JPanel jpUsuarios;
-    public javax.swing.JPanel jpVenta;
+    public static javax.swing.JPanel jpVenta;
     private javax.swing.JLabel lblCantClientes;
     private javax.swing.JLabel lblCantProductos;
     private javax.swing.JLabel lblCantProveedores;
@@ -497,7 +609,9 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombUser;
     public static javax.swing.JMenuItem mnItemCerrarSesion;
     public static javax.swing.JMenuItem mnItemSalir;
-    private static javax.swing.JMenu mnSistema;
+    public static javax.swing.JMenu mnSistema;
+    public static javax.swing.JPasswordField txtContrasenia;
+    public static javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
         
