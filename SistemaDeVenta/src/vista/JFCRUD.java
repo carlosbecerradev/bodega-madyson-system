@@ -11,9 +11,9 @@ import javax.swing.JPanel;
  *
  * @author hoarlos
  */
-public class JFCliente extends javax.swing.JFrame {
+public class JFCRUD extends javax.swing.JFrame {
 
-    public JFCliente() {
+    public JFCRUD() {
         initComponents();
     }
 
@@ -29,24 +29,24 @@ public class JFCliente extends javax.swing.JFrame {
         jpEmpleados = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jpOpcionesEmp = new javax.swing.JPanel();
-        btnNuevoEmp = new javax.swing.JButton();
-        btnRegistrarEmp = new javax.swing.JButton();
-        btnBuscarEmp = new javax.swing.JButton();
-        btnActualizarEmp = new javax.swing.JButton();
-        btnEliminarEmp = new javax.swing.JButton();
+        btnNuevoProd = new javax.swing.JButton();
+        btnRegistrarProd = new javax.swing.JButton();
+        btnBuscarProd = new javax.swing.JButton();
+        btnActualizarProd = new javax.swing.JButton();
+        btnEliminarProd = new javax.swing.JButton();
         jpCardEmp = new javax.swing.JPanel();
         jpDatosEmp = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        txtNombreEmp = new javax.swing.JTextField();
+        txtNombreProd = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtUsuarioEmp = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtDniEmp = new javax.swing.JTextField();
+        txtDniProd = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtContraEmp = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        cboCargoEmp = new javax.swing.JComboBox<>();
+        cboCargoProd = new javax.swing.JComboBox<>();
         cboGeneroEmp = new javax.swing.JComboBox<>();
         cboEstadoEmp = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
@@ -93,65 +93,65 @@ public class JFCliente extends javax.swing.JFrame {
 
         jpOpcionesEmp.setBackground(new java.awt.Color(51, 51, 51));
 
-        btnNuevoEmp.setBackground(new java.awt.Color(204, 204, 204));
-        btnNuevoEmp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnNuevoEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/new32x32.png"))); // NOI18N
-        btnNuevoEmp.setText("NUEVO");
-        btnNuevoEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnNuevoEmp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnNuevoEmp.setPreferredSize(new java.awt.Dimension(120, 75));
-        btnNuevoEmp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnNuevoEmp.addActionListener(new java.awt.event.ActionListener() {
+        btnNuevoProd.setBackground(new java.awt.Color(204, 204, 204));
+        btnNuevoProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnNuevoProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/new32x32.png"))); // NOI18N
+        btnNuevoProd.setText("NUEVO");
+        btnNuevoProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNuevoProd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNuevoProd.setPreferredSize(new java.awt.Dimension(120, 75));
+        btnNuevoProd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNuevoProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoEmpActionPerformed(evt);
+                btnNuevoProdActionPerformed(evt);
             }
         });
-        jpOpcionesEmp.add(btnNuevoEmp);
+        jpOpcionesEmp.add(btnNuevoProd);
 
-        btnRegistrarEmp.setBackground(new java.awt.Color(204, 204, 204));
-        btnRegistrarEmp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnRegistrarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/save32x32.png"))); // NOI18N
-        btnRegistrarEmp.setText("REGISTRAR");
-        btnRegistrarEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRegistrarEmp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnRegistrarEmp.setPreferredSize(new java.awt.Dimension(120, 75));
-        btnRegistrarEmp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jpOpcionesEmp.add(btnRegistrarEmp);
+        btnRegistrarProd.setBackground(new java.awt.Color(204, 204, 204));
+        btnRegistrarProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnRegistrarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/save32x32.png"))); // NOI18N
+        btnRegistrarProd.setText("REGISTRAR");
+        btnRegistrarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrarProd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnRegistrarProd.setPreferredSize(new java.awt.Dimension(120, 75));
+        btnRegistrarProd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jpOpcionesEmp.add(btnRegistrarProd);
 
-        btnBuscarEmp.setBackground(new java.awt.Color(204, 204, 204));
-        btnBuscarEmp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnBuscarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/search32x32.png"))); // NOI18N
-        btnBuscarEmp.setText("BUSCAR");
-        btnBuscarEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBuscarEmp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnBuscarEmp.setPreferredSize(new java.awt.Dimension(120, 75));
-        btnBuscarEmp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnBuscarEmp.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarProd.setBackground(new java.awt.Color(204, 204, 204));
+        btnBuscarProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnBuscarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/search32x32.png"))); // NOI18N
+        btnBuscarProd.setText("BUSCAR");
+        btnBuscarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarProd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnBuscarProd.setPreferredSize(new java.awt.Dimension(120, 75));
+        btnBuscarProd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnBuscarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarEmpActionPerformed(evt);
+                btnBuscarProdActionPerformed(evt);
             }
         });
-        jpOpcionesEmp.add(btnBuscarEmp);
+        jpOpcionesEmp.add(btnBuscarProd);
 
-        btnActualizarEmp.setBackground(new java.awt.Color(204, 204, 204));
-        btnActualizarEmp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnActualizarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/update32x32.png"))); // NOI18N
-        btnActualizarEmp.setText("ACTUALIZAR");
-        btnActualizarEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnActualizarEmp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnActualizarEmp.setPreferredSize(new java.awt.Dimension(120, 75));
-        btnActualizarEmp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jpOpcionesEmp.add(btnActualizarEmp);
+        btnActualizarProd.setBackground(new java.awt.Color(204, 204, 204));
+        btnActualizarProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnActualizarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/update32x32.png"))); // NOI18N
+        btnActualizarProd.setText("ACTUALIZAR");
+        btnActualizarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizarProd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnActualizarProd.setPreferredSize(new java.awt.Dimension(120, 75));
+        btnActualizarProd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jpOpcionesEmp.add(btnActualizarProd);
 
-        btnEliminarEmp.setBackground(new java.awt.Color(204, 204, 204));
-        btnEliminarEmp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnEliminarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/delete32x32.png"))); // NOI18N
-        btnEliminarEmp.setText("ELIMINAR");
-        btnEliminarEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEliminarEmp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEliminarEmp.setPreferredSize(new java.awt.Dimension(120, 75));
-        btnEliminarEmp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jpOpcionesEmp.add(btnEliminarEmp);
+        btnEliminarProd.setBackground(new java.awt.Color(204, 204, 204));
+        btnEliminarProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnEliminarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/delete32x32.png"))); // NOI18N
+        btnEliminarProd.setText("ELIMINAR");
+        btnEliminarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminarProd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEliminarProd.setPreferredSize(new java.awt.Dimension(120, 75));
+        btnEliminarProd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jpOpcionesEmp.add(btnEliminarProd);
 
         jpEmpleados.add(jpOpcionesEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 50, 970, 85));
 
@@ -165,11 +165,11 @@ public class JFCliente extends javax.swing.JFrame {
         jLabel4.setText("NOMBRES:");
         jpDatosEmp.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, 30));
 
-        txtNombreEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtNombreEmp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNombreEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtNombreEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpDatosEmp.add(txtNombreEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 300, 30));
+        txtNombreProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtNombreProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNombreProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtNombreProd.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jpDatosEmp.add(txtNombreProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 300, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -192,11 +192,11 @@ public class JFCliente extends javax.swing.JFrame {
         jLabel7.setText("D.N.I.:");
         jpDatosEmp.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 200, 30));
 
-        txtDniEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtDniEmp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDniEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtDniEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpDatosEmp.add(txtDniEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
+        txtDniProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtDniProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDniProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtDniProd.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jpDatosEmp.add(txtDniProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -214,12 +214,12 @@ public class JFCliente extends javax.swing.JFrame {
         jLabel10.setText("GÉNERO:");
         jpDatosEmp.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 200, 30));
 
-        cboCargoEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboCargoEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Administrador", "Cajero" }));
-        cboCargoEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboCargoEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboCargoEmp.setEditor(null);
-        jpDatosEmp.add(cboCargoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 220, 30));
+        cboCargoProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cboCargoProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Administrador", "Cajero" }));
+        cboCargoProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cboCargoProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cboCargoProd.setEditor(null);
+        jpDatosEmp.add(cboCargoProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 220, 30));
 
         cboGeneroEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         cboGeneroEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Hombre", "Mujer" }));
@@ -407,13 +407,13 @@ public class JFCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNuevoEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoEmpActionPerformed
+    private void btnNuevoProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProdActionPerformed
         
-    }//GEN-LAST:event_btnNuevoEmpActionPerformed
+    }//GEN-LAST:event_btnNuevoProdActionPerformed
 
-    private void btnBuscarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpActionPerformed
+    private void btnBuscarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProdActionPerformed
         
-    }//GEN-LAST:event_btnBuscarEmpActionPerformed
+    }//GEN-LAST:event_btnBuscarProdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -432,14 +432,18 @@ public class JFCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -448,21 +452,21 @@ public class JFCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFCliente().setVisible(true);
+                new JFCRUD().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton btnActualizarEmp;
-    public static javax.swing.JButton btnBuscarEmp;
-    public static javax.swing.JButton btnEliminarEmp;
+    public static javax.swing.JButton btnActualizarProd;
+    public static javax.swing.JButton btnBuscarProd;
+    public static javax.swing.JButton btnEliminarProd;
     public static javax.swing.JButton btnExtraerEmp;
     public static javax.swing.JButton btnListarEmp;
-    public static javax.swing.JButton btnNuevoEmp;
-    public static javax.swing.JButton btnRegistrarEmp;
-    public static javax.swing.JComboBox<String> cboCargoEmp;
+    public static javax.swing.JButton btnNuevoProd;
+    public static javax.swing.JButton btnRegistrarProd;
     public static javax.swing.JComboBox<String> cboCargoEmpM;
+    public static javax.swing.JComboBox<String> cboCargoProd;
     public static javax.swing.JComboBox<String> cboEstadoEmp;
     public static javax.swing.JComboBox<String> cboEstadoEmpM;
     public static javax.swing.JComboBox<String> cboGeneroEmp;
@@ -495,10 +499,10 @@ public class JFCliente extends javax.swing.JFrame {
     public static javax.swing.JTextField txtCodigoM;
     public static javax.swing.JTextField txtContraEmp;
     public static javax.swing.JTextField txtContraEmpM;
-    public static javax.swing.JTextField txtDniEmp;
     public static javax.swing.JTextField txtDniEmpM;
+    public static javax.swing.JTextField txtDniProd;
     public static javax.swing.JTextField txtFiltroNombreEmp;
-    public static javax.swing.JTextField txtNombreEmp;
+    public static javax.swing.JTextField txtNombreProd;
     public static javax.swing.JTextField txtNombresEmpM;
     public static javax.swing.JTextField txtUsuarioEmp;
     public static javax.swing.JTextField txtUsuarioEmpM;

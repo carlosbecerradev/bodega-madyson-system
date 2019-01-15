@@ -834,7 +834,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
         tblEmpleado.setOpaque(false);
-        tblEmpleado.setSelectionBackground(new java.awt.Color(51, 51, 51));
+        tblEmpleado.setSelectionBackground(new java.awt.Color(0, 51, 51));
         tblEmpleado.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblEmpleado.getTableHeader().setResizingAllowed(false);
         tblEmpleado.getTableHeader().setReorderingAllowed(false);
