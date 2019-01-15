@@ -30,13 +30,14 @@ public class ModeloCliente extends Conexion implements CRUD {
     @Override
     public void registrar() throws Exception {
         try {
-            Cliente cli = new Cliente(nombreR() + " " + apePatR() + " " + apeMatR(), dniR(), rucR(), generoR());
+            Cliente cli = new Cliente(nombreR(), apellidos(), dniR(), rucR(), generoR());
             this.conectarBD();
             PreparedStatement ps = this.conexion.prepareStatement("insert into Cliente values (?, ?, ?, ?)");
             ps.setString(1, cli.getNombCli());
-            ps.setString(2, cli.getDniCli());
-            ps.setString(3, cli.getRucCli());
-            ps.setString(4, cli.getGeneroCli());
+            ps.setString(2, cli.getApeCli());
+            ps.setString(3, cli.getDniCli());
+            ps.setString(4, cli.getRucCli());
+            ps.setString(5, cli.getGeneroCli());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos Registrados en SQL SERVER");
         } catch (Exception e) {
@@ -49,23 +50,30 @@ public class ModeloCliente extends Conexion implements CRUD {
     @Override
     public void extraer() throws Exception {
         try {
-            this.conectarBD();
-            Statement st = this.conexion.createStatement();
 
-            int fila = vp.tblCliente.getSelectedRow();
+            int fila = JFPrincipal.tblCliente.getSelectedRow();
             if (fila >= 0) {
-                vp.txtCodigoCliM.setText((String) vp.tblCliente.getValueAt(fila, 0));
+                String cod = (String) JFPrincipal.tblCliente.getValueAt(fila, 0);
+                this.conectarBD();
+                Statement st = this.conexion.createStatement();
+                ResultSet rs = st.executeQuery("select * from Cliente where codCli = " + cod);
+                String datos[] = new String[6];
+                rs.next();
+                datos[0] = rs.getString(2);
+                datos[1] = rs.getString(3);
+                datos[2] = rs.getString(4);
+                datos[3] = rs.getString(5);
+                datos[4] = rs.getString(6);
+                datos[5] = rs.getString(7);
+                
+                vp.txtNombreCliM.setText(datos[0]);
+                vp.txtApePatCliM.setText(datos[1]);
+                vp.txtApeMatCliM.setText(datos[2]);
                 /**/
-                String nombres = (String) vp.tblCliente.getValueAt(fila, 1);
-                String separarNombres[] = nombres.split(" ");
-                vp.txtNombreCliM.setText(separarNombres[0]);
-                vp.txtApePatCliM.setText(separarNombres[1]);
-                vp.txtApeMatCliM.setText(separarNombres[2]);
+                vp.txtDniCliM.setText(datos[3]);
+                vp.txtRucCliM.setText(datos[4]);
                 /**/
-                vp.txtDniCliM.setText((String) vp.tblCliente.getValueAt(fila, 2));
-                vp.txtRucCliM.setText((String) vp.tblCliente.getValueAt(fila, 3));
-                /**/
-                String genero = (String) vp.tblCliente.getValueAt(fila, 4);
+                String genero = datos[5];
                 switch (genero) {
                     case "M":
                         vp.cboGeneroCliM.setSelectedIndex(1);
@@ -94,9 +102,9 @@ public class ModeloCliente extends Conexion implements CRUD {
     public void actualizar() throws Exception {
         try {
             this.conectarBD();
-            PreparedStatement st = this.conexion.prepareStatement("update Cliente set nombApeCli = '" + nombreM() + " " + apePatM() + " " + apeMatM() + "',"
-                    + " dniCli = '" + dniM() + "' , rucCli = '" + rucM() + "', genCli = '" + generoM() + "'  where codCli = " + codigoM());
-            st.executeUpdate();
+            PreparedStatement ps = this.conexion.prepareStatement("update Cliente set nombApeCli = '" + nombreM() + " " + apePatM() + " " + apeMatM() + "' "
+                    + " , dniCli = '" + dniM() + "' , rucCli = '" + rucM() + "', genCli = '" + generoM() + "'  where codCli = " + codigoM() + " ");
+            ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos Actualizados");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "actualizar " + e);
@@ -112,8 +120,8 @@ public class ModeloCliente extends Conexion implements CRUD {
         if (fila >= 0) {
             int confirmar = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar el empleado?");
             if (confirmar == 0) {
-                String cod = (String)JFPrincipal.tblCliente.getValueAt(fila, 0);
-                int codigo =  Integer.parseInt(cod);
+                String cod = (String) JFPrincipal.tblCliente.getValueAt(fila, 0);
+                int codigo = Integer.parseInt(cod);
                 try {
                     this.conectarBD();
                     PreparedStatement ppt = this.conexion.prepareStatement("delete from Cliente where codCli = " + codigo);
@@ -130,13 +138,12 @@ public class ModeloCliente extends Conexion implements CRUD {
         }
     }
 
-
-public void consultar(){
+    public void consultar() {
         cambiarJP(JFPrincipal.jpCardCli, JFPrincipal.jpConsultaCli);
     }
-    
+
     @Override
-        public String buscar(String filtro) throws Exception {
+    public String buscar(String filtro) throws Exception {
         String consultar = "";
         try {
             if (filtro.equals("")) {
@@ -151,12 +158,12 @@ public void consultar(){
     }
 
     @Override
-        public void listar() throws Exception {
+    public void listar() throws Exception {
         //limpiar la tabla
         int filas = mdlTblCli.getRowCount();
         for (int i = 0; i < filas; i++) {
             mdlTblCli.removeRow(0);
-        }        
+        }
         /**
          * ** TRAER DATOS DE SQL SERVER HACIA LA TABLA ***
          */
@@ -168,10 +175,10 @@ public void consultar(){
 
             while (rs.next()) {
                 datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                datos[3] = rs.getString(4);
-                datos[4] = rs.getString(5);
+                datos[1] = rs.getString(2) + rs.getString(3) + rs.getString(4);
+                datos[2] = rs.getString(5);
+                datos[3] = rs.getString(6);
+                datos[4] = rs.getString(7);
                 mdlTblCli.addRow(datos);
             }
             vp.txtFiltroNombre.requestFocus();
@@ -183,7 +190,7 @@ public void consultar(){
     }
 
     @Override
-        public void nuevo() throws Exception {
+    public void nuevo() throws Exception {
         //vp.txtCodigoCliM.setText("");
         vp.txtNombreCli.setText("");
         vp.txtApePatCli.setText("");
@@ -193,60 +200,62 @@ public void consultar(){
         vp.cboGeneroCli.setSelectedIndex(0);
         cambiarJP(JFPrincipal.jpCardCli, JFPrincipal.jpDatosCli);
     }
-        /* Registrar */
+
+    /* Registrar */
     private String nombreR() {
-        String tr = null;
-        if (tr == null) {
-            tr = vp.txtNombreCli.getText();
+        String tr = vp.txtNombreCli.getText();
+        if (tr.equals("")) {
+            tr = "";
         }
         return tr;
     }
 
     private String apePatR() {
-        String tr = null;
-        if (tr == null) {
-            tr = vp.txtApePatCli.getText();
+        String tr = vp.txtApePatCli.getText();
+        if (tr.equals("")) {
+            tr = "";
         }
         return tr;
     }
 
     private String apeMatR() {
-        String tr = null;
-        if (tr == null) {
-            tr = vp.txtApeMatCli.getText();
+        String tr = vp.txtApeMatCli.getText();
+        if (tr.equals("")) {
+            tr = "";
         }
         return tr;
     }
 
     private String dniR() {
-        String tr = null;
-        if (tr == null) {
-            tr = vp.txtDniCli.getText();
+        String tr = vp.txtDniCli.getText();
+        if (tr.equals("")) {
+            tr = "";
         }
         return tr;
     }
 
     private String rucR() {
-        String tr = null;
-        if (tr == null) {
-            tr = vp.txtRucCli.getText();
+        String tr = vp.txtRucCli.getText();
+        if (tr.equals("")) {
+            tr = "";
         }
         return tr;
     }
 
     private String generoR() {
-        String genero = null;
-        switch (vp.cboGeneroCli.getSelectedIndex()) {
+        int genero = vp.cboGeneroCli.getSelectedIndex();
+        String gen = null;
+        switch (genero) {
             case 1:
-                genero = "M";
+                gen = "M";
                 break;
             case 2:
-                genero = "F";
+                gen = "F";
                 break;
             default:
                 break;
         }
-        return genero;
+        return gen;
     }
 
     /* Filtros de busqueda */
@@ -260,38 +269,52 @@ public void consultar(){
     }
 
     private String nombreM() {
-        return vp.txtNombreCli.getText();
+        String tr = vp.txtNombreCliM.getText();
+        if (tr.equals("")) {
+            tr = "";
+        }
+        return tr;
     }
 
-    private String apePatM() {
-        return vp.txtApePatCli.getText();
-    }
-
-    private String apeMatM() {
-        return vp.txtApeMatCli.getText();
+    private String apellidos() {
+        String tr = vp.txtApePatCliM.getText();
+        String ap = vp.txtApeMatCliM.getText();
+        if (tr.equals("")) {
+            tr = "";
+        }
+        return tr;
     }
 
     private String dniM() {
-        return vp.txtDniCli.getText();
+        String tr = vp.txtDniCliM.getText();
+        if (tr.equals("")) {
+            tr = "";
+        }
+        return tr;
     }
 
     private String rucM() {
-        return vp.txtRucCli.getText();
+        String tr = vp.txtRucCliM.getText();
+        if (tr.equals("")) {
+            tr = "";
+        }
+        return tr;
     }
 
     private String generoM() {
-        String genero = null;
-        switch (vp.cboGeneroCli.getSelectedIndex()) {
+        int genero = vp.cboGeneroCliM.getSelectedIndex();
+        String gen = null;
+        switch (genero) {
             case 1:
-                genero = "M";
+                gen = "M";
                 break;
             case 2:
-                genero = "F";
+                gen = "F";
                 break;
             default:
                 break;
         }
-        return genero;
+        return gen;
     }
 
     private void cambiarJP(JPanel card, JPanel jp) {
