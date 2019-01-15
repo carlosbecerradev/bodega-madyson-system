@@ -2,34 +2,24 @@ package bean;
 
 public class Cliente {
 
-    private String nombCli; //nombre + apePat + apeMat
-    private String apeCli;
+    private String nombesCli; //nombre + apePat + apeMat
     private String dniCli; //7
-    private String rucCli; //11
+    private String correoCli; //11
     private String generoCli;
 
-    public Cliente(String nombCli, String apeCli, String dniCli, String rucCli, String generoCli) {
-        this.nombCli = nombCli;
-        this.apeCli = apeCli;
+    public Cliente(String nombesCli, String dniCli, String correoCli, String generoCli) {
+        this.nombesCli = nombesCli;
         this.dniCli = dniCli;
-        this.rucCli = rucCli;
+        this.correoCli = correoCli;
         this.generoCli = generoCli;
     }
 
-    public String getNombCli() {
-        return nombCli;
+    public String getNombesCli() {
+        return nombesCli;
     }
 
-    public void setNombCli(String nombCli) {
-        this.nombCli = nombCli;
-    }
-
-    public String getApeCli() {
-        return apeCli;
-    }
-
-    public void setApeCli(String apeCli) {
-        this.apeCli = apeCli;
+    public void setNombesCli(String nombesCli) {
+        this.nombesCli = nombesCli;
     }
 
     public String getDniCli() {
@@ -40,12 +30,12 @@ public class Cliente {
         this.dniCli = dniCli;
     }
 
-    public String getRucCli() {
-        return rucCli;
+    public String getCorreoCli() {
+        return correoCli;
     }
 
-    public void setRucCli(String rucCli) {
-        this.rucCli = rucCli;
+    public void setCorreoCli(String correoCli) {
+        this.correoCli = correoCli;
     }
 
     public String getGeneroCli() {
@@ -56,6 +46,5 @@ public class Cliente {
         this.generoCli = generoCli;
     }
 
-    
     
 }

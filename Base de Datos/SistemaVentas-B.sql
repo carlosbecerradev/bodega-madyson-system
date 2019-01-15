@@ -9,7 +9,7 @@ create table Cliente(
 codCli int identity primary key not null,
 nombApeCli varchar(150),
 dniCli char(8),
-rucCli varchar(11),
+correoCli varchar(100),
 genCli char(1)
 )
 
@@ -122,7 +122,6 @@ insert into Proveedor values (10111213141, 'Grupo Terra', 2851302, 'Calle 13', n
 
 ------ACTUALIZAR----
 update Cliente set nombApeCli = 'Maritza Vela champ', dniCli = '11242145', rucCli = '125', genCli = 'T' where codCli = 1
-	where codCli = 1
 
 	--LIKE --
 	select * from Cliente where dniCli like '%5%'

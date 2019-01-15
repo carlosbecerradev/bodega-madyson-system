@@ -24,20 +24,19 @@ public class ModeloCliente extends Conexion implements CRUD {
 
     public void tabla() {
         mdlTblCli = (DefaultTableModel) vp.tblCliente.getModel();
-        vp.jScrollPane1.getViewport().setBackground(Color.white);
+        vp.jSPCli.getViewport().setBackground(Color.white);
     }
 
     @Override
     public void registrar() throws Exception {
         try {
-            Cliente cli = new Cliente(nombreR(), apellidos(), dniR(), rucR(), generoR());
+            Cliente cli = new Cliente(nombresR(), dniR(), correoR(), generoR());
             this.conectarBD();
             PreparedStatement ps = this.conexion.prepareStatement("insert into Cliente values (?, ?, ?, ?)");
-            ps.setString(1, cli.getNombCli());
-            ps.setString(2, cli.getApeCli());
-            ps.setString(3, cli.getDniCli());
-            ps.setString(4, cli.getRucCli());
-            ps.setString(5, cli.getGeneroCli());
+            ps.setString(1, cli.getNombesCli());
+            ps.setString(2, cli.getDniCli());
+            ps.setString(3, cli.getCorreoCli());
+            ps.setString(4, cli.getGeneroCli());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos Registrados en SQL SERVER");
         } catch (Exception e) {
@@ -57,23 +56,19 @@ public class ModeloCliente extends Conexion implements CRUD {
                 this.conectarBD();
                 Statement st = this.conexion.createStatement();
                 ResultSet rs = st.executeQuery("select * from Cliente where codCli = " + cod);
-                String datos[] = new String[6];
+                String datos[] = new String[4];
                 rs.next();
                 datos[0] = rs.getString(2);
                 datos[1] = rs.getString(3);
                 datos[2] = rs.getString(4);
                 datos[3] = rs.getString(5);
-                datos[4] = rs.getString(6);
-                datos[5] = rs.getString(7);
                 
+                vp.txtCodigoCliM.setText(cod);
                 vp.txtNombreCliM.setText(datos[0]);
-                vp.txtApePatCliM.setText(datos[1]);
-                vp.txtApeMatCliM.setText(datos[2]);
+                vp.txtDniCliM.setText(datos[1]);
+                vp.txtCorreoCliM.setText(datos[2]);
                 /**/
-                vp.txtDniCliM.setText(datos[3]);
-                vp.txtRucCliM.setText(datos[4]);
-                /**/
-                String genero = datos[5];
+                String genero = datos[3];
                 switch (genero) {
                     case "M":
                         vp.cboGeneroCliM.setSelectedIndex(1);
@@ -102,8 +97,8 @@ public class ModeloCliente extends Conexion implements CRUD {
     public void actualizar() throws Exception {
         try {
             this.conectarBD();
-            PreparedStatement ps = this.conexion.prepareStatement("update Cliente set nombApeCli = '" + nombreM() + " " + apePatM() + " " + apeMatM() + "' "
-                    + " , dniCli = '" + dniM() + "' , rucCli = '" + rucM() + "', genCli = '" + generoM() + "'  where codCli = " + codigoM() + " ");
+            PreparedStatement ps = this.conexion.prepareStatement("update Cliente set nombApeCli = '" + nombresM()
+                    + "', dniCli = '" + dniM() + "', correoCli = '" + correoM() + "', genCli = '" + generoM() + "'  where codCli = " + codigoM());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos Actualizados");
         } catch (Exception e) {
@@ -124,9 +119,10 @@ public class ModeloCliente extends Conexion implements CRUD {
                 int codigo = Integer.parseInt(cod);
                 try {
                     this.conectarBD();
-                    PreparedStatement ppt = this.conexion.prepareStatement("delete from Cliente where codCli = " + codigo);
-                    ppt.executeUpdate();
+                    PreparedStatement ps = this.conexion.prepareStatement("delete from Cliente where codCli = " + codigo);
+                    ps.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Cliente eliminado");
+                    listar();
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(null, "eliminar " + e);
                 } finally {
@@ -138,6 +134,7 @@ public class ModeloCliente extends Conexion implements CRUD {
         }
     }
 
+    @Override
     public void consultar() {
         cambiarJP(JFPrincipal.jpCardCli, JFPrincipal.jpConsultaCli);
     }
@@ -175,10 +172,10 @@ public class ModeloCliente extends Conexion implements CRUD {
 
             while (rs.next()) {
                 datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2) + rs.getString(3) + rs.getString(4);
-                datos[2] = rs.getString(5);
-                datos[3] = rs.getString(6);
-                datos[4] = rs.getString(7);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
+                datos[4] = rs.getString(5);
                 mdlTblCli.addRow(datos);
             }
             vp.txtFiltroNombre.requestFocus();
@@ -193,33 +190,15 @@ public class ModeloCliente extends Conexion implements CRUD {
     public void nuevo() throws Exception {
         //vp.txtCodigoCliM.setText("");
         vp.txtNombreCli.setText("");
-        vp.txtApePatCli.setText("");
-        vp.txtApeMatCli.setText("");
         vp.txtDniCli.setText("");
-        vp.txtRucCli.setText("");
+        vp.txtCorreoCli.setText("");
         vp.cboGeneroCli.setSelectedIndex(0);
         cambiarJP(JFPrincipal.jpCardCli, JFPrincipal.jpDatosCli);
     }
 
     /* Registrar */
-    private String nombreR() {
+    private String nombresR() {
         String tr = vp.txtNombreCli.getText();
-        if (tr.equals("")) {
-            tr = "";
-        }
-        return tr;
-    }
-
-    private String apePatR() {
-        String tr = vp.txtApePatCli.getText();
-        if (tr.equals("")) {
-            tr = "";
-        }
-        return tr;
-    }
-
-    private String apeMatR() {
-        String tr = vp.txtApeMatCli.getText();
         if (tr.equals("")) {
             tr = "";
         }
@@ -234,8 +213,8 @@ public class ModeloCliente extends Conexion implements CRUD {
         return tr;
     }
 
-    private String rucR() {
-        String tr = vp.txtRucCli.getText();
+    private String correoR() {
+        String tr = vp.txtCorreoCli.getText();
         if (tr.equals("")) {
             tr = "";
         }
@@ -268,23 +247,14 @@ public class ModeloCliente extends Conexion implements CRUD {
         return Integer.parseInt(vp.txtCodigoCliM.getText());
     }
 
-    private String nombreM() {
+    private String nombresM() {
         String tr = vp.txtNombreCliM.getText();
         if (tr.equals("")) {
             tr = "";
         }
         return tr;
     }
-
-    private String apellidos() {
-        String tr = vp.txtApePatCliM.getText();
-        String ap = vp.txtApeMatCliM.getText();
-        if (tr.equals("")) {
-            tr = "";
-        }
-        return tr;
-    }
-
+    
     private String dniM() {
         String tr = vp.txtDniCliM.getText();
         if (tr.equals("")) {
@@ -293,8 +263,8 @@ public class ModeloCliente extends Conexion implements CRUD {
         return tr;
     }
 
-    private String rucM() {
-        String tr = vp.txtRucCliM.getText();
+    private String correoM() {
+        String tr = vp.txtCorreoCliM.getText();
         if (tr.equals("")) {
             tr = "";
         }

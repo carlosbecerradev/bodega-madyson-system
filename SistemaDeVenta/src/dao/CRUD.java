@@ -16,7 +16,8 @@ public interface CRUD {
 
     /* Actualiza un registro */
     public void actualizar() throws Exception;
-
+    /* Consultar = cambiar de panel*/
+    public void consultar() throws Exception;
     /* Elimina un registro a partir de su CODIGO*/
     public void eliminar() throws Exception;
 
