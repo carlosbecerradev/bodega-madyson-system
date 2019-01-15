@@ -2,7 +2,6 @@ package bean;
 
 public class Empleado {
     
-    private int codEmp;
     private String nombEmp; //nombre + apePat + apeMat
     private String cargoEmp;
     private String dni;
@@ -11,8 +10,7 @@ public class Empleado {
     private String generoEmp;
     private int estadoEmp;
 
-    public Empleado(int codEmp, String nombEmp, String cargoEmp, String dni, String usuario, String contrasenia, String generoEmp, int estadoEmp) {
-        this.codEmp = codEmp;
+    public Empleado(String nombEmp, String cargoEmp, String dni, String usuario, String contrasenia, String generoEmp, int estadoEmp) {
         this.nombEmp = nombEmp;
         this.cargoEmp = cargoEmp;
         this.dni = dni;
@@ -20,14 +18,6 @@ public class Empleado {
         this.contrasenia = contrasenia;
         this.generoEmp = generoEmp;
         this.estadoEmp = estadoEmp;
-    }
-
-    public int getCodEmp() {
-        return codEmp;
-    }
-
-    public void setCodEmp(int codEmp) {
-        this.codEmp = codEmp;
     }
 
     public String getNombEmp() {
@@ -85,7 +75,7 @@ public class Empleado {
     public void setEstadoEmp(int estadoEmp) {
         this.estadoEmp = estadoEmp;
     }
-    
+
     
     
 }

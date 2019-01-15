@@ -1,23 +1,17 @@
 package bean;
 
 public class Cliente {
-    
-    private int codCli;
+
     private String nombCli; //nombre + apePat + apeMat
     private String dniCli; //7
     private String rucCli; //11
     private String generoCli;
-    
-    public Cliente() {
-        
-    }
 
-    public int getCodCli() {
-        return codCli;
-    }
-
-    public void setCodCli(int codCli) {
-        this.codCli = codCli;
+    public Cliente(String nombCli, String dniCli, String rucCli, String generoCli) {
+        this.nombCli = nombCli;
+        this.dniCli = dniCli;
+        this.rucCli = rucCli;
+        this.generoCli = generoCli;
     }
 
     public String getNombCli() {
@@ -51,7 +45,6 @@ public class Cliente {
     public void setGeneroCli(String generoCli) {
         this.generoCli = generoCli;
     }
-    
-    
+
     
 }

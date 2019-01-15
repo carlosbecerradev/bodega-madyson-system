@@ -5,7 +5,7 @@
  */
 package vista;
 
-import java.awt.Color;
+import javax.swing.JPanel;
 
 /**
  *
@@ -13,14 +13,9 @@ import java.awt.Color;
  */
 public class JFMenuPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistroVenta
-     */
+    
     public JFMenuPrincipal() {
         initComponents();
-        this.setTitle("SISTEMA DE VENTAS");
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
     }
 
     /**
@@ -33,16 +28,16 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jpMenu = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnJpVenta = new javax.swing.JButton();
+        btnJpConfiguracion = new javax.swing.JButton();
+        btnJpCompra = new javax.swing.JButton();
+        btnJpReportes = new javax.swing.JButton();
+        btnJpMantenimiento = new javax.swing.JButton();
         jpCarrusel = new javax.swing.JPanel();
         jpVenta = new javax.swing.JPanel();
         jpCompra = new javax.swing.JPanel();
         jpReportes = new javax.swing.JPanel();
-        jpMantenimiento1 = new javax.swing.JPanel();
+        jpMantenimiento = new javax.swing.JPanel();
         jpClientes = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -70,11 +65,11 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         lblIcoUser = new javax.swing.JLabel();
         lblNombUser = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        mnSistema = new javax.swing.JMenu();
         mnItemCerrarSesion = new javax.swing.JMenuItem();
         mnItemSalir = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1300, 680));
         setPreferredSize(new java.awt.Dimension(1300, 680));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -83,110 +78,87 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         jpMenu.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 255, 255)));
         jpMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/venta32x32.png"))); // NOI18N
-        jButton1.setText("REALIZAR VENTA");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setHideActionText(true);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setMargin(new java.awt.Insets(20, 10, 10, 10));
-        jButton1.setPreferredSize(new java.awt.Dimension(150, 80));
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jpMenu.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 10, 150, 70));
+        btnJpVenta.setBackground(new java.awt.Color(204, 204, 204));
+        btnJpVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnJpVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/venta32x32.png"))); // NOI18N
+        btnJpVenta.setText("REALIZAR VENTA");
+        btnJpVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnJpVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnJpVenta.setHideActionText(true);
+        btnJpVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnJpVenta.setMargin(new java.awt.Insets(20, 10, 10, 10));
+        btnJpVenta.setPreferredSize(new java.awt.Dimension(150, 80));
+        btnJpVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnJpVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJpVentaActionPerformed(evt);
+            }
+        });
+        jpMenu.add(btnJpVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 10, 150, 70));
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/configuracion32x32.png"))); // NOI18N
-        jButton2.setText("CONFIGURACIÓN");
-        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setHideActionText(true);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setMargin(new java.awt.Insets(20, 10, 10, 10));
-        jButton2.setPreferredSize(new java.awt.Dimension(150, 80));
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jButton2MouseMoved(evt);
-            }
-        });
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton2MouseExited(evt);
-            }
-        });
-        jpMenu.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 330, 150, 70));
+        btnJpConfiguracion.setBackground(new java.awt.Color(204, 204, 204));
+        btnJpConfiguracion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnJpConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/configuracion32x32.png"))); // NOI18N
+        btnJpConfiguracion.setText("CONFIGURACIÓN");
+        btnJpConfiguracion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnJpConfiguracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnJpConfiguracion.setEnabled(false);
+        btnJpConfiguracion.setHideActionText(true);
+        btnJpConfiguracion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnJpConfiguracion.setMargin(new java.awt.Insets(20, 10, 10, 10));
+        btnJpConfiguracion.setPreferredSize(new java.awt.Dimension(150, 80));
+        btnJpConfiguracion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jpMenu.add(btnJpConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 330, 150, 70));
 
-        jButton3.setBackground(new java.awt.Color(204, 204, 204));
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/compra32x32.png"))); // NOI18N
-        jButton3.setText("GUARDAR COMPRAS");
-        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setHideActionText(true);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setMargin(new java.awt.Insets(20, 10, 10, 10));
-        jButton3.setPreferredSize(new java.awt.Dimension(150, 80));
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jButton3MouseMoved(evt);
-            }
-        });
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton3MouseExited(evt);
-            }
-        });
-        jpMenu.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 90, 150, 70));
+        btnJpCompra.setBackground(new java.awt.Color(204, 204, 204));
+        btnJpCompra.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnJpCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/compra32x32.png"))); // NOI18N
+        btnJpCompra.setText("GUARDAR COMPRAS");
+        btnJpCompra.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnJpCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnJpCompra.setEnabled(false);
+        btnJpCompra.setHideActionText(true);
+        btnJpCompra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnJpCompra.setMargin(new java.awt.Insets(20, 10, 10, 10));
+        btnJpCompra.setPreferredSize(new java.awt.Dimension(150, 80));
+        btnJpCompra.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jpMenu.add(btnJpCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 90, 150, 70));
 
-        jButton4.setBackground(new java.awt.Color(204, 204, 204));
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/reporte32x32.png"))); // NOI18N
-        jButton4.setText("REPORTES");
-        jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setHideActionText(true);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setMargin(new java.awt.Insets(20, 10, 10, 10));
-        jButton4.setPreferredSize(new java.awt.Dimension(150, 80));
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jButton4MouseMoved(evt);
+        btnJpReportes.setBackground(new java.awt.Color(204, 204, 204));
+        btnJpReportes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnJpReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/reporte32x32.png"))); // NOI18N
+        btnJpReportes.setText("REPORTES");
+        btnJpReportes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnJpReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnJpReportes.setHideActionText(true);
+        btnJpReportes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnJpReportes.setMargin(new java.awt.Insets(20, 10, 10, 10));
+        btnJpReportes.setPreferredSize(new java.awt.Dimension(150, 80));
+        btnJpReportes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnJpReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJpReportesActionPerformed(evt);
             }
         });
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton4MouseExited(evt);
-            }
-        });
-        jpMenu.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 170, 150, 70));
+        jpMenu.add(btnJpReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 170, 150, 70));
 
-        jButton5.setBackground(new java.awt.Color(204, 204, 204));
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/mantenimiento32x32.png"))); // NOI18N
-        jButton5.setText("MANTENIMIENTO");
-        jButton5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.setHideActionText(true);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setMargin(new java.awt.Insets(20, 10, 10, 10));
-        jButton5.setPreferredSize(new java.awt.Dimension(150, 80));
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jButton5MouseMoved(evt);
+        btnJpMantenimiento.setBackground(new java.awt.Color(204, 204, 204));
+        btnJpMantenimiento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnJpMantenimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/mantenimiento32x32.png"))); // NOI18N
+        btnJpMantenimiento.setText("MANTENIMIENTO");
+        btnJpMantenimiento.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnJpMantenimiento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnJpMantenimiento.setHideActionText(true);
+        btnJpMantenimiento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnJpMantenimiento.setMargin(new java.awt.Insets(20, 10, 10, 10));
+        btnJpMantenimiento.setPreferredSize(new java.awt.Dimension(150, 80));
+        btnJpMantenimiento.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnJpMantenimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJpMantenimientoActionPerformed(evt);
             }
         });
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton5MouseExited(evt);
-            }
-        });
-        jpMenu.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 250, 150, 70));
+        jpMenu.add(btnJpMantenimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 250, 150, 70));
 
         getContentPane().add(jpMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 160, 600));
 
@@ -195,8 +167,8 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         jpCarrusel.add(jpCompra, "card3");
         jpCarrusel.add(jpReportes, "card4");
 
-        jpMantenimiento1.setBackground(new java.awt.Color(255, 255, 255));
-        jpMantenimiento1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpMantenimiento.setBackground(new java.awt.Color(255, 255, 255));
+        jpMantenimiento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpClientes.setBackground(new java.awt.Color(0, 204, 153));
         jpClientes.setPreferredSize(new java.awt.Dimension(400, 150));
@@ -232,7 +204,7 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         });
         jpClientes.add(btnEntrarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 110, 40));
 
-        jpMantenimiento1.add(jpClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+        jpMantenimiento.add(jpClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
 
         jpProductos.setBackground(new java.awt.Color(255, 204, 0));
         jpProductos.setPreferredSize(new java.awt.Dimension(400, 150));
@@ -268,7 +240,7 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         });
         jpProductos.add(btnEntrarProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 110, 40));
 
-        jpMantenimiento1.add(jpProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, -1, -1));
+        jpMantenimiento.add(jpProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, -1, -1));
 
         jpUsuarios.setBackground(new java.awt.Color(255, 255, 102));
         jpUsuarios.setPreferredSize(new java.awt.Dimension(400, 150));
@@ -304,7 +276,7 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         });
         jpUsuarios.add(btnEntrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 110, 40));
 
-        jpMantenimiento1.add(jpUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, -1, -1));
+        jpMantenimiento.add(jpUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, -1, -1));
 
         jpProveedores.setBackground(new java.awt.Color(0, 204, 255));
         jpProveedores.setPreferredSize(new java.awt.Dimension(400, 150));
@@ -340,14 +312,14 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         });
         jpProveedores.add(btnEntrarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 110, 40));
 
-        jpMantenimiento1.add(jpProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, -1, -1));
+        jpMantenimiento.add(jpProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("MANTENIMIENTO");
-        jpMantenimiento1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 840, 30));
+        jpMantenimiento.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 840, 30));
 
-        jpCarrusel.add(jpMantenimiento1, "card2");
+        jpCarrusel.add(jpMantenimiento, "card2");
         jpCarrusel.add(jpConfiguracion, "card6");
 
         getContentPane().add(jpCarrusel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 1140, 600));
@@ -377,15 +349,20 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jMenuBar1.setPreferredSize(new java.awt.Dimension(56, 20));
 
-        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
-        jMenu1.setText("SISTEMA");
-        jMenu1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jMenu1.setPreferredSize(new java.awt.Dimension(200, 21));
+        mnSistema.setBackground(new java.awt.Color(255, 255, 255));
+        mnSistema.setText("SISTEMA");
+        mnSistema.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mnSistema.setPreferredSize(new java.awt.Dimension(200, 21));
 
         mnItemCerrarSesion.setBackground(new java.awt.Color(255, 255, 255));
         mnItemCerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         mnItemCerrarSesion.setText("CERRAR SESIÓN");
-        jMenu1.add(mnItemCerrarSesion);
+        mnItemCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnItemCerrarSesionActionPerformed(evt);
+            }
+        });
+        mnSistema.add(mnItemCerrarSesion);
 
         mnItemSalir.setBackground(new java.awt.Color(255, 255, 255));
         mnItemSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -395,9 +372,9 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
                 mnItemSalirActionPerformed(evt);
             }
         });
-        jMenu1.add(mnItemSalir);
+        mnSistema.add(mnItemSalir);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(mnSistema);
 
         setJMenuBar(jMenuBar1);
 
@@ -405,56 +382,40 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnItemSalirActionPerformed
-        System.exit(0);
+
     }//GEN-LAST:event_mnItemSalirActionPerformed
 
-    private void jButton2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2MouseMoved
-
-    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2MouseExited
-
-    private void jButton3MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3MouseMoved
-
-    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3MouseExited
-
-    private void jButton4MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4MouseMoved
-
-    private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4MouseExited
-
-    private void jButton5MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5MouseMoved
-
-    private void jButton5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5MouseExited
-
     private void btnEntrarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarClientesActionPerformed
-        crudClientes();
+        
     }//GEN-LAST:event_btnEntrarClientesActionPerformed
 
     private void btnEntrarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarProductosActionPerformed
-        crudProductos();
+
     }//GEN-LAST:event_btnEntrarProductosActionPerformed
 
     private void btnEntrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarUsuarioActionPerformed
-        crudUsuarios();
+
     }//GEN-LAST:event_btnEntrarUsuarioActionPerformed
 
     private void btnEntrarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarProveedorActionPerformed
-        crudProveedor();
+
     }//GEN-LAST:event_btnEntrarProveedorActionPerformed
+
+    private void btnJpReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJpReportesActionPerformed
+
+    }//GEN-LAST:event_btnJpReportesActionPerformed
+
+    private void btnJpMantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJpMantenimientoActionPerformed
+
+    }//GEN-LAST:event_btnJpMantenimientoActionPerformed
+
+    private void btnJpVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJpVentaActionPerformed
+
+    }//GEN-LAST:event_btnJpVentaActionPerformed
+
+    private void mnItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnItemCerrarSesionActionPerformed
+    
+    }//GEN-LAST:event_mnItemCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -503,11 +464,11 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnEntrarProductos;
     private javax.swing.JButton btnEntrarProveedor;
     private javax.swing.JButton btnEntrarUsuario;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    public static javax.swing.JButton btnJpCompra;
+    public static javax.swing.JButton btnJpConfiguracion;
+    public static javax.swing.JButton btnJpMantenimiento;
+    public static javax.swing.JButton btnJpReportes;
+    public static javax.swing.JButton btnJpVenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
@@ -517,20 +478,19 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jpCarrusel;
+    public javax.swing.JPanel jpCarrusel;
     private javax.swing.JPanel jpClientes;
-    private javax.swing.JPanel jpCompra;
-    private javax.swing.JPanel jpConfiguracion;
-    private javax.swing.JPanel jpMantenimiento1;
+    public javax.swing.JPanel jpCompra;
+    public javax.swing.JPanel jpConfiguracion;
+    public javax.swing.JPanel jpMantenimiento;
     private javax.swing.JPanel jpMenu;
     private javax.swing.JPanel jpProductos;
     private javax.swing.JPanel jpProveedores;
-    private javax.swing.JPanel jpReportes;
+    public javax.swing.JPanel jpReportes;
     private javax.swing.JPanel jpTitulo;
     private javax.swing.JPanel jpUsuarios;
-    private javax.swing.JPanel jpVenta;
+    public javax.swing.JPanel jpVenta;
     private javax.swing.JLabel lblCantClientes;
     private javax.swing.JLabel lblCantProductos;
     private javax.swing.JLabel lblCantProveedores;
@@ -538,23 +498,12 @@ public class JFMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblIcoUser;
     private javax.swing.JLabel lblNombNegocio;
     private javax.swing.JLabel lblNombUser;
-    private javax.swing.JMenuItem mnItemCerrarSesion;
-    private javax.swing.JMenuItem mnItemSalir;
+    public static javax.swing.JMenuItem mnItemCerrarSesion;
+    public static javax.swing.JMenuItem mnItemSalir;
+    private static javax.swing.JMenu mnSistema;
     // End of variables declaration//GEN-END:variables
 
-    private void crudClientes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void crudUsuarios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void crudProveedor() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void crudProductos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        
+    
+    
 }

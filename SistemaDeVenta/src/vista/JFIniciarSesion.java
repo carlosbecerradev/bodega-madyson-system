@@ -5,7 +5,6 @@
  */
 package vista;
 
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,8 +17,6 @@ public class JFIniciarSesion extends javax.swing.JFrame {
      */
     public JFIniciarSesion() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
     }
 
     /**
@@ -36,16 +33,15 @@ public class JFIniciarSesion extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JPasswordField();
+        txtContrasenia = new javax.swing.JPasswordField();
         txtUsuario = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        lblCopyLogin = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
         icoPass = new javax.swing.JLabel();
         icoUser = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 350));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -71,16 +67,16 @@ public class JFIniciarSesion extends javax.swing.JFrame {
         jLabel4.setText("CONTRASEÑA:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 188, 140, 30));
 
-        txtContraseña.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtContraseña.setBorder(null);
-        txtContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtContrasenia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtContrasenia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtContrasenia.setBorder(null);
+        txtContrasenia.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtContrasenia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtContraseñaKeyTyped(evt);
+                txtContraseniaKeyTyped(evt);
             }
         });
-        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 200, 30));
+        jPanel1.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 200, 30));
 
         txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -90,13 +86,8 @@ public class JFIniciarSesion extends javax.swing.JFrame {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 200, 10));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 200, 10));
 
-        lblCopyLogin.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblCopyLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCopyLogin.setText("2018");
-        jPanel1.add(lblCopyLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 324, 312, -1));
-
         btnIngresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnIngresar.setText("INICIAR");
+        btnIngresar.setText("INGRESAR");
         btnIngresar.setBorder(null);
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,39 +102,33 @@ public class JFIniciarSesion extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        if (txtUsuario.getText().equals("admin") && txtContraseña.getText().equals("12345")) {
-            JFMenuPrincipal menuP = new JFMenuPrincipal();
-            this.setVisible(false);
-            menuP.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Ingresaste la clave o contraseña erronea");
-        }
+        
     }//GEN-LAST:event_btnIngresarActionPerformed
 
-    private void txtContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaKeyTyped
-        Character c = evt.getKeyChar();
-        
-        if (c == '\n') {
-            if (txtUsuario.getText().equals("admin") && txtContraseña.getText().equals("12345")) {
-            JFMenuPrincipal menuP = new JFMenuPrincipal();
-            this.setVisible(false);
-            menuP.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Ingresaste la clave o contraseña erronea");
-        }
-        }
-    }//GEN-LAST:event_txtContraseñaKeyTyped
+    private void txtContraseniaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseniaKeyTyped
+//        Character c = evt.getKeyChar();
+//        
+//        if (c == '\n') {
+//            if (txtUsuario.getText().equals("admin") && txtContrasenia.getText().equals("12345")) {
+//            JFMenuPrincipal menuP = new JFMenuPrincipal();
+//            this.setVisible(false);
+//            menuP.setVisible(true);
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Ingresaste la clave o contraseña erronea");
+//        }
+//        }
+    }//GEN-LAST:event_txtContraseniaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -184,7 +169,7 @@ public class JFIniciarSesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIngresar;
+    public static javax.swing.JButton btnIngresar;
     private javax.swing.JLabel icoPass;
     private javax.swing.JLabel icoUser;
     private javax.swing.JLabel jLabel1;
@@ -194,8 +179,7 @@ public class JFIniciarSesion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lblCopyLogin;
-    private javax.swing.JPasswordField txtContraseña;
-    private javax.swing.JTextField txtUsuario;
+    public static javax.swing.JPasswordField txtContrasenia;
+    public static javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

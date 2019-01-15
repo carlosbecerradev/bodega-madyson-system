@@ -8,7 +8,7 @@ use BodegaMadyson
 create table Cliente(
 codCli int identity primary key not null,
 nombApeCli varchar(150),
-dniCli varchar(8),
+dniCli char(8),
 rucCli varchar(11),
 genCli char(1)
 )
@@ -17,7 +17,7 @@ create table Empleado(
 codEmp int identity primary key not null,
 nombApeEmp varchar(150),
 cargoEmp varchar(20),
-dniEmp varchar(8),
+dniEmp char(8),
 usuEmp varchar(30),
 contraEmp varchar(30),
 genEmp char(1),
@@ -123,3 +123,6 @@ insert into Proveedor values (10111213141, 'Grupo Terra', 2851302, 'Calle 13', n
 ------ACTUALIZAR----
 update Cliente set nombApeCli = 'Maritza Vela champ', dniCli = '15', rucCli = '125', genCli = 'T'
 	where codCli = 1
+
+	--LIKE --
+	select * from Cliente where dniCli like '%5%'
