@@ -28,52 +28,42 @@ public class JFCRUD extends javax.swing.JFrame {
 
         jpEmpleados = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jpOpcionesEmp = new javax.swing.JPanel();
+        jpOpcionesProd = new javax.swing.JPanel();
         btnNuevoProd = new javax.swing.JButton();
         btnRegistrarProd = new javax.swing.JButton();
         btnBuscarProd = new javax.swing.JButton();
         btnActualizarProd = new javax.swing.JButton();
         btnEliminarProd = new javax.swing.JButton();
-        jpCardEmp = new javax.swing.JPanel();
-        jpDatosEmp = new javax.swing.JPanel();
+        jpCardProd = new javax.swing.JPanel();
+        jpDatosProd = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        txtNombreProd = new javax.swing.JTextField();
+        txtArticuloProd = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtUsuarioEmp = new javax.swing.JTextField();
+        txtStockProd = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtDniProd = new javax.swing.JTextField();
+        txtPrecioVentaPro = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtContraEmp = new javax.swing.JTextField();
+        cboMarcaProd = new javax.swing.JComboBox<>();
+        cboCategoriaProd = new javax.swing.JComboBox<>();
+        jpModificarProd = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        cboCargoProd = new javax.swing.JComboBox<>();
-        cboGeneroEmp = new javax.swing.JComboBox<>();
-        cboEstadoEmp = new javax.swing.JComboBox<>();
-        jLabel18 = new javax.swing.JLabel();
-        jpConsultaEmp = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblEmpleado = new javax.swing.JTable();
-        btnExtraerEmp = new javax.swing.JButton();
+        txtArticuloProdM = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtStockProdM = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtPrecioVentaProM = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        cboMarcaProdM = new javax.swing.JComboBox<>();
+        cboCategoriaProdM = new javax.swing.JComboBox<>();
+        jpConsultaProd = new javax.swing.JPanel();
+        jSPProd = new javax.swing.JScrollPane();
+        tbProducto = new javax.swing.JTable();
+        btnExtraerProd = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        btnListarEmp = new javax.swing.JButton();
-        txtFiltroNombreEmp = new javax.swing.JTextField();
-        jpModificarEmp = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        txtNombresEmpM = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        txtUsuarioEmpM = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        txtDniEmpM = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        txtContraEmpM = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        cboCargoEmpM = new javax.swing.JComboBox<>();
-        cboGeneroEmpM = new javax.swing.JComboBox<>();
-        cboEstadoEmpM = new javax.swing.JComboBox<>();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        txtCodigoM = new javax.swing.JTextField();
+        btnListarProd = new javax.swing.JButton();
+        txtFiltroNombreProd = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 600));
@@ -88,10 +78,10 @@ public class JFCRUD extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("MANTENIMIENTO DE USUARIOS");
+        jLabel1.setText("MANTENIMIENTO DE PRODUCTOS");
         jpEmpleados.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 15, 970, 30));
 
-        jpOpcionesEmp.setBackground(new java.awt.Color(51, 51, 51));
+        jpOpcionesProd.setBackground(new java.awt.Color(51, 51, 51));
 
         btnNuevoProd.setBackground(new java.awt.Color(204, 204, 204));
         btnNuevoProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -106,7 +96,7 @@ public class JFCRUD extends javax.swing.JFrame {
                 btnNuevoProdActionPerformed(evt);
             }
         });
-        jpOpcionesEmp.add(btnNuevoProd);
+        jpOpcionesProd.add(btnNuevoProd);
 
         btnRegistrarProd.setBackground(new java.awt.Color(204, 204, 204));
         btnRegistrarProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -116,12 +106,12 @@ public class JFCRUD extends javax.swing.JFrame {
         btnRegistrarProd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnRegistrarProd.setPreferredSize(new java.awt.Dimension(120, 75));
         btnRegistrarProd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jpOpcionesEmp.add(btnRegistrarProd);
+        jpOpcionesProd.add(btnRegistrarProd);
 
         btnBuscarProd.setBackground(new java.awt.Color(204, 204, 204));
         btnBuscarProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBuscarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/search32x32.png"))); // NOI18N
-        btnBuscarProd.setText("BUSCAR");
+        btnBuscarProd.setText("CONSULTAR");
         btnBuscarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscarProd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnBuscarProd.setPreferredSize(new java.awt.Dimension(120, 75));
@@ -131,7 +121,7 @@ public class JFCRUD extends javax.swing.JFrame {
                 btnBuscarProdActionPerformed(evt);
             }
         });
-        jpOpcionesEmp.add(btnBuscarProd);
+        jpOpcionesProd.add(btnBuscarProd);
 
         btnActualizarProd.setBackground(new java.awt.Color(204, 204, 204));
         btnActualizarProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -141,7 +131,7 @@ public class JFCRUD extends javax.swing.JFrame {
         btnActualizarProd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnActualizarProd.setPreferredSize(new java.awt.Dimension(120, 75));
         btnActualizarProd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jpOpcionesEmp.add(btnActualizarProd);
+        jpOpcionesProd.add(btnActualizarProd);
 
         btnEliminarProd.setBackground(new java.awt.Color(204, 204, 204));
         btnEliminarProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -151,247 +141,191 @@ public class JFCRUD extends javax.swing.JFrame {
         btnEliminarProd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEliminarProd.setPreferredSize(new java.awt.Dimension(120, 75));
         btnEliminarProd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jpOpcionesEmp.add(btnEliminarProd);
+        jpOpcionesProd.add(btnEliminarProd);
 
-        jpEmpleados.add(jpOpcionesEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 50, 970, 85));
+        jpEmpleados.add(jpOpcionesProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 50, 970, 85));
 
-        jpCardEmp.setLayout(new java.awt.CardLayout());
+        jpCardProd.setLayout(new java.awt.CardLayout());
 
-        jpDatosEmp.setBackground(new java.awt.Color(255, 255, 255));
-        jpDatosEmp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpDatosProd.setBackground(new java.awt.Color(255, 255, 255));
+        jpDatosProd.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("NOMBRES:");
-        jpDatosEmp.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, 30));
+        jLabel4.setText("ARTÍCULO:");
+        jpDatosProd.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, 30));
 
-        txtNombreProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtNombreProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNombreProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtNombreProd.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpDatosEmp.add(txtNombreProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 300, 30));
+        txtArticuloProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtArticuloProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtArticuloProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtArticuloProd.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jpDatosProd.add(txtArticuloProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 300, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("CARGO:");
-        jpDatosEmp.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 30));
+        jLabel5.setText("MARCA:");
+        jpDatosProd.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("USUARIO:");
-        jpDatosEmp.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, 30));
+        jLabel6.setText("STOCK:");
+        jpDatosProd.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, 30));
 
-        txtUsuarioEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtUsuarioEmp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUsuarioEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtUsuarioEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpDatosEmp.add(txtUsuarioEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 220, 30));
+        txtStockProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtStockProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtStockProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtStockProd.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jpDatosProd.add(txtStockProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 220, 30));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("D.N.I.:");
-        jpDatosEmp.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 200, 30));
+        jLabel7.setText("PRECIO DE VENTA:");
+        jpDatosProd.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 200, 30));
 
-        txtDniProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtDniProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDniProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtDniProd.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpDatosEmp.add(txtDniProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
+        txtPrecioVentaPro.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtPrecioVentaPro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPrecioVentaPro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtPrecioVentaPro.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jpDatosProd.add(txtPrecioVentaPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel8.setText("CONTRASEÑA:");
-        jpDatosEmp.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 200, 30));
+        jLabel8.setText("CATEGORÍA:");
+        jpDatosProd.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 200, 30));
 
-        txtContraEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtContraEmp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtContraEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtContraEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpDatosEmp.add(txtContraEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 220, 30));
+        cboMarcaProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cboMarcaProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "PeziDuri", "Donofrio", "Coca Cola" }));
+        cboMarcaProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cboMarcaProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cboMarcaProd.setEditor(null);
+        jpDatosProd.add(cboMarcaProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 220, 30));
+
+        cboCategoriaProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cboCategoriaProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Helado", "Detergente" }));
+        cboCategoriaProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cboCategoriaProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cboCategoriaProd.setEditor(null);
+        jpDatosProd.add(cboCategoriaProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 220, 30));
+
+        jpCardProd.add(jpDatosProd, "card2");
+
+        jpModificarProd.setBackground(new java.awt.Color(255, 255, 255));
+        jpModificarProd.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("GÉNERO:");
-        jpDatosEmp.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 200, 30));
+        jLabel10.setText("ARTÍCULO:");
+        jpModificarProd.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, 30));
 
-        cboCargoProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboCargoProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Administrador", "Cajero" }));
-        cboCargoProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboCargoProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboCargoProd.setEditor(null);
-        jpDatosEmp.add(cboCargoProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 220, 30));
+        txtArticuloProdM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtArticuloProdM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtArticuloProdM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtArticuloProdM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jpModificarProd.add(txtArticuloProdM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 300, 30));
 
-        cboGeneroEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboGeneroEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Hombre", "Mujer" }));
-        cboGeneroEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboGeneroEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboGeneroEmp.setEditor(null);
-        jpDatosEmp.add(cboGeneroEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 220, 30));
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel11.setText("MARCA:");
+        jpModificarProd.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 30));
 
-        cboEstadoEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboEstadoEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Activo", "Inactivo" }));
-        cboEstadoEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboEstadoEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboEstadoEmp.setEditor(null);
-        jpDatosEmp.add(cboEstadoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 220, 30));
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setText("STOCK:");
+        jpModificarProd.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, 30));
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel18.setText("ESTADO:");
-        jpDatosEmp.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 200, 30));
+        txtStockProdM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtStockProdM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtStockProdM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtStockProdM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jpModificarProd.add(txtStockProdM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 220, 30));
 
-        jpCardEmp.add(jpDatosEmp, "card2");
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel13.setText("PRECIO DE VENTA:");
+        jpModificarProd.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 200, 30));
 
-        jpConsultaEmp.setBackground(new java.awt.Color(255, 255, 255));
-        jpConsultaEmp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        txtPrecioVentaProM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtPrecioVentaProM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPrecioVentaProM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtPrecioVentaProM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jpModificarProd.add(txtPrecioVentaProM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setOpaque(false);
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel14.setText("CATEGORÍA:");
+        jpModificarProd.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 200, 30));
 
-        tblEmpleado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        tblEmpleado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tblEmpleado.setModel(new javax.swing.table.DefaultTableModel(
+        cboMarcaProdM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cboMarcaProdM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "PeziDuri", "Donofrio", "Coca Cola" }));
+        cboMarcaProdM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cboMarcaProdM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cboMarcaProdM.setEditor(null);
+        jpModificarProd.add(cboMarcaProdM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 220, 30));
+
+        cboCategoriaProdM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cboCategoriaProdM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Helado", "Detergente" }));
+        cboCategoriaProdM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cboCategoriaProdM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cboCategoriaProdM.setEditor(null);
+        jpModificarProd.add(cboCategoriaProdM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 220, 30));
+
+        jpCardProd.add(jpModificarProd, "card4");
+
+        jpConsultaProd.setBackground(new java.awt.Color(255, 255, 255));
+        jpConsultaProd.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jSPProd.setBackground(new java.awt.Color(255, 255, 255));
+        jSPProd.setOpaque(false);
+
+        tbProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tbProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tbProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "CÓDIGO", "NOMBRES Y APELLIDOS", "DNI", "RUC", "GÉNERO"
+                "CÓDIGO", "ARTÍCULO", "MARCA", "PRECIO VENTA", "STOCK", "CATEGORÍA"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tblEmpleado.setOpaque(false);
-        tblEmpleado.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblEmpleado.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblEmpleado.getTableHeader().setResizingAllowed(false);
-        tblEmpleado.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tblEmpleado);
+        tbProducto.setOpaque(false);
+        tbProducto.setSelectionBackground(new java.awt.Color(51, 51, 51));
+        tbProducto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbProducto.getTableHeader().setResizingAllowed(false);
+        tbProducto.getTableHeader().setReorderingAllowed(false);
+        jSPProd.setViewportView(tbProducto);
 
-        jpConsultaEmp.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 930, 330));
+        jpConsultaProd.add(jSPProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 930, 330));
 
-        btnExtraerEmp.setBackground(new java.awt.Color(255, 255, 255));
-        btnExtraerEmp.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnExtraerEmp.setText("MODIFICAR CLIENTE");
-        jpConsultaEmp.add(btnExtraerEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 220, 30));
+        btnExtraerProd.setBackground(new java.awt.Color(255, 255, 255));
+        btnExtraerProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnExtraerProd.setText("MODIFICAR PRODUCTO");
+        jpConsultaProd.add(btnExtraerProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 250, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("FILTRAR POR NOMBRE O APELLIDO:");
-        jpConsultaEmp.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 260, 30));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("FILTRAR POR ARTÍCULO:");
+        jpConsultaProd.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 260, 30));
 
-        btnListarEmp.setBackground(new java.awt.Color(51, 51, 51));
-        btnListarEmp.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnListarEmp.setForeground(new java.awt.Color(255, 255, 255));
-        btnListarEmp.setText("LISTAR");
-        jpConsultaEmp.add(btnListarEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 15, 120, 40));
+        btnListarProd.setBackground(new java.awt.Color(255, 255, 255));
+        btnListarProd.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnListarProd.setForeground(new java.awt.Color(51, 51, 51));
+        btnListarProd.setText("LISTAR");
+        jpConsultaProd.add(btnListarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 15, 120, 40));
 
-        txtFiltroNombreEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jpConsultaEmp.add(txtFiltroNombreEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 300, 30));
+        txtFiltroNombreProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jpConsultaProd.add(txtFiltroNombreProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 300, 30));
 
-        jpCardEmp.add(jpConsultaEmp, "card3");
+        jpCardProd.add(jpConsultaProd, "card3");
 
-        jpModificarEmp.setBackground(new java.awt.Color(255, 255, 255));
-        jpModificarEmp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel9.setText("NOMBRES:");
-        jpModificarEmp.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 30));
-
-        txtNombresEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtNombresEmpM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNombresEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtNombresEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpModificarEmp.add(txtNombresEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 300, 30));
-
-        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel19.setText("CARGO:");
-        jpModificarEmp.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 200, 30));
-
-        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel20.setText("USUARIO:");
-        jpModificarEmp.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 200, 30));
-
-        txtUsuarioEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtUsuarioEmpM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUsuarioEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtUsuarioEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpModificarEmp.add(txtUsuarioEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 220, 30));
-
-        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel21.setText("D.N.I.:");
-        jpModificarEmp.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, 30));
-
-        txtDniEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtDniEmpM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDniEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtDniEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpModificarEmp.add(txtDniEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 220, 30));
-
-        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel22.setText("CONTRASEÑA:");
-        jpModificarEmp.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 200, 30));
-
-        txtContraEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtContraEmpM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtContraEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtContraEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpModificarEmp.add(txtContraEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 220, 30));
-
-        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel23.setText("GÉNERO:");
-        jpModificarEmp.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 200, 30));
-
-        cboCargoEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboCargoEmpM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Administrador", "Cajero" }));
-        cboCargoEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboCargoEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboCargoEmpM.setEditor(null);
-        jpModificarEmp.add(cboCargoEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
-
-        cboGeneroEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboGeneroEmpM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Hombre", "Mujer" }));
-        cboGeneroEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboGeneroEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboGeneroEmpM.setEditor(null);
-        jpModificarEmp.add(cboGeneroEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 220, 30));
-
-        cboEstadoEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboEstadoEmpM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Activo", "Inactivo" }));
-        cboEstadoEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboEstadoEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboEstadoEmpM.setEditor(null);
-        jpModificarEmp.add(cboEstadoEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 220, 30));
-
-        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel24.setText("ESTADO:");
-        jpModificarEmp.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 200, 30));
-
-        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel25.setText("CÓDIGO:");
-        jpModificarEmp.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 200, 30));
-
-        txtCodigoM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtCodigoM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCodigoM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtCodigoM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpModificarEmp.add(txtCodigoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 220, 30));
-
-        jpCardEmp.add(jpModificarEmp, "card4");
-
-        jpEmpleados.add(jpCardEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 140, 970, 450));
+        jpEmpleados.add(jpCardProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 140, 970, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -461,51 +395,41 @@ public class JFCRUD extends javax.swing.JFrame {
     public static javax.swing.JButton btnActualizarProd;
     public static javax.swing.JButton btnBuscarProd;
     public static javax.swing.JButton btnEliminarProd;
-    public static javax.swing.JButton btnExtraerEmp;
-    public static javax.swing.JButton btnListarEmp;
+    public static javax.swing.JButton btnExtraerProd;
+    public static javax.swing.JButton btnListarProd;
     public static javax.swing.JButton btnNuevoProd;
     public static javax.swing.JButton btnRegistrarProd;
-    public static javax.swing.JComboBox<String> cboCargoEmpM;
-    public static javax.swing.JComboBox<String> cboCargoProd;
-    public static javax.swing.JComboBox<String> cboEstadoEmp;
-    public static javax.swing.JComboBox<String> cboEstadoEmpM;
-    public static javax.swing.JComboBox<String> cboGeneroEmp;
-    public static javax.swing.JComboBox<String> cboGeneroEmpM;
+    public static javax.swing.JComboBox<String> cboCategoriaProd;
+    public static javax.swing.JComboBox<String> cboCategoriaProdM;
+    public static javax.swing.JComboBox<String> cboMarcaProd;
+    public static javax.swing.JComboBox<String> cboMarcaProdM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    public static javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JPanel jpCardEmp;
-    public static javax.swing.JPanel jpConsultaEmp;
-    public static javax.swing.JPanel jpDatosEmp;
+    public static javax.swing.JScrollPane jSPProd;
+    public static javax.swing.JPanel jpCardProd;
+    public static javax.swing.JPanel jpConsultaProd;
+    public static javax.swing.JPanel jpDatosProd;
     private javax.swing.JPanel jpEmpleados;
-    public static javax.swing.JPanel jpModificarEmp;
-    private javax.swing.JPanel jpOpcionesEmp;
-    public static javax.swing.JTable tblEmpleado;
-    public static javax.swing.JTextField txtCodigoM;
-    public static javax.swing.JTextField txtContraEmp;
-    public static javax.swing.JTextField txtContraEmpM;
-    public static javax.swing.JTextField txtDniEmpM;
-    public static javax.swing.JTextField txtDniProd;
-    public static javax.swing.JTextField txtFiltroNombreEmp;
-    public static javax.swing.JTextField txtNombreProd;
-    public static javax.swing.JTextField txtNombresEmpM;
-    public static javax.swing.JTextField txtUsuarioEmp;
-    public static javax.swing.JTextField txtUsuarioEmpM;
+    public static javax.swing.JPanel jpModificarProd;
+    private javax.swing.JPanel jpOpcionesProd;
+    public static javax.swing.JTable tbProducto;
+    public static javax.swing.JTextField txtArticuloProd;
+    public static javax.swing.JTextField txtArticuloProdM;
+    public static javax.swing.JTextField txtFiltroNombreProd;
+    public static javax.swing.JTextField txtPrecioVentaPro;
+    public static javax.swing.JTextField txtPrecioVentaProM;
+    public static javax.swing.JTextField txtStockProd;
+    public static javax.swing.JTextField txtStockProdM;
     // End of variables declaration//GEN-END:variables
 
     
