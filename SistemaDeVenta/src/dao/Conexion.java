@@ -11,7 +11,7 @@ public class Conexion {
     // JDBC Driver, nombre y nombre de la base de datos
     private final String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private final String BD_NOMBRE = "BodegaMadyson";
-    private final String HOSTNAME = "Ulises-pc"; // cambiar
+    private final String HOSTNAME = "UTP165453-2"; // cambiar
     private final String BD_URL = "jdbc:sqlserver://" + HOSTNAME + ":1433;databaseName=" + BD_NOMBRE;
     /*Credenciales*/
     private final String USER = "sa";

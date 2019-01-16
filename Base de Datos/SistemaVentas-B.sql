@@ -62,43 +62,13 @@ importe float,
 constraint fk_cv1 foreign key (codVenta) references Venta (codVenta),
 constraint fk_cpr1 foreign key (codProd) references Producto (codProd)
 )
-/*
-create table Proveedor(
-codProv int identity primary key not null,
-rucProv varchar(11),
-nombProv varchar(50),
-telefProv int,
-direcProv varchar(100),
-obserProv varchar(200)
-)
 
-create table Compra(
-codComp int identity primary key not null,
-codProv1 int,
-fechaComp date,
-totalComp float,
-constraint fk_pv1 foreign key (codProv1) references Proveedor (codProv)
-)
-create table DetalleCompra(
-codCompra1 int,
-codProd2 int,
-precioCompra float,
-cantidad int,
-descuento float,
-importe float,
-constraint fk_cp1 foreign key (codCompra1) references Compra (codComp),
-constraint fk_cpr2 foreign key (codProd2) references Producto (codProd)
-)
-*/
 select * from Cliente
-select * from Compra
-select * from DetalleCompra
 select * from DetalleVenta
 select * from Empleado
 select * from Producto
 select * from Marca
 select * from Categoria
-select * from Proveedor
 select * from Venta
 /*
 --Marcas--
@@ -118,8 +88,6 @@ insert into Empleado values('Alberto Hernández', 'Cajero', 11136417, 'solraoh', 
 insert into Cliente values('Maritza Vela', 51427532, null,'F')
 -- Producto --
 insert into Producto values('Helado 1lt de chocolate', 'PeziDuri', 9.90, 10,'Helados')
---Proveedor--
-insert into Proveedor values (10111213141, 'Grupo Terra', 2851302, 'Calle 13', null)
 
 ------ACTUALIZAR----
 update Cliente set nombApeCli = 'Maritza Vela champ', dniCli = '11242145', correoCli = '125', genCli = 'T' where codCli = 1
