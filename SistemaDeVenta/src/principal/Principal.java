@@ -29,8 +29,9 @@ public class Principal {
         Modelo mdl = new Modelo();
         ModeloCliente mdlCli = new ModeloCliente();
         ModeloEmpleado mdlEmp = new ModeloEmpleado();
+        ModeloProducto mdlProd = new ModeloProducto();
         
-        Controlador ctrl = new Controlador(vst, mdl, mdlCli, mdlEmp);
+        Controlador ctrl = new Controlador(vst, mdl, mdlCli, mdlEmp, mdlProd);
         ctrl.iniciar();
 
     }

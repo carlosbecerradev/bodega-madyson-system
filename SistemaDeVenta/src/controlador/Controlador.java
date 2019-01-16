@@ -22,8 +22,9 @@ public class Controlador implements ActionListener {
     private Modelo mdl;
     private ModeloCliente mdlCli;
     private ModeloEmpleado mdlEmp;
+    private ModeloProducto mdlProd;
     
-    public Controlador(JFPrincipal vst, Modelo mdl, ModeloCliente mdlCli, ModeloEmpleado mdlEmp){
+    public Controlador(JFPrincipal vst, Modelo mdl, ModeloCliente mdlCli, ModeloEmpleado mdlEmp, ModeloProducto mdlProd){
         this.vst = vst;
         this.mdl = mdl;
         this.vst.btnIngresar.addActionListener(this);
@@ -33,13 +34,7 @@ public class Controlador implements ActionListener {
         /* Menu Principal */
         this.vst.btnJpVenta.addActionListener(this);
         this.vst.btnJpReportes.addActionListener(this);
-        this.vst.btnJpMantenimiento.addActionListener(this);
-        /* Mantenimiento */
-        this.vst.btnJpProd.addActionListener(this);
-        this.vst.btnJpUsuario.addActionListener(this);
-        this.vst.btnJpCliente.addActionListener(this);
-        this.vst.btnJpProve.addActionListener(this);
-        
+        this.vst.btnJpMantenimiento.addActionListener(this);        
         /* Mant. Cliente */
         this.mdlCli = mdlCli;
         this.vst.btnNuevoCli.addActionListener(this);
@@ -58,6 +53,15 @@ public class Controlador implements ActionListener {
         this.vst.btnEliminarEmp.addActionListener(this);
         this.vst.btnListarEmp.addActionListener(this);
         this.vst.btnExtraerEmp.addActionListener(this);
+        /* Mant. Producto */
+        this.mdlProd = mdlProd;
+        this.vst.btnNuevoProd.addActionListener(this);
+        this.vst.btnRegistrarProd.addActionListener(this);
+        this.vst.btnBuscarProd.addActionListener(this);
+        this.vst.btnActualizarProd.addActionListener(this);
+        this.vst.btnEliminarProd.addActionListener(this);
+        this.vst.btnListarProd.addActionListener(this);
+        this.vst.btnExtraerProd.addActionListener(this);
     }
     
     public void iniciar(){
@@ -70,6 +74,7 @@ public class Controlador implements ActionListener {
         /* Agregar Tablas */
         mdlCli.inicioJFCliente();
         mdlEmp.inicioJFEmpleado();
+        mdlProd.inicioJFProducto();
     }
     
     @Override
@@ -118,36 +123,7 @@ public class Controlador implements ActionListener {
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "btnJpMantenimiento" + e);
             }
-        }
-        /* Paneles Mantenimiento */
-        if (vst.btnJpProd == evt.getSource()) {
-            try {
-                mdl.btnJpProd();
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "btnJpProd" + e);
-            }
-        }
-        if (vst.btnJpUsuario == evt.getSource()) {
-            try {
-                mdl.btnJpUsuario();
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "btnJpUsuario" + e);
-            }
-        }
-        if (vst.btnJpCliente == evt.getSource()) {
-            try {
-                mdl.btnJpCliente();
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "btnJpCliente" + e);
-            }
-        }
-        if (vst.btnJpProve == evt.getSource()) {
-            try {
-                mdl.btnJpProve();
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "btnJpProve" + e);
-            }
-        }
+        }        
         /* Mant. Cliente */
         if (vst.btnRegistrarCli == evt.getSource()) {
             try {
@@ -246,6 +222,56 @@ public class Controlador implements ActionListener {
                 mdlEmp.eliminar();
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "btnEliminarEmp" + e);
+            }
+        }
+        /* Mant. Producto */
+        if (vst.btnRegistrarProd == evt.getSource()) {
+            try {
+                mdlProd.registrar();
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "btnRegistrarProd" + e);
+            }
+        }
+        if (vst.btnNuevoProd == evt.getSource()) {
+            try {
+                mdlProd.nuevo();
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "btnNuevoProd" + e);
+            }
+        }
+        if (vst.btnBuscarProd == evt.getSource()) {
+            try {
+                mdlProd.consultar();
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "btnBuscarProd" + e);
+            }
+        }
+        if (vst.btnListarProd == evt.getSource()) {
+            try {
+                mdlProd.listar();
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "btnListarProd" + e);
+            }
+        }
+        if (vst.btnActualizarProd == evt.getSource()) {
+            try {
+                mdlProd.actualizar();
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "btnActualizarProd" + e);
+            }
+        }
+        if (vst.btnExtraerProd == evt.getSource()) {
+            try {
+                mdlProd.extraer();
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "btnExtraerProd" + e);
+            }
+        }
+        if (vst.btnEliminarProd == evt.getSource()) {
+            try {
+                mdlProd.eliminar();
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "btnEliminarProd" + e);
             }
         }
     }

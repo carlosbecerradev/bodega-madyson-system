@@ -43,16 +43,12 @@ public class JFPrincipal extends javax.swing.JFrame {
         btnJpCompra = new javax.swing.JButton();
         btnJpReportes = new javax.swing.JButton();
         btnJpMantenimiento = new javax.swing.JButton();
-        jpMantCambiar = new javax.swing.JPanel();
-        btnJpProd = new javax.swing.JButton();
-        btnJpCliente = new javax.swing.JButton();
-        btnJpUsuario = new javax.swing.JButton();
-        btnJpProve = new javax.swing.JButton();
         jpCardOpc = new javax.swing.JPanel();
         jpVenta = new javax.swing.JPanel();
         jpCompra = new javax.swing.JPanel();
         jpReportes = new javax.swing.JPanel();
         jpMantenimiento = new javax.swing.JPanel();
+        PROVEEDORES = new javax.swing.JTabbedPane();
         jpMClientes = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -122,9 +118,11 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel49 = new javax.swing.JLabel();
         cboMarcaProdM = new javax.swing.JComboBox<>();
         cboCategoriaProdM = new javax.swing.JComboBox<>();
+        txtCodigoProd = new javax.swing.JTextField();
+        jLabel51 = new javax.swing.JLabel();
         jpConsultaProd = new javax.swing.JPanel();
         jSPProd = new javax.swing.JScrollPane();
-        tbProducto = new javax.swing.JTable();
+        tblProducto = new javax.swing.JTable();
         btnExtraerProd = new javax.swing.JButton();
         jLabel50 = new javax.swing.JLabel();
         btnListarProd = new javax.swing.JButton();
@@ -208,7 +206,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jpIniciarSesion.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 279, 26));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/users.png"))); // NOI18N
-        jpIniciarSesion.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, 250));
+        jpIniciarSesion.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, -1, 250));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -249,7 +247,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
-        jpIniciarSesion.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 430, 200, 40));
+        jpIniciarSesion.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 300, 40));
         jpIniciarSesion.add(icoPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 193, 26, 26));
         jpIniciarSesion.add(icoUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 114, 26, 26));
 
@@ -343,30 +341,6 @@ public class JFPrincipal extends javax.swing.JFrame {
         });
         jpMenu.add(btnJpMantenimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 250, 150, 70));
 
-        jpMantCambiar.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnJpProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/venta32x32.png"))); // NOI18N
-        btnJpProd.setEnabled(false);
-        btnJpProd.setPreferredSize(new java.awt.Dimension(32, 32));
-        jpMantCambiar.add(btnJpProd);
-
-        btnJpCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/user32x32.png"))); // NOI18N
-        btnJpCliente.setEnabled(false);
-        btnJpCliente.setPreferredSize(new java.awt.Dimension(32, 32));
-        jpMantCambiar.add(btnJpCliente);
-
-        btnJpUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/cajero32x32.png"))); // NOI18N
-        btnJpUsuario.setEnabled(false);
-        btnJpUsuario.setPreferredSize(new java.awt.Dimension(32, 32));
-        jpMantCambiar.add(btnJpUsuario);
-
-        btnJpProve.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/subastador.png"))); // NOI18N
-        btnJpProve.setEnabled(false);
-        btnJpProve.setPreferredSize(new java.awt.Dimension(32, 32));
-        jpMantCambiar.add(btnJpProve);
-
-        jpMenu.add(jpMantCambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 40, 152));
-
         jpSistemaon.add(jpMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 600));
 
         jpCardOpc.setLayout(new java.awt.CardLayout());
@@ -379,6 +353,9 @@ public class JFPrincipal extends javax.swing.JFrame {
         jpMantenimiento.setMinimumSize(new java.awt.Dimension(1100, 600));
         jpMantenimiento.setPreferredSize(new java.awt.Dimension(1100, 600));
         jpMantenimiento.setLayout(new java.awt.CardLayout());
+
+        PROVEEDORES.setBackground(new java.awt.Color(255, 255, 255));
+        PROVEEDORES.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jpMClientes.setBackground(new java.awt.Color(51, 51, 51));
         jpMClientes.setPreferredSize(new java.awt.Dimension(380, 150));
@@ -423,6 +400,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         btnRegistrarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/save32x32.png"))); // NOI18N
         btnRegistrarCli.setText("REGISTRAR");
         btnRegistrarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrarCli.setEnabled(false);
         btnRegistrarCli.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnRegistrarCli.setPreferredSize(new java.awt.Dimension(120, 75));
         btnRegistrarCli.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -448,6 +426,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         btnActualizarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/update32x32.png"))); // NOI18N
         btnActualizarCli.setText("ACTUALIZAR");
         btnActualizarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizarCli.setEnabled(false);
         btnActualizarCli.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnActualizarCli.setPreferredSize(new java.awt.Dimension(120, 75));
         btnActualizarCli.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -530,7 +509,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CÓDIGO", "NOMBRES Y APELLIDOS", "DNI", "RUC", "GÉNERO"
+                "CÓDIGO", "NOMBRES Y APELLIDOS", "DNI", "CORREO", "GÉNERO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -548,7 +527,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         tblCliente.getTableHeader().setReorderingAllowed(false);
         jSPCli.setViewportView(tblCliente);
 
-        jpConsultaCli.add(jSPCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 930, 330));
+        jpConsultaCli.add(jSPCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 930, 280));
 
         btnExtraerCli.setBackground(new java.awt.Color(255, 255, 255));
         btnExtraerCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -559,9 +538,8 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel15.setText("FILTRAR POR NOMBRE O APELLIDO:");
         jpConsultaCli.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 260, 30));
 
-        btnListarCli.setBackground(new java.awt.Color(51, 51, 51));
+        btnListarCli.setBackground(new java.awt.Color(255, 255, 255));
         btnListarCli.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnListarCli.setForeground(new java.awt.Color(255, 255, 255));
         btnListarCli.setText("LISTAR");
         jpConsultaCli.add(btnListarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 15, 120, 40));
 
@@ -631,9 +609,9 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         jpCardCli.add(jpModificar, "card4");
 
-        jpMClientes.add(jpCardCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 140, 970, 450));
+        jpMClientes.add(jpCardCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 140, 970, 400));
 
-        jpMantenimiento.add(jpMClientes, "card2");
+        PROVEEDORES.addTab("CLIENTES", jpMClientes);
 
         jpMProductos.setBackground(new java.awt.Color(102, 0, 0));
         jpMProductos.setPreferredSize(new java.awt.Dimension(400, 150));
@@ -678,6 +656,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         btnRegistrarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/save32x32.png"))); // NOI18N
         btnRegistrarProd.setText("REGISTRAR");
         btnRegistrarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrarProd.setEnabled(false);
         btnRegistrarProd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnRegistrarProd.setPreferredSize(new java.awt.Dimension(120, 75));
         btnRegistrarProd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -703,6 +682,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         btnActualizarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/update32x32.png"))); // NOI18N
         btnActualizarProd.setText("ACTUALIZAR");
         btnActualizarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizarProd.setEnabled(false);
         btnActualizarProd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnActualizarProd.setPreferredSize(new java.awt.Dimension(120, 75));
         btnActualizarProd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -790,59 +770,70 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel45.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel45.setText("ARTÍCULO:");
-        jpModificarProd.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, 30));
+        jpModificarProd.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 30));
 
         txtArticuloProdM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txtArticuloProdM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtArticuloProdM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtArticuloProdM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpModificarProd.add(txtArticuloProdM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 300, 30));
+        jpModificarProd.add(txtArticuloProdM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 300, 30));
 
         jLabel46.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel46.setText("MARCA:");
-        jpModificarProd.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 30));
+        jpModificarProd.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 200, 30));
 
         jLabel47.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel47.setText("STOCK:");
-        jpModificarProd.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, 30));
+        jpModificarProd.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 200, 30));
 
         txtStockProdM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txtStockProdM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtStockProdM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtStockProdM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpModificarProd.add(txtStockProdM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 220, 30));
+        jpModificarProd.add(txtStockProdM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 220, 30));
 
         jLabel48.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel48.setText("PRECIO DE VENTA:");
-        jpModificarProd.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 200, 30));
+        jpModificarProd.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, 30));
 
         txtPrecioVentaProM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txtPrecioVentaProM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPrecioVentaProM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPrecioVentaProM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpModificarProd.add(txtPrecioVentaProM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
+        jpModificarProd.add(txtPrecioVentaProM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 220, 30));
 
         jLabel49.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel49.setText("CATEGORÍA:");
-        jpModificarProd.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 200, 30));
+        jpModificarProd.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 200, 30));
 
         cboMarcaProdM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboMarcaProdM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "PeziDuri", "Donofrio", "Coca Cola" }));
+        cboMarcaProdM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "PeziDuri", "Bolivar" }));
         cboMarcaProdM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         cboMarcaProdM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cboMarcaProdM.setEditor(null);
-        jpModificarProd.add(cboMarcaProdM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 220, 30));
+        jpModificarProd.add(cboMarcaProdM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
 
         cboCategoriaProdM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         cboCategoriaProdM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Helado", "Detergente" }));
         cboCategoriaProdM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         cboCategoriaProdM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cboCategoriaProdM.setEditor(null);
-        jpModificarProd.add(cboCategoriaProdM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 220, 30));
+        jpModificarProd.add(cboCategoriaProdM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 220, 30));
+
+        txtCodigoProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtCodigoProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCodigoProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtCodigoProd.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jpModificarProd.add(txtCodigoProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 300, 30));
+
+        jLabel51.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel51.setText("CÓDIGO:");
+        jpModificarProd.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, 30));
 
         jpCardProd.add(jpModificarProd, "card4");
 
@@ -852,9 +843,9 @@ public class JFPrincipal extends javax.swing.JFrame {
         jSPProd.setBackground(new java.awt.Color(255, 255, 255));
         jSPProd.setOpaque(false);
 
-        tbProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        tbProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tbProducto.setModel(new javax.swing.table.DefaultTableModel(
+        tblProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tblProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tblProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -870,14 +861,14 @@ public class JFPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbProducto.setOpaque(false);
-        tbProducto.setSelectionBackground(new java.awt.Color(102, 0, 0));
-        tbProducto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tbProducto.getTableHeader().setResizingAllowed(false);
-        tbProducto.getTableHeader().setReorderingAllowed(false);
-        jSPProd.setViewportView(tbProducto);
+        tblProducto.setOpaque(false);
+        tblProducto.setSelectionBackground(new java.awt.Color(102, 0, 0));
+        tblProducto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblProducto.getTableHeader().setResizingAllowed(false);
+        tblProducto.getTableHeader().setReorderingAllowed(false);
+        jSPProd.setViewportView(tblProducto);
 
-        jpConsultaProd.add(jSPProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 930, 330));
+        jpConsultaProd.add(jSPProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 930, 280));
 
         btnExtraerProd.setBackground(new java.awt.Color(255, 255, 255));
         btnExtraerProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -900,9 +891,9 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         jpCardProd.add(jpConsultaProd, "card3");
 
-        jpMProductos.add(jpCardProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 140, 970, 450));
+        jpMProductos.add(jpCardProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 140, 970, 400));
 
-        jpMantenimiento.add(jpMProductos, "card3");
+        PROVEEDORES.addTab("PRODUCTOS", jpMProductos);
 
         jpMUsuarios.setBackground(new java.awt.Color(0, 51, 51));
         jpMUsuarios.setPreferredSize(new java.awt.Dimension(400, 150));
@@ -947,6 +938,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         btnRegistrarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/save32x32.png"))); // NOI18N
         btnRegistrarEmp.setText("REGISTRAR");
         btnRegistrarEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrarEmp.setEnabled(false);
         btnRegistrarEmp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnRegistrarEmp.setPreferredSize(new java.awt.Dimension(120, 75));
         btnRegistrarEmp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -972,6 +964,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         btnActualizarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/update32x32.png"))); // NOI18N
         btnActualizarEmp.setText("ACTUALIZAR");
         btnActualizarEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizarEmp.setEnabled(false);
         btnActualizarEmp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnActualizarEmp.setPreferredSize(new java.awt.Dimension(120, 75));
         btnActualizarEmp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -1107,7 +1100,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         tblEmpleado.getTableHeader().setReorderingAllowed(false);
         jSPEmp.setViewportView(tblEmpleado);
 
-        jpConsultaEmp.add(jSPEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 930, 330));
+        jpConsultaEmp.add(jSPEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 930, 280));
 
         btnExtraerEmp.setBackground(new java.awt.Color(255, 255, 255));
         btnExtraerEmp.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1118,9 +1111,8 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel32.setText("FILTRAR POR NOMBRE O APELLIDO:");
         jpConsultaEmp.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 260, 30));
 
-        btnListarEmp.setBackground(new java.awt.Color(51, 51, 51));
+        btnListarEmp.setBackground(new java.awt.Color(255, 255, 255));
         btnListarEmp.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnListarEmp.setForeground(new java.awt.Color(255, 255, 255));
         btnListarEmp.setText("LISTAR");
         jpConsultaEmp.add(btnListarEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 15, 120, 40));
 
@@ -1217,6 +1209,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel40.setText("CÓDIGO:");
         jpModificarEmp.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 200, 30));
 
+        txtCodigoEmpM.setEditable(false);
         txtCodigoEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txtCodigoEmpM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCodigoEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -1225,9 +1218,9 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         jpCardEmp.add(jpModificarEmp, "card4");
 
-        jpMUsuarios.add(jpCardEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 140, 970, 450));
+        jpMUsuarios.add(jpCardEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 140, 970, 400));
 
-        jpMantenimiento.add(jpMUsuarios, "card4");
+        PROVEEDORES.addTab("USUARIOS", jpMUsuarios);
 
         jpMProveedores.setBackground(new java.awt.Color(0, 204, 255));
         jpMProveedores.setPreferredSize(new java.awt.Dimension(400, 150));
@@ -1263,7 +1256,9 @@ public class JFPrincipal extends javax.swing.JFrame {
         });
         jpMProveedores.add(btnEntrarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 110, 40));
 
-        jpMantenimiento.add(jpMProveedores, "card5");
+        PROVEEDORES.addTab("PROVEEDORES", jpMProveedores);
+
+        jpMantenimiento.add(PROVEEDORES, "card7");
 
         jpCardOpc.add(jpMantenimiento, "card2");
         jpCardOpc.add(jpConfiguracion, "card6");
@@ -1447,6 +1442,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JTabbedPane PROVEEDORES;
     public static javax.swing.JButton btnActualizarCli;
     public static javax.swing.JButton btnActualizarEmp;
     public static javax.swing.JButton btnActualizarProd;
@@ -1461,14 +1457,10 @@ public class JFPrincipal extends javax.swing.JFrame {
     public static javax.swing.JButton btnExtraerEmp;
     public static javax.swing.JButton btnExtraerProd;
     public static javax.swing.JButton btnIngresar;
-    public static javax.swing.JButton btnJpCliente;
     public static javax.swing.JButton btnJpCompra;
     public static javax.swing.JButton btnJpConfiguracion;
     public static javax.swing.JButton btnJpMantenimiento;
-    public static javax.swing.JButton btnJpProd;
-    public static javax.swing.JButton btnJpProve;
     public static javax.swing.JButton btnJpReportes;
-    public static javax.swing.JButton btnJpUsuario;
     public static javax.swing.JButton btnJpVenta;
     public static javax.swing.JButton btnListarCli;
     public static javax.swing.JButton btnListarEmp;
@@ -1538,6 +1530,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1564,7 +1557,6 @@ public class JFPrincipal extends javax.swing.JFrame {
     public static javax.swing.JPanel jpMProductos;
     public static javax.swing.JPanel jpMProveedores;
     public static javax.swing.JPanel jpMUsuarios;
-    private javax.swing.JPanel jpMantCambiar;
     public static javax.swing.JPanel jpMantenimiento;
     public static javax.swing.JPanel jpMenu;
     public static javax.swing.JPanel jpModificar;
@@ -1584,13 +1576,14 @@ public class JFPrincipal extends javax.swing.JFrame {
     public static javax.swing.JMenuItem mnItemCerrarSesion;
     public static javax.swing.JMenuItem mnItemSalir;
     public static javax.swing.JMenu mnSistema;
-    public static javax.swing.JTable tbProducto;
     public static javax.swing.JTable tblCliente;
     public static javax.swing.JTable tblEmpleado;
+    public static javax.swing.JTable tblProducto;
     public static javax.swing.JTextField txtArticuloProd;
     public static javax.swing.JTextField txtArticuloProdM;
     public static javax.swing.JTextField txtCodigoCliM;
     public static javax.swing.JTextField txtCodigoEmpM;
+    public static javax.swing.JTextField txtCodigoProd;
     public static javax.swing.JTextField txtContraEmp;
     public static javax.swing.JTextField txtContraEmpM;
     public static javax.swing.JPasswordField txtContrasenia;

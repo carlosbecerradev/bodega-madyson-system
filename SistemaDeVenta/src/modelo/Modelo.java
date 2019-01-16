@@ -47,40 +47,13 @@ public class Modelo {
     }
     public void jpVenta(){
         cambiarJP(JFPrincipal.jpCardOpc, JFPrincipal.jpVenta);
-        desactivarMant();
     }
     public void jpReporte(){
         cambiarJP(JFPrincipal.jpCardOpc, JFPrincipal.jpReportes);
-        desactivarMant();
     }
     public void jpMantenimiento(){
         cambiarJP(JFPrincipal.jpCardOpc, JFPrincipal.jpMantenimiento);
-        activarMant();
         
     }
-    /* Mantenimiento */
-    public void activarMant(){
-        JFPrincipal.btnJpProd.setEnabled(true);
-        JFPrincipal.btnJpUsuario.setEnabled(true);
-        JFPrincipal.btnJpCliente.setEnabled(true);
-        JFPrincipal.btnJpProve.setEnabled(true);
-    }
-    public void desactivarMant(){
-        JFPrincipal.btnJpProd.setEnabled(false);
-        JFPrincipal.btnJpUsuario.setEnabled(false);
-        JFPrincipal.btnJpCliente.setEnabled(false);
-        JFPrincipal.btnJpProve.setEnabled(false);
-    }
-    public void btnJpProd(){
-        cambiarJP(JFPrincipal.jpMantenimiento, JFPrincipal.jpMProductos);
-    }
-    public void btnJpUsuario(){
-        cambiarJP(JFPrincipal.jpMantenimiento, JFPrincipal.jpMUsuarios);
-    }
-    public void btnJpCliente(){
-        cambiarJP(JFPrincipal.jpMantenimiento, JFPrincipal.jpMClientes);
-    }
-    public void btnJpProve(){
-        cambiarJP(JFPrincipal.jpMantenimiento, JFPrincipal.jpMProveedores);
-    }
+    
 }

@@ -38,7 +38,8 @@ public class ModeloCliente extends Conexion implements CRUD {
             ps.setString(3, cli.getCorreoCli());
             ps.setString(4, cli.getGeneroCli());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Datos Registrados en SQL SERVER");
+            JOptionPane.showMessageDialog(null, "Datos Registrados");
+            vp.btnRegistrarCli.setEnabled(false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "registrar " + e);
         } finally {
@@ -81,6 +82,7 @@ public class ModeloCliente extends Conexion implements CRUD {
                         break;
                 }
                 cambiarJP(JFPrincipal.jpCardCli, JFPrincipal.jpModificar);
+                vp.btnActualizarCli.setEnabled(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila de la tabla para modificar.");
             }
@@ -101,6 +103,7 @@ public class ModeloCliente extends Conexion implements CRUD {
                     + "', dniCli = '" + dniM() + "', correoCli = '" + correoM() + "', genCli = '" + generoM() + "'  where codCli = " + codigoM());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos Actualizados");
+            vp.btnActualizarCli.setEnabled(false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "actualizar " + e);
         } finally {
@@ -194,6 +197,7 @@ public class ModeloCliente extends Conexion implements CRUD {
         vp.txtCorreoCli.setText("");
         vp.cboGeneroCli.setSelectedIndex(0);
         cambiarJP(JFPrincipal.jpCardCli, JFPrincipal.jpDatosCli);
+        vp.btnRegistrarCli.setEnabled(true);
     }
 
     /* Registrar */

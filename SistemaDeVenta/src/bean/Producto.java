@@ -2,28 +2,18 @@ package bean;
 
 public class Producto {
 
-    private int CodProducto;
     private String articulo;
-    private int CodMarca;
+    private String marca;
     private float precioV;
     private int stock;
-    private int codCategoria;
+    private String categoria;
 
-    public Producto(int CodProducto, String articulo, int CodMarca, float precioV, int stock, int codCategoria) {
-        this.CodProducto = CodProducto;
+    public Producto(String articulo, String marca, float precioV, int stock, String categoria) {
         this.articulo = articulo;
-        this.CodMarca = CodMarca;
+        this.marca = marca;
         this.precioV = precioV;
         this.stock = stock;
-        this.codCategoria = codCategoria;
-    }
-
-    public int getCodProducto() {
-        return CodProducto;
-    }
-
-    public void setCodProducto(int CodProducto) {
-        this.CodProducto = CodProducto;
+        this.categoria = categoria;
     }
 
     public String getArticulo() {
@@ -34,12 +24,12 @@ public class Producto {
         this.articulo = articulo;
     }
 
-    public int getCodMarca() {
-        return CodMarca;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setCodMarca(int CodMarca) {
-        this.CodMarca = CodMarca;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public float getPrecioV() {
@@ -58,12 +48,12 @@ public class Producto {
         this.stock = stock;
     }
 
-    public int getCodCategoria() {
-        return codCategoria;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setCodCategoria(int codCategoria) {
-        this.codCategoria = codCategoria;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
 }

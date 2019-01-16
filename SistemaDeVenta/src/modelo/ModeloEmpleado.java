@@ -51,7 +51,8 @@ public class ModeloEmpleado extends Conexion implements CRUD {
             ps.setString(6, emp.getGeneroEmp());
             ps.setInt(7, emp.getEstadoEmp());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Datos Registrados en SQL SERVER");
+            JOptionPane.showMessageDialog(null, "Datos Registrados");
+            vp.btnRegistrarEmp.setEnabled(false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "registrar " + e);
         } finally {
@@ -138,6 +139,7 @@ public class ModeloEmpleado extends Conexion implements CRUD {
                         break;
                 }
                 cambiarJP(JFPrincipal.jpCardEmp, JFPrincipal.jpModificarEmp);
+                vp.btnActualizarEmp.setEnabled(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila de la tabla para modificar.");
             }
@@ -160,6 +162,7 @@ public class ModeloEmpleado extends Conexion implements CRUD {
                     + "'  where codEmp = " + codigoM());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos Actualizados");
+            vp.btnActualizarEmp.setEnabled(false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "actualizar " + e);
         } finally {
@@ -254,6 +257,7 @@ public class ModeloEmpleado extends Conexion implements CRUD {
         vp.cboGeneroEmp.setSelectedIndex(0);
         vp.cboEstadoEmp.setSelectedIndex(0);
         cambiarJP(JFPrincipal.jpCardEmp, JFPrincipal.jpDatosEmp);
+        vp.btnRegistrarEmp.setEnabled(true);
     }
 
     /* REGISTRAR*/
