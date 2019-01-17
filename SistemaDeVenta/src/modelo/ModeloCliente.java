@@ -83,7 +83,7 @@ public class ModeloCliente extends Conexion implements CRUD {
                 }
                 cambiarJP(JFPrincipal.jpCardCli, JFPrincipal.jpModificar);
                 vp.btnActualizarCli.setEnabled(true);
-                vp.tblCliente.setRowSelectionAllowed(false);
+                vp.btnEliminarCli.setEnabled(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila de la tabla para modificar.");
             }
@@ -143,6 +143,7 @@ public class ModeloCliente extends Conexion implements CRUD {
         cambiarJP(JFPrincipal.jpCardCli, JFPrincipal.jpConsultaCli);
         vp.btnActualizarCli.setEnabled(false);
         vp.btnRegistrarCli.setEnabled(false);
+        vp.btnEliminarCli.setEnabled(true);
     }
 
     @Override
@@ -201,6 +202,7 @@ public class ModeloCliente extends Conexion implements CRUD {
         vp.cboGeneroCli.setSelectedIndex(0);
         cambiarJP(JFPrincipal.jpCardCli, JFPrincipal.jpDatosCli);
         vp.btnRegistrarCli.setEnabled(true);
+        vp.btnEliminarCli.setEnabled(false);
     }
 
     /* Registrar */

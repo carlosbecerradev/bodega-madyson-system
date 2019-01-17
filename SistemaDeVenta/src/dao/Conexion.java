@@ -1,5 +1,6 @@
 package dao;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,15 +14,23 @@ public class Conexion {
     private final String BD_NOMBRE = "BodegaMadyson";
     private final String HOSTNAME = "Ulises-pc"; // cambiar
     private final String BD_URL = "jdbc:sqlserver://" + HOSTNAME + ":1433;databaseName=" + BD_NOMBRE;
-    /*Credenciales*/
+    /*Credenciales
     private final String USER = "sa";
-    private final String PASS = "123";
+    private final String PASS = "123";*/
+    /* Login */
+    public static String usuario;
+    public static String contrasenha;
+    public static boolean status = false;
     
     public void conectarBD() {
+        status = false;
         try {
             Class.forName(JDBC_DRIVER);
-            conexion = DriverManager.getConnection(BD_URL, USER, PASS);
-        } catch (Exception e) {
+            conexion = DriverManager.getConnection(BD_URL, Conexion.usuario, Conexion.contrasenha);
+            status = true;
+        } catch (SQLServerException e) {
+            //JOptionPane.showConfirmDialog(null, "El usuario o contraseña no existe");
+        }catch (Exception e) {
             JOptionPane.showConfirmDialog(null, "conectarBD " + e.getMessage());
         }
     }
@@ -37,6 +46,14 @@ public class Conexion {
             JOptionPane.showConfirmDialog(null, "desconectarBD " +  e.getMessage());
         }
     }
-
+    
+    public static void setCuenta(String usuario, String contrasenha) {
+        Conexion.usuario = usuario;
+        Conexion.contrasenha = contrasenha;        
+    }
+    
+    public static boolean getStatus(){
+        return status;
+    }
+    
 }
-;

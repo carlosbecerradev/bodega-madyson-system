@@ -20,6 +20,13 @@ public class Empleado {
         this.estadoEmp = estadoEmp;
     }
 
+    public Empleado(String usuario, String contrasenia, String cargoEmp, int estadoEmp) {
+        this.usuario = usuario;
+        this.contrasenia = contrasenia;
+        this.cargoEmp = cargoEmp;
+        this.estadoEmp = estadoEmp;
+    }
+
     public String getNombEmp() {
         return nombEmp;
     }

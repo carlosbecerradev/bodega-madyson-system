@@ -5,6 +5,22 @@ create database BodegaMadyson
 
 use BodegaMadyson
 
+-- CREACIÓN DE LOGIN ADMINISTRADOR --
+create login madyson
+with password = '12345',
+default_database = BodegaMadyson
+
+-- CREACIÓN DE USUARIO ADMINISTRADOR --
+create user admMadyson
+for login madyson
+with default_schema = esq
+
+-- CREACIÓN DE ESQUEMA PARA ADMINISTRACIÓN
+create schema esq authorization madyson
+
+-- CREACIÓN DE PRIVILEGIOS PARA ADMINISTRADOR --
+grant create proc, execute, create table, create role, select, insert, update, delete to madyson
+
 create table Cliente(
 codCli int identity primary key not null,
 nombApeCli varchar(150),
@@ -82,15 +98,17 @@ insert into Categoria values('Gaseosa')
 insert into Categoria values('Helado')
 */
 --Empleado--
-insert into Empleado values('Carlos Becerra', 'Administrador', 71463111, 'hoarlos', 'carlos123', 'M', 1)
-insert into Empleado values('Alberto Hernández', 'Cajero', 11136417, 'solraoh', '123carlos', 'M', 0)
+insert into Empleado values('Carlos Becerra', 'Administrador', 71463111, 'admin', '12345', 'M', 1)
+insert into Empleado values('Alberto Hernández', 'Cajero', 11136417, 'cajero', '12345', 'M', 0)
 --Cliente--
-insert into Cliente values('Maritza Vela', 51427532, null,'F')
+insert into Cliente values('anonimo', 10000000, null, null)
+insert into Cliente values('Maritza Vela', 51427532, vela@gmail.com,'F')
 -- Producto --
-insert into Producto values('Helado 1lt de chocolate', 'PeziDuri', 9.90, 10,'Helados')
+insert into Producto values('Helado 1lt de chocolate', 'PeziDuri', 9.90, 10,'Comestible')
 
 ------ACTUALIZAR----
 update Cliente set nombApeCli = 'Maritza Vela champ', dniCli = '11242145', correoCli = '125', genCli = 'T' where codCli = 1
 
 	--LIKE --
 	select * from Cliente where dniCli like '%5%'
+select usuEmp, contraEmp, cargoEmp, estado from Empleado

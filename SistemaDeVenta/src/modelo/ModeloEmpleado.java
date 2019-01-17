@@ -140,7 +140,7 @@ public class ModeloEmpleado extends Conexion implements CRUD {
                 }
                 cambiarJP(JFPrincipal.jpCardEmp, JFPrincipal.jpModificarEmp);
                 vp.btnActualizarEmp.setEnabled(true);
-                vp.tblEmpleado.setRowSelectionAllowed(false);
+                vp.btnEliminarEmp.setEnabled(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila de la tabla para modificar.");
             }
@@ -176,6 +176,7 @@ public class ModeloEmpleado extends Conexion implements CRUD {
         cambiarJP(JFPrincipal.jpCardEmp, JFPrincipal.jpConsultaEmp);
         vp.btnActualizarEmp.setEnabled(false);
         vp.btnRegistrarEmp.setEnabled(false);
+        vp.btnEliminarEmp.setEnabled(true);
     }
 
     @Override
@@ -261,6 +262,7 @@ public class ModeloEmpleado extends Conexion implements CRUD {
         vp.cboEstadoEmp.setSelectedIndex(0);
         cambiarJP(JFPrincipal.jpCardEmp, JFPrincipal.jpDatosEmp);
         vp.btnRegistrarEmp.setEnabled(true);
+        vp.btnEliminarEmp.setEnabled(false);
     }
 
     /* REGISTRAR*/

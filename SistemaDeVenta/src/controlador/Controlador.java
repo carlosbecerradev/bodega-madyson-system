@@ -23,8 +23,10 @@ public class Controlador implements ActionListener {
     private ModeloCliente mdlCli;
     private ModeloEmpleado mdlEmp;
     private ModeloProducto mdlProd;
+    private ModeloVenta mdlVenta;
     
-    public Controlador(JFPrincipal vst, Modelo mdl, ModeloCliente mdlCli, ModeloEmpleado mdlEmp, ModeloProducto mdlProd){
+    public Controlador(JFPrincipal vst, Modelo mdl, ModeloCliente mdlCli, 
+            ModeloEmpleado mdlEmp, ModeloProducto mdlProd, ModeloVenta mdlVenta){
         this.vst = vst;
         this.mdl = mdl;
         this.vst.btnIngresar.addActionListener(this);
@@ -62,6 +64,10 @@ public class Controlador implements ActionListener {
         this.vst.btnEliminarProd.addActionListener(this);
         this.vst.btnListarProd.addActionListener(this);
         this.vst.btnExtraerProd.addActionListener(this);
+        /* Realizar Venta */
+        this.mdlVenta = mdlVenta;
+        this.vst.btnSeleccionarCli.addActionListener(this);
+        this.vst.btnSeleccionarProd.addActionListener(this);
     }
     
     public void iniciar(){
@@ -75,6 +81,7 @@ public class Controlador implements ActionListener {
         mdlCli.inicioJFCliente();
         mdlEmp.inicioJFEmpleado();
         mdlProd.inicioJFProducto();
+        mdlVenta.inicioJFVenta();
     }
     
     @Override
@@ -272,6 +279,21 @@ public class Controlador implements ActionListener {
                 mdlProd.eliminar();
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "btnEliminarProd" + e);
+            }
+        }
+        /* Realizar Venta */
+        if (vst.btnSeleccionarCli == evt.getSource()) {
+            try {
+                mdlVenta.btnSeleccionarCli();
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "btnSeleccionarCli" + e);
+            }
+        }
+        if (vst.btnSeleccionarProd == evt.getSource()) {
+            try {
+                mdlVenta.btnSeleccionarProd();
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "btnSeleccionarProd" + e);
             }
         }
     }

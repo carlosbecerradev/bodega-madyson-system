@@ -99,7 +99,7 @@ public class ModeloProducto extends Conexion implements CRUD{
                 
                 cambiarJP(JFPrincipal.jpCardProd, JFPrincipal.jpModificarProd);
                 vp.btnActualizarProd.setEnabled(true);
-                vp.tblProducto.setRowSelectionAllowed(false);
+                vp.btnEliminarProd.setEnabled(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila de la tabla para modificar.");
             }
@@ -134,6 +134,7 @@ public class ModeloProducto extends Conexion implements CRUD{
         cambiarJP(JFPrincipal.jpCardProd, JFPrincipal.jpConsultaProd);
         vp.btnActualizarProd.setEnabled(false);
         vp.btnRegistrarProd.setEnabled(false);
+        vp.btnEliminarProd.setEnabled(true);
     }
 
     @Override
@@ -203,6 +204,7 @@ public class ModeloProducto extends Conexion implements CRUD{
         vp.cboCategoriaProd.setSelectedIndex(0);
         cambiarJP(JFPrincipal.jpCardProd, JFPrincipal.jpDatosProd);
         vp.btnRegistrarProd.setEnabled(true);
+        vp.btnEliminarProd.setEnabled(false);
     }
     /* Registrar */
     private String articuloR() {
