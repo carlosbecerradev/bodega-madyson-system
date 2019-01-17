@@ -140,6 +140,7 @@ public class ModeloEmpleado extends Conexion implements CRUD {
                 }
                 cambiarJP(JFPrincipal.jpCardEmp, JFPrincipal.jpModificarEmp);
                 vp.btnActualizarEmp.setEnabled(true);
+                vp.tblEmpleado.setRowSelectionAllowed(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila de la tabla para modificar.");
             }
@@ -173,6 +174,8 @@ public class ModeloEmpleado extends Conexion implements CRUD {
     @Override
     public void consultar() throws Exception {
         cambiarJP(JFPrincipal.jpCardEmp, JFPrincipal.jpConsultaEmp);
+        vp.btnActualizarEmp.setEnabled(false);
+        vp.btnRegistrarEmp.setEnabled(false);
     }
 
     @Override

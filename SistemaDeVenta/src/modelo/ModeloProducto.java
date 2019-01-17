@@ -99,6 +99,7 @@ public class ModeloProducto extends Conexion implements CRUD{
                 
                 cambiarJP(JFPrincipal.jpCardProd, JFPrincipal.jpModificarProd);
                 vp.btnActualizarProd.setEnabled(true);
+                vp.tblProducto.setRowSelectionAllowed(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila de la tabla para modificar.");
             }
@@ -131,6 +132,8 @@ public class ModeloProducto extends Conexion implements CRUD{
     @Override
     public void consultar() throws Exception {
         cambiarJP(JFPrincipal.jpCardProd, JFPrincipal.jpConsultaProd);
+        vp.btnActualizarProd.setEnabled(false);
+        vp.btnRegistrarProd.setEnabled(false);
     }
 
     @Override

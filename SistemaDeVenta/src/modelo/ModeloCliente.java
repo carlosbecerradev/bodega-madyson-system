@@ -83,6 +83,7 @@ public class ModeloCliente extends Conexion implements CRUD {
                 }
                 cambiarJP(JFPrincipal.jpCardCli, JFPrincipal.jpModificar);
                 vp.btnActualizarCli.setEnabled(true);
+                vp.tblCliente.setRowSelectionAllowed(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila de la tabla para modificar.");
             }
@@ -140,6 +141,8 @@ public class ModeloCliente extends Conexion implements CRUD {
     @Override
     public void consultar() {
         cambiarJP(JFPrincipal.jpCardCli, JFPrincipal.jpConsultaCli);
+        vp.btnActualizarCli.setEnabled(false);
+        vp.btnRegistrarCli.setEnabled(false);
     }
 
     @Override
