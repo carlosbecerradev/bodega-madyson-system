@@ -303,5 +303,26 @@ public class ModeloCliente extends Conexion implements CRUD {
         card.repaint();
         card.revalidate();
     }
+    
+    
+       private void enviarVehiculo() {
+           if (evt.getClickCount() == 1) {
 
+        }
+        if (evt.getClickCount() == 2) {
+            enviarVehiculo();
+        }
+           
+        int fila = tblListaVehi.getSelectedRow();
+        if (fila >= 0) {
+            int pos = (int) tblListaVehi.getValueAt(fila, 0);
+            Vehiculo v = listaVehi.buscar(pos);
+            JFPrincipal.lblNombreVehi.setText(v.getMarca() + " " + v.getModelo());
+            JFPrincipal.lblCostoVeh.setText(String.valueOf(v.getCosto()));
+            JFPrincipal.veh = v;
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecciona una fila de la Tabla para enviar los datos");
+        }
+    } 
 }
