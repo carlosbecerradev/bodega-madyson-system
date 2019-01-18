@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -286,15 +287,19 @@ public class ModeloProducto extends Conexion implements CRUD {
             int codProd = Integer.parseInt(cod);
             try {
                 this.conectarBD();
-                PreparedStatement ps = this.conexion.prepareStatement("select articulo, precioVenta, stock from Producto where codProd = " + codProd);
+                PreparedStatement ps = this.conexion.prepareStatement("select * from Producto where codProd = " + codProd);
                 ResultSet rs = ps.executeQuery();
                 rs.next();
-                JFPrincipal.txtSNombreProd.setText(rs.getString(1));
-                JFPrincipal.txtSPrecioProd.setText(String.valueOf(rs.getFloat(2)));
-                JFPrincipal.txtSStock.setText(String.valueOf(rs.getInt(3)));
+                Producto prod = new Producto(rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getInt(5), rs.getString(6));
+                ModeloVenta mdv = new ModeloVenta();
+                mdv.setProd(prod);
+                mdv.setCodProd(rs.getInt(1));
+                JFPrincipal.txtSNombreProd.setText(prod.getArticulo());
+                JFPrincipal.txtSPrecioProd.setText(String.valueOf(prod.getPrecioV()));
+                JFPrincipal.txtSStock.setText(String.valueOf(prod.getStock()));
                 cambiarJP(JFPrincipal.jpCardOpc, JFPrincipal.jpVenta);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
+                JOptionPane.showMessageDialog(null, "enviarProducto" + e);
             } finally {
                 this.desconectarBD();
             }

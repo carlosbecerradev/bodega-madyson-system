@@ -74,6 +74,7 @@ public class Controlador implements ActionListener, MouseListener {
         this.mdlVenta = mdlVenta;
         this.vst.btnSeleccionarCli.addActionListener(this);
         this.vst.btnSeleccionarProd.addActionListener(this);
+        this.vst.btnAgregarPedido.addActionListener(this);
     }
 
     public void iniciar() {
@@ -292,14 +293,21 @@ public class Controlador implements ActionListener, MouseListener {
             try {
                 mdlVenta.btnSeleccionarCli();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "btnSeleccionarCli" + e);
+                JOptionPane.showMessageDialog(null, "btnSeleccionarCli " + e);
             }
         }
         if (vst.btnSeleccionarProd == evt.getSource()) {
             try {
                 mdlVenta.btnSeleccionarProd();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "btnSeleccionarProd" + e);
+                JOptionPane.showMessageDialog(null, "btnSeleccionarProd " + e);
+            }
+        }
+        if (vst.btnAgregarPedido == evt.getSource()) {
+            try {
+                mdlVenta.btnAgregarPedido();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "btnAgregarPedido " + e);
             }
         }
     }
