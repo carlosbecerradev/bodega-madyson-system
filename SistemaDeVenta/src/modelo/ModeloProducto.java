@@ -22,7 +22,7 @@ import vista.JFPrincipal;
  *
  * @author Administrador
  */
-public class ModeloProducto extends Conexion implements CRUD{
+public class ModeloProducto extends Conexion implements CRUD {
 
     private DefaultTableModel mdlTblProd;
     private JFPrincipal vp;
@@ -35,7 +35,7 @@ public class ModeloProducto extends Conexion implements CRUD{
         mdlTblProd = (DefaultTableModel) vp.tblProducto.getModel();
         vp.jSPProd.getViewport().setBackground(Color.white);
     }
-    
+
     @Override
     public void registrar() throws Exception {
         try {
@@ -91,12 +91,12 @@ public class ModeloProducto extends Conexion implements CRUD{
                 datos[4] = rs.getString(6);
 
                 vp.txtCodigoProd.setText(cod);
-                vp.txtArticuloProdM.setText(datos[0]);                
+                vp.txtArticuloProdM.setText(datos[0]);
                 vp.cboMarcaProdM.setSelectedItem(datos[1]);
                 vp.txtPrecioVentaProM.setText(datos[2]);
                 vp.txtStockProdM.setText(datos[3]);
                 vp.cboCategoriaProdM.setSelectedItem(datos[4]);
-                
+
                 cambiarJP(JFPrincipal.jpCardProd, JFPrincipal.jpModificarProd);
                 vp.btnActualizarProd.setEnabled(true);
                 vp.btnEliminarProd.setEnabled(false);
@@ -117,8 +117,8 @@ public class ModeloProducto extends Conexion implements CRUD{
         try {
             this.conectarBD();
             PreparedStatement ps = this.conexion.prepareStatement("update Producto set articulo = '" + articuloM()
-                    + "', marca = '" + marcaM()+ "', precioVenta = '" + precioVentaM()+ "', stock = '" + stockM()
-                    + "', categoria = '" + categoriaM()+ "'  where codProd = " + codigoM());
+                    + "', marca = '" + marcaM() + "', precioVenta = '" + precioVentaM() + "', stock = '" + stockM()
+                    + "', categoria = '" + categoriaM() + "'  where codProd = " + codigoM());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos Actualizados");
             vp.btnActualizarProd.setEnabled(false);
@@ -206,6 +206,7 @@ public class ModeloProducto extends Conexion implements CRUD{
         vp.btnRegistrarProd.setEnabled(true);
         vp.btnEliminarProd.setEnabled(false);
     }
+
     /* Registrar */
     private String articuloR() {
         String tr = vp.txtArticuloProd.getText();
@@ -214,30 +215,35 @@ public class ModeloProducto extends Conexion implements CRUD{
         }
         return tr;
     }
-    
+
     private String marcaR() {
-        return (String)vp.cboMarcaProd.getSelectedItem();
+        return (String) vp.cboMarcaProd.getSelectedItem();
     }
 
     private float precioVentaR() {
         String tr = vp.txtPrecioVentaPro.getText();
         return Float.parseFloat(tr);
     }
+
     private int stockR() {
         String tr = vp.txtStockProd.getText();
         return Integer.parseInt(tr);
     }
+
     private String categoriaR() {
-        return (String)vp.cboCategoriaProd.getSelectedItem();
+        return (String) vp.cboCategoriaProd.getSelectedItem();
     }
+
     /* Filtros */
     private String filtroNombre() {
         return vp.txtFiltroNombreProd.getText();
     }
+
     /* Modificar */
     private int codigoM() {
         return Integer.parseInt(vp.txtCodigoProd.getText());
     }
+
     private String articuloM() {
         String tr = vp.txtArticuloProdM.getText();
         if (tr.equals("")) {
@@ -245,23 +251,25 @@ public class ModeloProducto extends Conexion implements CRUD{
         }
         return tr;
     }
-    
+
     private String marcaM() {
-        return (String)vp.cboMarcaProdM.getSelectedItem();
+        return (String) vp.cboMarcaProdM.getSelectedItem();
     }
 
     private float precioVentaM() {
         String tr = vp.txtPrecioVentaProM.getText();
         return Float.parseFloat(tr);
     }
+
     private int stockM() {
         String tr = vp.txtStockProdM.getText();
         return Integer.parseInt(tr);
     }
+
     private String categoriaM() {
-        return (String)vp.cboCategoriaProdM.getSelectedItem();
+        return (String) vp.cboCategoriaProdM.getSelectedItem();
     }
-    
+
     private void cambiarJP(JPanel card, JPanel jp) {
         card.removeAll();
         card.repaint();
@@ -270,4 +278,29 @@ public class ModeloProducto extends Conexion implements CRUD{
         card.revalidate();
     }
 
+    public void enviarProducto() {
+
+        int fila = JFPrincipal.tblProducto.getSelectedRow();
+        if (fila >= 0) {
+            String cod = (String) JFPrincipal.tblProducto.getValueAt(fila, 0);
+            int codProd = Integer.parseInt(cod);
+            try {
+                this.conectarBD();
+                PreparedStatement ps = this.conexion.prepareStatement("select articulo, precioVenta, stock from Producto where codProd = " + codProd);
+                ResultSet rs = ps.executeQuery();
+                rs.next();
+                JFPrincipal.txtSNombreProd.setText(rs.getString(1));
+                JFPrincipal.txtSPrecioProd.setText(String.valueOf(rs.getFloat(2)));
+                JFPrincipal.txtSStock.setText(String.valueOf(rs.getInt(3)));
+                cambiarJP(JFPrincipal.jpCardOpc, JFPrincipal.jpVenta);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            } finally {
+                this.desconectarBD();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecciona una fila de la Tabla para enviar los datos");
+        }
+    }
+    
 }

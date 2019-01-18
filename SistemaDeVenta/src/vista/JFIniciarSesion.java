@@ -91,6 +91,11 @@ public class JFIniciarSesion extends javax.swing.JFrame {
         btnIngresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnIngresar.setText("INGRESAR");
         btnIngresar.setBorder(null);
+        btnIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIngresarMouseClicked(evt);
+            }
+        });
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
@@ -136,6 +141,10 @@ public class JFIniciarSesion extends javax.swing.JFrame {
 //        }
 //        }
     }//GEN-LAST:event_txtContraseniaKeyTyped
+
+    private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIngresarMouseClicked
 
     /**
      * @param args the command line arguments

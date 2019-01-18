@@ -63,7 +63,7 @@ public class ModeloCliente extends Conexion implements CRUD {
                 datos[1] = rs.getString(3);
                 datos[2] = rs.getString(4);
                 datos[3] = rs.getString(5);
-                
+
                 vp.txtCodigoCliM.setText(cod);
                 vp.txtNombreCliM.setText(datos[0]);
                 vp.txtDniCliM.setText(datos[1]);
@@ -263,7 +263,7 @@ public class ModeloCliente extends Conexion implements CRUD {
         }
         return tr;
     }
-    
+
     private String dniM() {
         String tr = vp.txtDniCliM.getText();
         if (tr.equals("")) {
@@ -303,26 +303,27 @@ public class ModeloCliente extends Conexion implements CRUD {
         card.repaint();
         card.revalidate();
     }
-    
-    
-       private void enviarVehiculo() {
-           if (evt.getClickCount() == 1) {
 
-        }
-        if (evt.getClickCount() == 2) {
-            enviarVehiculo();
-        }
-           
-        int fila = tblListaVehi.getSelectedRow();
+    public void enviarCliente() {
+
+        int fila = JFPrincipal.tblCliente.getSelectedRow();
         if (fila >= 0) {
-            int pos = (int) tblListaVehi.getValueAt(fila, 0);
-            Vehiculo v = listaVehi.buscar(pos);
-            JFPrincipal.lblNombreVehi.setText(v.getMarca() + " " + v.getModelo());
-            JFPrincipal.lblCostoVeh.setText(String.valueOf(v.getCosto()));
-            JFPrincipal.veh = v;
-            this.dispose();
+            String cod = (String) JFPrincipal.tblCliente.getValueAt(fila, 0);
+            int codCli = Integer.parseInt(cod);
+            try {
+                this.conectarBD();
+                PreparedStatement ps = this.conexion.prepareStatement("select nombApeCli from Cliente where codCli = " + codCli );
+                ResultSet rs = ps.executeQuery();
+                rs.next();
+                JFPrincipal.txtSNombreCli.setText(rs.getString(1));
+                cambiarJP(JFPrincipal.jpCardOpc, JFPrincipal.jpVenta);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            } finally {
+                this.desconectarBD();
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Selecciona una fila de la Tabla para enviar los datos");
         }
-    } 
+    }
 }

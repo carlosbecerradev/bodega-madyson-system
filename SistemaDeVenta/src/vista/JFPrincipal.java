@@ -44,64 +44,6 @@ public class JFPrincipal extends javax.swing.JFrame {
         btnJpReportes = new javax.swing.JButton();
         btnJpMantenimiento = new javax.swing.JButton();
         jpCardOpc = new javax.swing.JPanel();
-        jpVenta = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
-        lblNBoleta = new javax.swing.JLabel();
-        jpBuscarProducto = new javax.swing.JPanel();
-        jLabel52 = new javax.swing.JLabel();
-        txtSNombreProd = new javax.swing.JTextField();
-        btnSeleccionarProd = new javax.swing.JButton();
-        jLabel53 = new javax.swing.JLabel();
-        txtSStock = new javax.swing.JTextField();
-        jLabel54 = new javax.swing.JLabel();
-        txtSPrecioProd = new javax.swing.JTextField();
-        jLabel55 = new javax.swing.JLabel();
-        btnAgregarPedido = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        spiSCantidad = new javax.swing.JSpinner();
-        jSPDVenta = new javax.swing.JScrollPane();
-        tblDVenta = new javax.swing.JTable();
-        jpBuscarCliente = new javax.swing.JPanel();
-        jLabel56 = new javax.swing.JLabel();
-        txtSNombreCli = new javax.swing.JTextField();
-        btnSeleccionarCli = new javax.swing.JButton();
-        btnRegistrarVenta = new javax.swing.JButton();
-        jLabel57 = new javax.swing.JLabel();
-        txtMontoFinal = new javax.swing.JTextField();
-        jLabel58 = new javax.swing.JLabel();
-        jdcFechaBoleta = new com.toedter.calendar.JDateChooser();
-        btnQuitarPedido = new javax.swing.JButton();
-        lblAtendidoPor = new javax.swing.JLabel();
-        jLabel60 = new javax.swing.JLabel();
-        jpReportes = new javax.swing.JPanel();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jpVerVentas = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel66 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jdcDesde = new com.toedter.calendar.JDateChooser();
-        jLabel67 = new javax.swing.JLabel();
-        jLabel68 = new javax.swing.JLabel();
-        jdcHasta = new com.toedter.calendar.JDateChooser();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTable7 = new javax.swing.JTable();
-        btnImpV = new javax.swing.JButton();
-        jpVerClientes = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
-        btnImpV3 = new javax.swing.JButton();
-        jpVerProductos = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        btnImpp = new javax.swing.JButton();
         jpMantenimiento = new javax.swing.JPanel();
         jTPMAntenimiento = new javax.swing.JTabbedPane();
         jpMClientes = new javax.swing.JPanel();
@@ -231,6 +173,64 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         txtCodigoEmpM = new javax.swing.JTextField();
+        jpReportes = new javax.swing.JPanel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jpVerVentas = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jdcDesde = new com.toedter.calendar.JDateChooser();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        jdcHasta = new com.toedter.calendar.JDateChooser();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTable7 = new javax.swing.JTable();
+        btnImpV = new javax.swing.JButton();
+        jpVerClientes = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jButton6 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        btnImpV3 = new javax.swing.JButton();
+        jpVerProductos = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        btnImpp = new javax.swing.JButton();
+        jpVenta = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        lblNBoleta = new javax.swing.JLabel();
+        jpBuscarProducto = new javax.swing.JPanel();
+        jLabel52 = new javax.swing.JLabel();
+        txtSNombreProd = new javax.swing.JTextField();
+        btnSeleccionarProd = new javax.swing.JButton();
+        jLabel53 = new javax.swing.JLabel();
+        txtSStock = new javax.swing.JTextField();
+        jLabel54 = new javax.swing.JLabel();
+        txtSPrecioProd = new javax.swing.JTextField();
+        jLabel55 = new javax.swing.JLabel();
+        btnAgregarPedido = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        spiSCantidad = new javax.swing.JSpinner();
+        jSPDVenta = new javax.swing.JScrollPane();
+        tblDVenta = new javax.swing.JTable();
+        jpBuscarCliente = new javax.swing.JPanel();
+        jLabel56 = new javax.swing.JLabel();
+        txtSNombreCli = new javax.swing.JTextField();
+        btnSeleccionarCli = new javax.swing.JButton();
+        btnRegistrarVenta = new javax.swing.JButton();
+        jLabel57 = new javax.swing.JLabel();
+        txtMontoFinal = new javax.swing.JTextField();
+        jLabel58 = new javax.swing.JLabel();
+        jdcFechaBoleta = new com.toedter.calendar.JDateChooser();
+        btnQuitarPedido = new javax.swing.JButton();
+        lblAtendidoPor = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
         jpConfiguracion = new javax.swing.JPanel();
         jpTitulo = new javax.swing.JPanel();
         lblNombNegocio = new javax.swing.JLabel();
@@ -385,304 +385,6 @@ public class JFPrincipal extends javax.swing.JFrame {
         jpSistemaon.add(jpMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 600));
 
         jpCardOpc.setLayout(new java.awt.CardLayout());
-
-        jpVenta.setBackground(new java.awt.Color(255, 255, 255));
-        jpVenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel23.setText("N° DE BOLETA:");
-        jpVenta.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, 30));
-
-        lblNBoleta.setBackground(new java.awt.Color(255, 255, 255));
-        lblNBoleta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblNBoleta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNBoleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jpVenta.add(lblNBoleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 18, 220, 34));
-
-        jpBuscarProducto.setBackground(new java.awt.Color(255, 255, 255));
-        jpBuscarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECCIONAR PRODUCTO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
-        jpBuscarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel52.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel52.setText("CANTIDAD:");
-        jpBuscarProducto.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, 30));
-
-        txtSNombreProd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtSNombreProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSNombreProd.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jpBuscarProducto.add(txtSNombreProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 470, 30));
-
-        btnSeleccionarProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSeleccionarProd.setText("CONSULTAR");
-        btnSeleccionarProd.setMaximumSize(new java.awt.Dimension(180, 50));
-        btnSeleccionarProd.setMinimumSize(new java.awt.Dimension(180, 50));
-        btnSeleccionarProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSeleccionarProdActionPerformed(evt);
-            }
-        });
-        jpBuscarProducto.add(btnSeleccionarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 25, 150, 30));
-
-        jLabel53.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel53.setText("PRODUCTO:");
-        jpBuscarProducto.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 200, 30));
-
-        txtSStock.setEditable(false);
-        txtSStock.setBackground(new java.awt.Color(255, 255, 255));
-        txtSStock.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtSStock.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSStock.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jpBuscarProducto.add(txtSStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 80, 30));
-
-        jLabel54.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel54.setText("PRECIO: S/");
-        jpBuscarProducto.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 100, 25));
-
-        txtSPrecioProd.setEditable(false);
-        txtSPrecioProd.setBackground(new java.awt.Color(255, 255, 255));
-        txtSPrecioProd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtSPrecioProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSPrecioProd.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jpBuscarProducto.add(txtSPrecioProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 80, 30));
-
-        jLabel55.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel55.setText("STOCK:");
-        jpBuscarProducto.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 60, 25));
-
-        btnAgregarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnAgregarPedido.setText("AGREGAR PEDIDO");
-        btnAgregarPedido.setMaximumSize(new java.awt.Dimension(180, 50));
-        btnAgregarPedido.setMinimumSize(new java.awt.Dimension(180, 50));
-        jpBuscarProducto.add(btnAgregarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 185, 200, 40));
-        jpBuscarProducto.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 480, 10));
-        jpBuscarProducto.add(spiSCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 70, 30));
-
-        jpVenta.add(jpBuscarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 550, 240));
-
-        tblDVenta.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Producto", "Precio", "Cantidad", "Importe"
-            }
-        ));
-        jSPDVenta.setViewportView(tblDVenta);
-
-        jpVenta.add(jSPDVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 340, 820, 220));
-
-        jpBuscarCliente.setBackground(new java.awt.Color(255, 255, 255));
-        jpBuscarCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECCIONAR CLIENTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
-        jpBuscarCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel56.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel56.setText("CLIENTE:");
-        jpBuscarCliente.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 220, 25));
-
-        txtSNombreCli.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtSNombreCli.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSNombreCli.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jpBuscarCliente.add(txtSNombreCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 410, 30));
-
-        btnSeleccionarCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSeleccionarCli.setText("CONSULTAR");
-        btnSeleccionarCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSeleccionarCliActionPerformed(evt);
-            }
-        });
-        jpBuscarCliente.add(btnSeleccionarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 25, 150, 30));
-
-        jpVenta.add(jpBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 200, 490, 119));
-
-        btnRegistrarVenta.setBackground(new java.awt.Color(255, 255, 255));
-        btnRegistrarVenta.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnRegistrarVenta.setText("REGISTRAR VENTA");
-        btnRegistrarVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarVentaActionPerformed(evt);
-            }
-        });
-        jpVenta.add(btnRegistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 500, 200, 50));
-
-        jLabel57.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel57.setText("MONTO FINAL:");
-        jpVenta.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 400, 160, -1));
-
-        txtMontoFinal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtMontoFinal.setForeground(new java.awt.Color(255, 0, 0));
-        txtMontoFinal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtMontoFinal.setText("S/ ");
-        txtMontoFinal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jpVenta.add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 425, 160, 50));
-
-        jLabel58.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel58.setText("SELECCIONAR FECHA:");
-        jpVenta.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 80, 170, 30));
-
-        jdcFechaBoleta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jpVenta.add(jdcFechaBoleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 295, 30));
-
-        btnQuitarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnQuitarPedido.setText("QUITAR PEDIDO");
-        btnQuitarPedido.setMaximumSize(new java.awt.Dimension(180, 50));
-        btnQuitarPedido.setMinimumSize(new java.awt.Dimension(180, 50));
-        jpVenta.add(btnQuitarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 340, 160, 40));
-
-        lblAtendidoPor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblAtendidoPor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAtendidoPor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jpVenta.add(lblAtendidoPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 355, 30));
-
-        jLabel60.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel60.setText("ATENDIDO POR:");
-        jpVenta.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 120, 30));
-
-        jpCardOpc.add(jpVenta, "card2");
-
-        jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
-        jTabbedPane2.setForeground(new java.awt.Color(0, 0, 51));
-        jTabbedPane2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTabbedPane2.setPreferredSize(new java.awt.Dimension(1140, 600));
-        jTabbedPane2.setRequestFocusEnabled(false);
-
-        jpVerVentas.setBackground(new java.awt.Color(255, 255, 255));
-        jpVerVentas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jpVerVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("AYER");
-        jButton1.setPreferredSize(new java.awt.Dimension(100, 40));
-        jPanel3.add(jButton1);
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("HOY");
-        jButton2.setPreferredSize(new java.awt.Dimension(100, 40));
-        jPanel3.add(jButton2);
-
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton5.setText("ELEGIR FECHA");
-        jButton5.setPreferredSize(new java.awt.Dimension(150, 40));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButton5);
-
-        jLabel66.setPreferredSize(new java.awt.Dimension(50, 50));
-        jPanel3.add(jLabel66);
-
-        jLabel6.setText("DESDE: ");
-        jPanel3.add(jLabel6);
-
-        jdcDesde.setEnabled(false);
-        jdcDesde.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jdcDesde.setPreferredSize(new java.awt.Dimension(120, 30));
-        jPanel3.add(jdcDesde);
-
-        jLabel67.setPreferredSize(new java.awt.Dimension(100, 0));
-        jPanel3.add(jLabel67);
-
-        jLabel68.setText("HASTA: ");
-        jPanel3.add(jLabel68);
-
-        jdcHasta.setEnabled(false);
-        jdcHasta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jdcHasta.setPreferredSize(new java.awt.Dimension(120, 30));
-        jPanel3.add(jdcHasta);
-
-        jpVerVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 950, 60));
-
-        jTable7.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "N° VENTA", "CLIENTE", "VENDEDOR", "FECHA", "CANTIDAD", "TOTAL"
-            }
-        ));
-        jScrollPane7.setViewportView(jTable7);
-
-        jpVerVentas.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 116, 950, 380));
-
-        btnImpV.setText("IMPRIMIR");
-        jpVerVentas.add(btnImpV, new org.netbeans.lib.awtextra.AbsoluteConstraints(853, 513, 150, 30));
-
-        jTabbedPane2.addTab("VER VENTAS  ", new javax.swing.ImageIcon(getClass().getResource("/iconos/bolsa-de-la-compra.png")), jpVerVentas); // NOI18N
-
-        jpVerClientes.setBackground(new java.awt.Color(255, 255, 255));
-        jpVerClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-
-        jButton6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton6.setText("CLIENTES TOP");
-        jButton6.setPreferredSize(new java.awt.Dimension(200, 40));
-        jPanel5.add(jButton6);
-
-        jpVerClientes.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 36, 950, -1));
-
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "COD.", "NOMBRE", "RUC", "DNI", "SEXO", "CORREO", "ESTADO"
-            }
-        ));
-        jScrollPane4.setViewportView(jTable4);
-
-        jpVerClientes.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 116, 950, 390));
-
-        btnImpV3.setText("IMPRIMIR");
-        jpVerClientes.add(btnImpV3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, 150, 30));
-
-        jTabbedPane2.addTab("VER CLIENTES  ", new javax.swing.ImageIcon(getClass().getResource("/iconos/subastador.png")), jpVerClientes); // NOI18N
-
-        jpVerProductos.setBackground(new java.awt.Color(255, 255, 255));
-        jpVerProductos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jpVerProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "COD.", "NOMBRE", "PRECIO VENTA", "STOCK", "TOTAL VENDIDO", "MONTO ACUMULADO"
-            }
-        ));
-        jScrollPane5.setViewportView(jTable5);
-
-        jpVerProductos.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 116, 950, 390));
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton7.setText("MAS VENDIDOS");
-        jButton7.setPreferredSize(new java.awt.Dimension(200, 40));
-        jPanel6.add(jButton7);
-
-        jButton8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton8.setText("MENOS VENDIDOS");
-        jButton8.setPreferredSize(new java.awt.Dimension(200, 40));
-        jPanel6.add(jButton8);
-
-        jpVerProductos.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 36, 950, -1));
-
-        btnImpp.setText("IMPRIMIR");
-        jpVerProductos.add(btnImpp, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, 150, 30));
-
-        jTabbedPane2.addTab("VER PRODUCTOS  ", new javax.swing.ImageIcon(getClass().getResource("/iconos/estar-de-pie.png")), jpVerProductos); // NOI18N
-
-        jpReportes.add(jTabbedPane2);
-
-        jpCardOpc.add(jpReportes, "card4");
 
         jpMantenimiento.setBackground(new java.awt.Color(255, 255, 255));
         jpMantenimiento.setMaximumSize(new java.awt.Dimension(1100, 600));
@@ -1563,6 +1265,307 @@ public class JFPrincipal extends javax.swing.JFrame {
         jpMantenimiento.add(jTPMAntenimiento, "card7");
 
         jpCardOpc.add(jpMantenimiento, "card2");
+
+        jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane2.setForeground(new java.awt.Color(0, 0, 51));
+        jTabbedPane2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTabbedPane2.setPreferredSize(new java.awt.Dimension(1140, 600));
+        jTabbedPane2.setRequestFocusEnabled(false);
+
+        jpVerVentas.setBackground(new java.awt.Color(255, 255, 255));
+        jpVerVentas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jpVerVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setText("AYER");
+        jButton1.setPreferredSize(new java.awt.Dimension(100, 40));
+        jPanel3.add(jButton1);
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton2.setText("HOY");
+        jButton2.setPreferredSize(new java.awt.Dimension(100, 40));
+        jPanel3.add(jButton2);
+
+        jButton5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton5.setText("ELEGIR FECHA");
+        jButton5.setPreferredSize(new java.awt.Dimension(150, 40));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton5);
+
+        jLabel66.setPreferredSize(new java.awt.Dimension(50, 50));
+        jPanel3.add(jLabel66);
+
+        jLabel6.setText("DESDE: ");
+        jPanel3.add(jLabel6);
+
+        jdcDesde.setEnabled(false);
+        jdcDesde.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jdcDesde.setPreferredSize(new java.awt.Dimension(120, 30));
+        jPanel3.add(jdcDesde);
+
+        jLabel67.setPreferredSize(new java.awt.Dimension(100, 0));
+        jPanel3.add(jLabel67);
+
+        jLabel68.setText("HASTA: ");
+        jPanel3.add(jLabel68);
+
+        jdcHasta.setEnabled(false);
+        jdcHasta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jdcHasta.setPreferredSize(new java.awt.Dimension(120, 30));
+        jPanel3.add(jdcHasta);
+
+        jpVerVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 950, 60));
+
+        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "N° VENTA", "CLIENTE", "VENDEDOR", "FECHA", "CANTIDAD", "TOTAL"
+            }
+        ));
+        jScrollPane7.setViewportView(jTable7);
+
+        jpVerVentas.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 116, 950, 380));
+
+        btnImpV.setText("IMPRIMIR");
+        jpVerVentas.add(btnImpV, new org.netbeans.lib.awtextra.AbsoluteConstraints(853, 513, 150, 30));
+
+        jTabbedPane2.addTab("VER VENTAS  ", new javax.swing.ImageIcon(getClass().getResource("/iconos/bolsa-de-la-compra.png")), jpVerVentas); // NOI18N
+
+        jpVerClientes.setBackground(new java.awt.Color(255, 255, 255));
+        jpVerClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButton6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton6.setText("CLIENTES TOP");
+        jButton6.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPanel5.add(jButton6);
+
+        jpVerClientes.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 36, 950, -1));
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "COD.", "NOMBRE", "RUC", "DNI", "SEXO", "CORREO", "ESTADO"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable4);
+
+        jpVerClientes.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 116, 950, 390));
+
+        btnImpV3.setText("IMPRIMIR");
+        jpVerClientes.add(btnImpV3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, 150, 30));
+
+        jTabbedPane2.addTab("VER CLIENTES  ", new javax.swing.ImageIcon(getClass().getResource("/iconos/subastador.png")), jpVerClientes); // NOI18N
+
+        jpVerProductos.setBackground(new java.awt.Color(255, 255, 255));
+        jpVerProductos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jpVerProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "COD.", "NOMBRE", "PRECIO VENTA", "STOCK", "TOTAL VENDIDO", "MONTO ACUMULADO"
+            }
+        ));
+        jScrollPane5.setViewportView(jTable5);
+
+        jpVerProductos.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 116, 950, 390));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton7.setText("MAS VENDIDOS");
+        jButton7.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPanel6.add(jButton7);
+
+        jButton8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton8.setText("MENOS VENDIDOS");
+        jButton8.setPreferredSize(new java.awt.Dimension(200, 40));
+        jPanel6.add(jButton8);
+
+        jpVerProductos.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 36, 950, -1));
+
+        btnImpp.setText("IMPRIMIR");
+        jpVerProductos.add(btnImpp, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, 150, 30));
+
+        jTabbedPane2.addTab("VER PRODUCTOS  ", new javax.swing.ImageIcon(getClass().getResource("/iconos/estar-de-pie.png")), jpVerProductos); // NOI18N
+
+        jpReportes.add(jTabbedPane2);
+
+        jpCardOpc.add(jpReportes, "card4");
+
+        jpVenta.setBackground(new java.awt.Color(255, 255, 255));
+        jpVenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel23.setText("N° DE BOLETA:");
+        jpVenta.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, 30));
+
+        lblNBoleta.setBackground(new java.awt.Color(255, 255, 255));
+        lblNBoleta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblNBoleta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNBoleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpVenta.add(lblNBoleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 18, 220, 34));
+
+        jpBuscarProducto.setBackground(new java.awt.Color(255, 255, 255));
+        jpBuscarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECCIONAR PRODUCTO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jpBuscarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel52.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel52.setText("CANTIDAD:");
+        jpBuscarProducto.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, 30));
+
+        txtSNombreProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtSNombreProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSNombreProd.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jpBuscarProducto.add(txtSNombreProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 470, 30));
+
+        btnSeleccionarProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSeleccionarProd.setText("CONSULTAR");
+        btnSeleccionarProd.setMaximumSize(new java.awt.Dimension(180, 50));
+        btnSeleccionarProd.setMinimumSize(new java.awt.Dimension(180, 50));
+        btnSeleccionarProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionarProdActionPerformed(evt);
+            }
+        });
+        jpBuscarProducto.add(btnSeleccionarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 25, 150, 30));
+
+        jLabel53.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel53.setText("PRODUCTO:");
+        jpBuscarProducto.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 200, 30));
+
+        txtSStock.setEditable(false);
+        txtSStock.setBackground(new java.awt.Color(255, 255, 255));
+        txtSStock.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtSStock.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSStock.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jpBuscarProducto.add(txtSStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 80, 30));
+
+        jLabel54.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel54.setText("PRECIO: S/");
+        jpBuscarProducto.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 100, 25));
+
+        txtSPrecioProd.setEditable(false);
+        txtSPrecioProd.setBackground(new java.awt.Color(255, 255, 255));
+        txtSPrecioProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtSPrecioProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSPrecioProd.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jpBuscarProducto.add(txtSPrecioProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 80, 30));
+
+        jLabel55.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel55.setText("STOCK:");
+        jpBuscarProducto.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 60, 25));
+
+        btnAgregarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnAgregarPedido.setText("AGREGAR PEDIDO");
+        btnAgregarPedido.setMaximumSize(new java.awt.Dimension(180, 50));
+        btnAgregarPedido.setMinimumSize(new java.awt.Dimension(180, 50));
+        jpBuscarProducto.add(btnAgregarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 185, 200, 40));
+        jpBuscarProducto.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 480, 10));
+
+        spiSCantidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jpBuscarProducto.add(spiSCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 70, 30));
+
+        jpVenta.add(jpBuscarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 550, 240));
+
+        tblDVenta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Producto", "Precio", "Cantidad", "Importe"
+            }
+        ));
+        jSPDVenta.setViewportView(tblDVenta);
+
+        jpVenta.add(jSPDVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 340, 820, 220));
+
+        jpBuscarCliente.setBackground(new java.awt.Color(255, 255, 255));
+        jpBuscarCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECCIONAR CLIENTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jpBuscarCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel56.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel56.setText("CLIENTE:");
+        jpBuscarCliente.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 220, 25));
+
+        txtSNombreCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtSNombreCli.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSNombreCli.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jpBuscarCliente.add(txtSNombreCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 410, 30));
+
+        btnSeleccionarCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSeleccionarCli.setText("CONSULTAR");
+        btnSeleccionarCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionarCliActionPerformed(evt);
+            }
+        });
+        jpBuscarCliente.add(btnSeleccionarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 25, 150, 30));
+
+        jpVenta.add(jpBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 200, 490, 119));
+
+        btnRegistrarVenta.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegistrarVenta.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnRegistrarVenta.setText("REGISTRAR VENTA");
+        btnRegistrarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarVentaActionPerformed(evt);
+            }
+        });
+        jpVenta.add(btnRegistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 500, 200, 50));
+
+        jLabel57.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel57.setText("MONTO FINAL:");
+        jpVenta.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 400, 160, -1));
+
+        txtMontoFinal.setBackground(new java.awt.Color(0, 0, 0));
+        txtMontoFinal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtMontoFinal.setForeground(new java.awt.Color(255, 0, 0));
+        txtMontoFinal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMontoFinal.setText("S/ ");
+        txtMontoFinal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpVenta.add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 425, 200, 50));
+
+        jLabel58.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel58.setText("SELECCIONAR FECHA:");
+        jpVenta.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 80, 170, 30));
+
+        jdcFechaBoleta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jpVenta.add(jdcFechaBoleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 295, 30));
+
+        btnQuitarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnQuitarPedido.setText("QUITAR PEDIDO");
+        btnQuitarPedido.setMaximumSize(new java.awt.Dimension(180, 50));
+        btnQuitarPedido.setMinimumSize(new java.awt.Dimension(180, 50));
+        jpVenta.add(btnQuitarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 340, 160, 40));
+
+        lblAtendidoPor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblAtendidoPor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAtendidoPor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jpVenta.add(lblAtendidoPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 355, 30));
+
+        jLabel60.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel60.setText("ATENDIDO POR:");
+        jpVenta.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 120, 30));
+
+        jpCardOpc.add(jpVenta, "card2");
         jpCardOpc.add(jpConfiguracion, "card6");
 
         jpSistemaon.add(jpCardOpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 1140, 600));

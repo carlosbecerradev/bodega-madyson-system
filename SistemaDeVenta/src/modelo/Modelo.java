@@ -77,6 +77,7 @@ public class Modelo extends Conexion {
         v.btnJpReportes.setEnabled(false);
         v.btnJpMantenimiento.setEnabled(false);
         /* Empleado*/
+        v.jpMClientes.hide();
         v.jpCardEmp.hide();
         v.jpOpcionesEmp.hide();
         /* Producto */
@@ -93,11 +94,12 @@ public class Modelo extends Conexion {
         v.btnJpReportes.setEnabled(true);
         v.btnJpMantenimiento.setEnabled(true);
         /* Empleado*/
-        v.jpCardEmp.setEnabled(true);
+        v.jpCardEmp.show();
+        v.jpOpcionesEmp.show();
         /* Producto */
-        v.btnNuevoProd.setEnabled(true);
-        v.btnEliminarProd.setEnabled(true);
-        v.btnExtraerProd.setEnabled(true);
+        v.btnNuevoProd.show();
+        v.btnEliminarProd.show();
+        v.btnExtraerProd.show();
     }
 
     public void salirSistema() {
