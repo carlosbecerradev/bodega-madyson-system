@@ -73,6 +73,7 @@ public class Controlador implements ActionListener, MouseListener {
         this.vst.btnSeleccionarCli.addActionListener(this);
         this.vst.btnSeleccionarProd.addActionListener(this);
         this.vst.btnAgregarPedido.addActionListener(this);
+        this.vst.btnQuitarPedido.addActionListener(this);
     }
 
     public void iniciar() {
@@ -308,6 +309,13 @@ public class Controlador implements ActionListener, MouseListener {
                 JOptionPane.showMessageDialog(null, "btnAgregarPedido " + e);
             }
         }
+        if (vst.btnQuitarPedido == evt.getSource()) {
+            try {
+                mdlVenta.btnQuitarPedido();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "btnQuitarPedido " + e);
+            }
+        }
     }
 
     @Override
@@ -340,17 +348,17 @@ public class Controlador implements ActionListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override

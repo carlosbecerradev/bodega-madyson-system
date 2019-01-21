@@ -73,11 +73,14 @@ public class Modelo extends Conexion {
     }
 
     public void privilegiosCajero() {
+        /*Al iniciar */
+        cambiarJP(JFPrincipal.jpCardOpc, JFPrincipal.jpVenta);
         /* Menu */
         v.btnJpReportes.setEnabled(false);
         v.btnJpMantenimiento.setEnabled(false);
         /* Empleado*/
-        v.jpMClientes.hide();
+        v.jpMUsuarios.hide();
+        v.jTPMAntenimiento.setEnabledAt(2, false);
         v.jpCardEmp.hide();
         v.jpOpcionesEmp.hide();
         /* Producto */

@@ -315,6 +315,7 @@ public class ModeloCliente extends Conexion implements CRUD {
                 PreparedStatement ps = this.conexion.prepareStatement("select nombApeCli from Cliente where codCli = " + codCli );
                 ResultSet rs = ps.executeQuery();
                 rs.next();
+                JFPrincipal.txtSCodCli.setText(cod);
                 JFPrincipal.txtSNombreCli.setText(rs.getString(1));
                 cambiarJP(JFPrincipal.jpCardOpc, JFPrincipal.jpVenta);
             } catch (Exception e) {

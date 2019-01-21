@@ -15,8 +15,6 @@ public class ModeloVenta extends Conexion {
 
     private DefaultTableModel mdlTblDVenta;
     private JFPrincipal vp;
-    public int codProd;
-    public Producto prod;
 
     public void inicioJFVenta() {
         tabla();
@@ -39,20 +37,83 @@ public class ModeloVenta extends Conexion {
 
     public void btnAgregarPedido() {
         boolean validar = vp.txtSNombreProd.equals("");
+        int codProd = Integer.parseInt(vp.txtSCodPro.getText());
+        int stockA = Integer.parseInt(vp.txtSStock.getText());
         if (!validar) {
             if (validarStockCantidad()) {
                 int cantidad = (int) vp.spiSCantidad.getValue();
                 float precioV = Float.parseFloat(vp.txtSPrecioProd.getText());
-                double importe = cantidad * precioV;
+                float importe = cantidad * precioV;
                 mdlTblDVenta.addRow(new Object[]{
+                    codProd,
                     vp.txtSNombreProd.getText(),
                     vp.txtSPrecioProd.getText(),
                     vp.spiSCantidad.getValue(),
                     String.format("%.2f", importe).replace(",", ".")
                 });
-            } 
+                try {
+                    this.conectarBD();
+                    PreparedStatement ps = this.conexion.prepareStatement("update Producto set stock = " + (stockA - cantidad)
+                            + " where codProd = " + codProd);
+                    ps.executeUpdate();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                } finally {
+                    this.desconectarBD();
+                }
+                float importes = 0;
+                int cantFilas = mdlTblDVenta.getRowCount();
+                for (int i = 0; i < cantFilas; i++) {
+                    String sImp = (String) mdlTblDVenta.getValueAt(i, 4);
+                    float fImporte = Float.parseFloat(sImp);
+                    importes += fImporte;
+                }
+                vp.txtMontoFinal.setText(String.valueOf(importes));
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione un producto.");
+        }
+    }
+
+    public void btnQuitarPedido() {
+        int fila = JFPrincipal.tblDVenta.getSelectedRow();
+        if (fila >= 0) {
+            String codS = (String)mdlTblDVenta.getValueAt(fila, 0);
+            int cod = Integer.parseInt(codS);
+            //String producto = (String)mdlTblDVenta.getValueAt(fila, 1);
+            String pS = (String) mdlTblDVenta.getValueAt(fila, 2);
+            float precio = Float.parseFloat(pS);
+            String cS = (String) mdlTblDVenta.getValueAt(fila, 3);
+            int cantidad = Integer.parseInt(cS);
+            String iS = (String) mdlTblDVenta.getValueAt(fila, 4);
+            float importe = Float.parseFloat(iS);
+            try {
+                this.conectarBD();
+                PreparedStatement ps1 = this.conexion.prepareStatement("select stock from Producto where codProd = " + cod);
+                ResultSet rs1 = ps1.executeQuery();
+                rs1.next();
+                int stockA = rs1.getInt(1);
+                rs1.close();
+                PreparedStatement ps2 = this.conexion.prepareStatement("update Producto set stock = " + (stockA + cantidad)
+                        + " where codProd = " + cod);
+                ps2.executeUpdate();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            } finally {
+                this.desconectarBD();
+            }
+            float importes = 0;
+            mdlTblDVenta.removeRow(fila);
+            int cantFilas = mdlTblDVenta.getRowCount();
+            for (int i = 0; i < cantFilas; i++) {
+                String sImp = (String) mdlTblDVenta.getValueAt(i, 4);
+                float fImporte = Float.parseFloat(sImp);
+                importes += fImporte;
+            }
+            vp.txtMontoFinal.setText(String.valueOf(importes));
+            vp.spiSCantidad.requestFocus();
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila.");
         }
     }
 
@@ -66,46 +127,18 @@ public class ModeloVenta extends Conexion {
                 JOptionPane.showMessageDialog(null, "El stock no abarca la cantidad seleccionada.");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Selecciono una cantidad negativa.");
+            JOptionPane.showMessageDialog(null, "No ha elegido una unidad.");
             vp.spiSCantidad.setValue(0);
         }
         return false;
     }
 
-//    public void restarStock(){
-//        try {
-//                this.conectarBD();
-//                PreparedStatement ps = this.conexion.prepareStatement("update Producto set stock = " + stock + " where codPro = " + p);
-//                ps.executeUpdate();
-//                return true;
-//            }catch(Exception e){
-//                JOptionPane.showMessageDialog(null, "validar Cantidad " + e);
-//            }finally {
-//                this.desconectarBD();
-//            }
-//    }
     private void cambiarJP(JPanel card, JPanel jp) {
         card.removeAll();
         card.repaint();
         card.add(jp);
         card.repaint();
         card.revalidate();
-    }
-
-    public int getCodProd() {
-        return codProd;
-    }
-
-    public void setCodProd(int codProd) {
-        this.codProd = codProd;
-    }
-
-    public Producto getProd() {
-        return prod;
-    }
-
-    public void setProd(Producto prod) {
-        this.prod = prod;
     }
 
 }

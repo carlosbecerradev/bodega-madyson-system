@@ -13,7 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -292,8 +291,7 @@ public class ModeloProducto extends Conexion implements CRUD {
                 rs.next();
                 Producto prod = new Producto(rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getInt(5), rs.getString(6));
                 ModeloVenta mdv = new ModeloVenta();
-                mdv.setProd(prod);
-                mdv.setCodProd(rs.getInt(1));
+                JFPrincipal.txtSCodPro.setText(cod);
                 JFPrincipal.txtSNombreProd.setText(prod.getArticulo());
                 JFPrincipal.txtSPrecioProd.setText(String.valueOf(prod.getPrecioV()));
                 JFPrincipal.txtSStock.setText(String.valueOf(prod.getStock()));

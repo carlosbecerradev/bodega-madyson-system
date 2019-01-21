@@ -107,3 +107,5 @@ insert into Cliente values('casual', 10000000, 'casualF@hotmail.com', 'F')
 insert into Producto values('Helado 1lt de chocolate', 'Donofrio', 9.90, 10,'Comestible')
 insert into Producto values('Detergente de 500gr', 'Bolivar', 2, 10,'Limpieza')
 insert into Producto values('Gaseosa de 2lt retornable', 'Coca Cola', 5, 10,'Bebida')
+
+update Producto set stock = 20 where codProd = 3
