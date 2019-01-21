@@ -11,7 +11,7 @@ with password = '12345',
 default_database = BodegaMadyson
 
 -- CREACIÓN DE USUARIO ADMINISTRADOR --
-create user admMadyson
+create user madyson
 for login madyson
 with default_schema = esq
 
@@ -83,9 +83,9 @@ select * from Cliente
 select * from DetalleVenta
 select * from Empleado
 select * from Producto
-select * from Marca
-select * from Categoria
 select * from Venta
+--select * from Marca
+--select * from Categoria
 /*
 --Marcas--
 insert into Marca values('Coca Cola')
@@ -98,17 +98,12 @@ insert into Categoria values('Gaseosa')
 insert into Categoria values('Helado')
 */
 --Empleado--
-insert into Empleado values('Carlos Becerra', 'Administrador', 71463111, 'admin', '12345', 'M', 1)
-insert into Empleado values('Alberto Hernández', 'Cajero', 11136417, 'cajero', '12345', 'M', 0)
+insert into Empleado values('Administrador', 'Administrador', 71463111, 'admin', '12345', 'M', 1)
+insert into Empleado values('Cajero', 'Cajero', 10000000, 'cajero', '12345', 'M', 0)
 --Cliente--
-insert into Cliente values('anonimo', 10000000, null, null)
-insert into Cliente values('Maritza Vela', 51427532, vela@gmail.com,'F')
+insert into Cliente values('casual', 10000000, 'casualM@hotmail.com', 'M')
+insert into Cliente values('casual', 10000000, 'casualF@hotmail.com', 'F')
 -- Producto --
-insert into Producto values('Helado 1lt de chocolate', 'PeziDuri', 9.90, 10,'Comestible')
-
-------ACTUALIZAR----
-update Cliente set nombApeCli = 'Maritza Vela champ', dniCli = '11242145', correoCli = '125', genCli = 'T' where codCli = 1
-
-	--LIKE --
-	select * from Cliente where dniCli like '%5%'
-select usuEmp, contraEmp, cargoEmp, estado from Empleado
+insert into Producto values('Helado 1lt de chocolate', 'Donofrio', 9.90, 10,'Comestible')
+insert into Producto values('Detergente de 500gr', 'Bolivar', 2, 10,'Limpieza')
+insert into Producto values('Gaseosa de 2lt retornable', 'Coca Cola', 5, 10,'Bebida')
