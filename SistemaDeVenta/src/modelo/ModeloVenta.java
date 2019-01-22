@@ -89,14 +89,14 @@ public class ModeloVenta extends Conexion {
             float importe = Float.parseFloat(iS);
             try {
                 this.conectarBD();
-                PreparedStatement ps1 = this.conexion.prepareStatement("select stock from Producto where codProd = " + cod);
+                PreparedStatement ps1 = this.conexion.prepareStatement("select stock from Producto where codProd = " + cod + " ");
                 ResultSet rs1 = ps1.executeQuery();
                 rs1.next();
-                int stockA = rs1.getInt(1);
-                rs1.close();
-                PreparedStatement ps2 = this.conexion.prepareStatement("update Producto set stock = " + (stockA + cantidad)
+                PreparedStatement ps2 = this.conexion.prepareStatement("update Producto set stock = " + (rs1.getInt(1) + cantidad)
                         + " where codProd = " + cod);
                 ps2.executeUpdate();
+                
+                rs1.close();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             } finally {

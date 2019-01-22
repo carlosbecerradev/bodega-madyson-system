@@ -30,7 +30,7 @@ public class Conexion {
             status = true;
         } catch (SQLServerException e) {
             //JOptionPane.showConfirmDialog(null, "El usuario o contraseña no existe");
-        }catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showConfirmDialog(null, "conectarBD " + e.getMessage());
         }
     }
