@@ -74,6 +74,7 @@ public class Controlador implements ActionListener, MouseListener {
         this.vst.btnSeleccionarProd.addActionListener(this);
         this.vst.btnAgregarPedido.addActionListener(this);
         this.vst.btnQuitarPedido.addActionListener(this);
+        this.vst.btnRegistrarVenta.addActionListener(this);
     }
 
     public void iniciar() {
@@ -96,6 +97,7 @@ public class Controlador implements ActionListener, MouseListener {
         if (vst.btnIngresar == evt.getSource()) {
             try {
                 mdl.iniciarSesion();
+                mdlVenta.numeroBoleta();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "btnIngresar" + e);
             }
@@ -314,6 +316,13 @@ public class Controlador implements ActionListener, MouseListener {
                 mdlVenta.btnQuitarPedido();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "btnQuitarPedido " + e);
+            }
+        }
+        if (vst.btnRegistrarVenta == evt.getSource()) {
+            try {
+                mdlVenta.btnRegistrarVenta();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "btnRegistrarVenta " + e);
             }
         }
     }

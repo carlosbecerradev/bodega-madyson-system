@@ -4,26 +4,16 @@ import java.sql.Date;
 
 public class Venta {
 
-    int codVenta;
     Date fechaVenta;
-    boolean totalVenta;
+    float totalVenta;
     int codEmpleado1;
     int codCliente1;
 
-    public Venta(int codVenta, Date fechaVenta, boolean totalVenta, int codEmpleado1, int codCliente1) {
-        this.codVenta = codVenta;
+    public Venta(Date fechaVenta, float totalVenta, int codEmpleado1, int codCliente1) {
         this.fechaVenta = fechaVenta;
         this.totalVenta = totalVenta;
         this.codEmpleado1 = codEmpleado1;
         this.codCliente1 = codCliente1;
-    }
-
-    public int getCodVenta() {
-        return codVenta;
-    }
-
-    public void setCodVenta(int codVenta) {
-        this.codVenta = codVenta;
     }
 
     public Date getFechaVenta() {
@@ -34,11 +24,11 @@ public class Venta {
         this.fechaVenta = fechaVenta;
     }
 
-    public boolean isTotalVenta() {
+    public float getTotalVenta() {
         return totalVenta;
     }
 
-    public void setTotalVenta(boolean totalVenta) {
+    public void setTotalVenta(float totalVenta) {
         this.totalVenta = totalVenta;
     }
 

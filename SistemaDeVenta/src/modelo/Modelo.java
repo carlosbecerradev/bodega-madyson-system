@@ -17,7 +17,7 @@ public class Modelo extends Conexion {
             Conexion.setCuenta("madyson", "12345");
             this.conectarBD();
             if (Conexion.getStatus()) {
-                PreparedStatement ps = this.conexion.prepareStatement("select usuEmp, contraEmp, cargoEmp, estado, nombApeEmp from Empleado");
+                PreparedStatement ps = this.conexion.prepareStatement("select usuEmp, contraEmp, cargoEmp, estado, nombApeEmp,codEmp from Empleado");
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
                     if (usuario().equals(rs.getString(1)) && contrasenia().equals(rs.getString(2))) {
@@ -25,6 +25,7 @@ public class Modelo extends Conexion {
                             cambiarJP(JFPrincipal.jpBase, JFPrincipal.jpSistemaon);
                             JFPrincipal.lblNombUser.setText(rs.getString(3));
                             v.lblAtendidoPor.setText(rs.getString(5));
+                            v.lblSCodEmpleado.setText(rs.getString(6));
                             if (rs.getString(3).equals("Administrador")) {
                                 privilegiosAdmin();
                             } else {
@@ -93,10 +94,14 @@ public class Modelo extends Conexion {
     }
     
     public void privilegiosAdmin(){
+        /*Al iniciar */
+        cambiarJP(JFPrincipal.jpCardOpc, JFPrincipal.jpVenta);
         /* Menu */
         v.btnJpReportes.setEnabled(true);
         v.btnJpMantenimiento.setEnabled(true);
         /* Empleado*/
+        v.jpMUsuarios.show();
+        v.jTPMAntenimiento.setEnabledAt(2, true);
         v.jpCardEmp.show();
         v.jpOpcionesEmp.show();
         /* Producto */
