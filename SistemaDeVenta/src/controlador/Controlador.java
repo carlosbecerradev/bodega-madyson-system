@@ -26,9 +26,10 @@ public class Controlador implements ActionListener, MouseListener {
     private ModeloEmpleado mdlEmp;
     private ModeloProducto mdlProd;
     private ModeloVenta mdlVenta;
+    private ModeloReporteVenta mdlReVenta;
 
     public Controlador(JFPrincipal vst, Modelo mdl, ModeloCliente mdlCli,
-            ModeloEmpleado mdlEmp, ModeloProducto mdlProd, ModeloVenta mdlVenta) {
+            ModeloEmpleado mdlEmp, ModeloProducto mdlProd, ModeloVenta mdlVenta, ModeloReporteVenta mdlReVenta) {
         this.vst = vst;
         this.mdl = mdl;
         this.vst.btnIngresar.addActionListener(this);
@@ -75,6 +76,10 @@ public class Controlador implements ActionListener, MouseListener {
         this.vst.btnAgregarPedido.addActionListener(this);
         this.vst.btnQuitarPedido.addActionListener(this);
         this.vst.btnRegistrarVenta.addActionListener(this);
+        /* mdlReVenta */
+        this.mdlReVenta = mdlReVenta;
+        this.vst.btnMostrarTodasVentas.addActionListener(this);
+        this.vst.btnMostrarDetalleVenta.addActionListener(this);
     }
 
     public void iniciar() {
@@ -89,6 +94,7 @@ public class Controlador implements ActionListener, MouseListener {
         mdlEmp.inicioJFEmpleado();
         mdlProd.inicioJFProducto();
         mdlVenta.inicioJFVenta();
+        mdlReVenta.inicioReVenta();
     }
 
     @Override
@@ -325,6 +331,20 @@ public class Controlador implements ActionListener, MouseListener {
                 JOptionPane.showMessageDialog(null, "btnRegistrarVenta " + e);
             }
         }
+        if (vst.btnMostrarTodasVentas == evt.getSource()) {
+            try {
+                mdlReVenta.btnMostrarTodasVentas();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "btnMostrarTodasVentas " + e);
+            }
+        }
+        if (vst.btnMostrarDetalleVenta == evt.getSource()) {
+            try {
+                mdlReVenta.btnMostrarDetalleVenta();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "btnMostrarDetalleVenta " + e);
+            }
+        }
     }
 
     @Override
@@ -353,21 +373,22 @@ public class Controlador implements ActionListener, MouseListener {
                 }
             }
         }
+        
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        
+
     }
 
     @Override

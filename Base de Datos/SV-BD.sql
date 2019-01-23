@@ -74,9 +74,9 @@ constraint fk_cem2 foreign key (codEmpleado) references Empleado (codEmp)
 
 select * from Cliente
 select * from DetalleVenta
+select * from Venta
 select * from Empleado
 select * from Producto
-select * from Venta
 
 --Empleado--
 insert into Empleado values('Administrador', 'Administrador', 71463111, 'admin', '12345', 'M', 1)
@@ -89,4 +89,14 @@ insert into Producto values('Helado 1lt de chocolate', 'Donofrio', 9.90, 20,'Com
 insert into Producto values('Detergente de 500gr', 'Bolivar', 2, 20,'Limpieza')
 insert into Producto values('Gaseosa de 2lt retornable', 'Coca Cola', 5, 20,'Bebida')
 
-select codVenta from Venta
+--Mostrar boletas--
+select codVenta, codCli,nombApeCli,fechaVenta, totalVenta, codEmp, nombApeEmp
+from Venta
+inner join Cliente on Venta.codCli1 = Cliente.codCli
+inner join Empleado on Venta.codEmp1 = Empleado.codEmp
+
+-- Mostrar detalle de venta --
+select articulo, marca,cantidad, importe
+from Venta
+inner join DetalleVenta on Venta.codVenta = DetalleVenta.codVenta
+inner join Producto on DetalleVenta.codProd = Producto.codProd
