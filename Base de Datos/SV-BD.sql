@@ -82,8 +82,7 @@ select * from Producto
 insert into Empleado values('Administrador', 'Administrador', 71463111, 'admin', '12345', 'M', 1)
 insert into Empleado values('Cajero', 'Cajero', 10000000, 'cajero', '12345', 'M', 0)
 --Cliente--
-insert into Cliente values('casual', 10000000, 'casualM@hotmail.com', 'M')
-insert into Cliente values('casual', 10000000, 'casualF@hotmail.com', 'F')
+insert into Cliente values('Cliente Casual', 10000000, 'casualM@hotmail.com', 'M')
 -- Producto --
 insert into Producto values('Helado 1lt de chocolate', 'Donofrio', 9.90, 20,'Comestible')
 insert into Producto values('Detergente de 500gr', 'Bolivar', 2, 20,'Limpieza')
@@ -96,7 +95,12 @@ inner join Cliente on Venta.codCli1 = Cliente.codCli
 inner join Empleado on Venta.codEmp1 = Empleado.codEmp
 
 -- Mostrar detalle de venta --
-select articulo, marca,cantidad, importe
+select DetalleVenta.codVenta, articulo, marca,cantidad, importe
 from Venta
 inner join DetalleVenta on Venta.codVenta = DetalleVenta.codVenta
 inner join Producto on DetalleVenta.codProd = Producto.codProd
+where Venta.codVenta = 2
+
+select codCli, nombApeCli, dniCli, genCli, correoCli, totalVenta
+from Venta 
+inner join Cliente on Venta.codCli1 = Cliente.codCli
