@@ -42,7 +42,7 @@ public class JFReVDetalle extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Articulo", "marca", "cantidad", "importe"
+                "Articulo", "precio unit.", "cantidad", "importe"
             }
         ));
         jSPVDetalleVenta.setViewportView(tblReDetallVenta);

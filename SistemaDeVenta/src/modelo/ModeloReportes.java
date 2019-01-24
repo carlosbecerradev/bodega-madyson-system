@@ -9,9 +9,9 @@ import javax.swing.table.DefaultTableModel;
 import vista.JFPrincipal;
 import vista.JFReVDetalle;
 
-public class ModeloReporteVenta extends Conexion {
+public class ModeloReportes extends Conexion {
 
-    private DefaultTableModel mdlReVentas, mdlReDVentas;
+    private DefaultTableModel mdlReVentas, mdlReDVentas, mdlReClientes, mdlReProductos;
     private JFPrincipal vp;
     private JFReVDetalle vDV = new JFReVDetalle();
 
@@ -22,6 +22,12 @@ public class ModeloReporteVenta extends Conexion {
     public void tabla() {
         mdlReVentas = (DefaultTableModel) vp.tblReVenta.getModel();
         vp.jSPReVenta.getViewport().setBackground(Color.white);
+        //
+        mdlReClientes = (DefaultTableModel) vp.tblReClientes.getModel();
+        vp.jSPReClientes.getViewport().setBackground(Color.white);
+        //
+        mdlReProductos = (DefaultTableModel) vp.tblReProductos.getModel();
+        vp.jSPReProductos.getViewport().setBackground(Color.white);
     }
 
     public void tablaDV() {
@@ -67,7 +73,7 @@ public class ModeloReporteVenta extends Conexion {
             tablaDV();
             try {
                 this.conectarBD();
-                PreparedStatement ps = this.conexion.prepareStatement("select articulo, marca,cantidad, importe\n "
+                PreparedStatement ps = this.conexion.prepareStatement("select articulo, precioVenta,cantidad, importe\n "
                         + "from Venta\n "
                         + "inner join DetalleVenta on Venta.codVenta = DetalleVenta.codVenta\n "
                         + "inner join Producto on DetalleVenta.codProd = Producto.codProd\n "

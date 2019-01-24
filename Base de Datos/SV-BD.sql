@@ -80,13 +80,15 @@ select * from Producto
 
 --Empleado--
 insert into Empleado values('Administrador', 'Administrador', 71463111, 'admin', '12345', 'M', 1)
-insert into Empleado values('Cajero', 'Cajero', 10000000, 'cajero', '12345', 'M', 0)
+insert into Empleado values('Cajero', 'Cajero', 10000000, 'cajero', '12345', 'M', 1)
 --Cliente--
 insert into Cliente values('Cliente Casual', 10000000, 'casualM@hotmail.com', 'M')
 -- Producto --
-insert into Producto values('Helado 1lt de chocolate', 'Donofrio', 9.90, 20,'Comestible')
-insert into Producto values('Detergente de 500gr', 'Bolivar', 2, 20,'Limpieza')
-insert into Producto values('Gaseosa de 2lt retornable', 'Coca Cola', 5, 20,'Bebida')
+insert into Producto values('Helado 1lt de chocolate', 'Donofrio', 9.90, 200,'Comestible')
+insert into Producto values('Detergente de 500gr', 'Bolivar', 3, 200,'Limpieza')
+insert into Producto values('Jabón para lavar 200g ', 'Bolivar', 2, 200,'Limpieza')
+insert into Producto values('Gaseosa de 2lt retornable', 'Coca Cola', 5, 200,'Bebida')
+insert into Producto values('Gaseosa de 3lt retornable', 'Coca Cola', 8, 200,'Bebida')
 
 --Mostrar boletas--
 select codVenta, codCli,nombApeCli,fechaVenta, totalVenta, codEmp, nombApeEmp
@@ -101,6 +103,9 @@ inner join DetalleVenta on Venta.codVenta = DetalleVenta.codVenta
 inner join Producto on DetalleVenta.codProd = Producto.codProd
 where Venta.codVenta = 2
 
+-- Cliente top --
 select codCli, nombApeCli, dniCli, genCli, correoCli, totalVenta
 from Venta 
 inner join Cliente on Venta.codCli1 = Cliente.codCli
+
+

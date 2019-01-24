@@ -6,12 +6,19 @@ import dao.Conexion;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLXML;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import vista.JFPrincipal;
+/* itex */
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.*;
+import java.io.FileOutputStream;
+import java.sql.SQLException;
 
 public class ModeloVenta extends Conexion {
 
@@ -81,7 +88,7 @@ public class ModeloVenta extends Conexion {
         int fila = JFPrincipal.tblDVenta.getSelectedRow();
         if (fila >= 0) {
             int cod = (int) mdlTblDVenta.getValueAt(fila, 0);
-            int cantidad =(int) mdlTblDVenta.getValueAt(fila, 3);
+            int cantidad = (int) mdlTblDVenta.getValueAt(fila, 3);
             String im = (String) mdlTblDVenta.getValueAt(fila, 4);
             float importe = Float.parseFloat(im);
             try {
@@ -127,19 +134,19 @@ public class ModeloVenta extends Conexion {
         }
         return false;
     }
-    
-    public void numeroBoleta(){
+
+    public void numeroBoleta() {
         int nextBoleta = 0;
-        try{
+        try {
             this.conectarBD();
             Statement st = this.conexion.createStatement();
             ResultSet rs = st.executeQuery("select codVenta from Venta");
-            while(rs.next()){
+            while (rs.next()) {
                 nextBoleta = rs.getInt(1);
             }
             nextBoleta += 1;
-            vp.lblNBoleta.setText(String.valueOf(nextBoleta));            
-        } catch(Exception e){
+            vp.lblNBoleta.setText(String.valueOf(nextBoleta));
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         } finally {
             this.desconectarBD();
@@ -153,13 +160,13 @@ public class ModeloVenta extends Conexion {
         card.repaint();
         card.revalidate();
     }
-    
-    public void btnRegistrarVenta(){
-        boolean validar = vp.jdcFechaBoleta.getDate() == null || vp.txtSNombreCli.getText().equals("") ||
-                mdlTblDVenta.getRowCount() <= 0;
-        
+
+    public void btnRegistrarVenta() {
+        boolean validar = vp.jdcFechaBoleta.getDate() == null || vp.txtSNombreCli.getText().equals("")
+                || mdlTblDVenta.getRowCount() <= 0;
+
         if (!validar) {
-            try{
+            try {
                 this.conectarBD();
                 /* Tabla Venta */
                 Venta venta = new Venta(fechaVenta(), totalVenta(), codEmpleado1(), codCliente1());
@@ -177,63 +184,64 @@ public class ModeloVenta extends Conexion {
                     psDv.setInt(1, dv.getCodVenta());
                     psDv.setInt(2, dv.getCodPro());
                     psDv.setInt(3, dv.getCodCliente());
-                    psDv.setInt(4,dv.getCodEmpleado());
+                    psDv.setInt(4, dv.getCodEmpleado());
                     psDv.setInt(5, dv.getCantidad());
                     psDv.setFloat(6, dv.getImporte());
                     psDv.executeUpdate();
-                }                
+                }
+                generarBoletaPDF();
                 limpiarVenta();
                 JOptionPane.showMessageDialog(null, "Boleta Registrada.");
-            }catch(Exception e){
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
-            }finally{
+            } finally {
                 this.desconectarBD();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos.");
         }
     }
-    
-    private java.sql.Date fechaVenta(){
+
+    private java.sql.Date fechaVenta() {
         java.util.Date jdate;
         jdate = vp.jdcFechaBoleta.getDate();
         java.sql.Date fecha = new java.sql.Date(jdate.getTime());
         return fecha;
     }
-    
-    private float totalVenta(){
+
+    private float totalVenta() {
         return Float.parseFloat(vp.txtMontoFinal.getText());
     }
-    
-    private int codEmpleado1(){
+
+    private int codEmpleado1() {
         return Integer.parseInt(vp.lblSCodEmpleado.getText());
     }
-    
-    private int codCliente1(){
+
+    private int codCliente1() {
         return Integer.parseInt(vp.txtSCodCli.getText());
     }
-    
-    private int codVenta(){
+
+    private int codVenta() {
         return Integer.parseInt(vp.lblNBoleta.getText());
     }
-    
-    private int codProdcto(int i){
+
+    private int codProdcto(int i) {
         int codPro = (int) mdlTblDVenta.getValueAt(i, 0);
         return codPro;
     }
-    
-    private int cantidad(int i){
+
+    private int cantidad(int i) {
         int cantidad = (int) mdlTblDVenta.getValueAt(i, 3);
         return cantidad;
     }
-    
-    private float importe(int i){
+
+    private float importe(int i) {
         String fl = (String) mdlTblDVenta.getValueAt(i, 4);
         float importe = Float.parseFloat(fl);
         return importe;
-    }    
-    
-    public void limpiarVenta(){
+    }
+
+    public void limpiarVenta() {
         // Fecha
         vp.jdcFechaBoleta.setDate(null);
         // Datos Cliente
@@ -254,5 +262,59 @@ public class ModeloVenta extends Conexion {
         vp.txtMontoFinal.setText("");
         /* nueva boleta*/
         numeroBoleta();
+    }
+
+    private void generarBoletaPDF() {
+        int codVentaG = Integer.parseInt(vp.lblNBoleta.getText());
+        Document documento = new Document();
+
+        try {
+            String ruta = System.getProperty("user.home");
+            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/boleta" + codVentaG+".pdf"));
+            documento.open();
+            Paragraph titulo = new Paragraph("Boleta de Venta");
+            documento.add(titulo);
+
+            PdfPTable tabla = new PdfPTable(4);
+            tabla.addCell("Producto");
+            tabla.addCell("precio unit.");
+            tabla.addCell("cantidad");
+            tabla.addCell("importe");
+            try {
+                this.conectarBD();
+                PreparedStatement ps = this.conexion.prepareStatement("select articulo, precioVenta,cantidad, importe\n "
+                        + "from Venta\n "
+                        + "inner join DetalleVenta on Venta.codVenta = DetalleVenta.codVenta\n "
+                        + "inner join Producto on DetalleVenta.codProd = Producto.codProd\n "
+                        + "where Venta.codVenta = " + codVentaG);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    double importe = Math.ceil(Double.parseDouble(rs.getString(4)));
+                    do {
+                        tabla.addCell(rs.getString(1));
+                        tabla.addCell(rs.getString(2));
+                        tabla.addCell(rs.getString(3));
+                        tabla.addCell(String.valueOf(importe));
+                    } while (rs.next());
+                    documento.add(tabla);
+                }
+                Paragraph monto = new Paragraph("Monto a Pagar");
+                documento.add(monto);
+                Paragraph total = new Paragraph("S/");
+                documento.add(total);
+                Paragraph salto = new Paragraph("\n");
+                documento.add(salto);
+                Paragraph estado = new Paragraph("CANCELADO");
+                documento.add(estado);
+            } catch (DocumentException | SQLException e) {
+                JOptionPane.showMessageDialog(null, "sql " + e);
+            } finally {
+                documento.close();
+                this.desconectarBD();
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "mdl " + e);
+        }
     }
 }

@@ -1,0 +1,9 @@
+Implementación de un Sistema de Ventas a la bodega Madyson 
+SV-BMadyson (Sistema de Ventas de la Bodega Madyson
+----------------
+Becerra Hernández, Carlos Alberto
+Bengolea Sánchez, Anderson
+Carhuajulca Morales, Anthony
+----
+inicio: 22/12/2018
+Fin:

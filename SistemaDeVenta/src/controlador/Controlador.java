@@ -26,10 +26,10 @@ public class Controlador implements ActionListener, MouseListener {
     private ModeloEmpleado mdlEmp;
     private ModeloProducto mdlProd;
     private ModeloVenta mdlVenta;
-    private ModeloReporteVenta mdlReVenta;
+    private ModeloReportes mdlReVenta;
 
     public Controlador(JFPrincipal vst, Modelo mdl, ModeloCliente mdlCli,
-            ModeloEmpleado mdlEmp, ModeloProducto mdlProd, ModeloVenta mdlVenta, ModeloReporteVenta mdlReVenta) {
+            ModeloEmpleado mdlEmp, ModeloProducto mdlProd, ModeloVenta mdlVenta, ModeloReportes mdlReVenta) {
         this.vst = vst;
         this.mdl = mdl;
         this.vst.btnIngresar.addActionListener(this);

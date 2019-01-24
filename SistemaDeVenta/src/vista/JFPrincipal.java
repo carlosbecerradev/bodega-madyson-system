@@ -58,12 +58,12 @@ public class JFPrincipal extends javax.swing.JFrame {
         jpVerClientes = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         btnClientesTop = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        jSPReClientes = new javax.swing.JScrollPane();
         tblReClientes = new javax.swing.JTable();
         btnImpClientes = new javax.swing.JButton();
         jpVerProductos = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        jSPReProductos = new javax.swing.JScrollPane();
+        tblReProductos = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         btnProdMasVendidos = new javax.swing.JButton();
         btnProdMenosVendidos = new javax.swing.JButton();
@@ -242,7 +242,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         mnItemCerrarSesion = new javax.swing.JMenuItem();
         mnItemSalir = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1300, 680));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -319,7 +319,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         btnJpVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnJpVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/venta32x32.png"))); // NOI18N
         btnJpVenta.setText("REALIZAR VENTA");
-        btnJpVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        btnJpVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnJpVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnJpVenta.setHideActionText(true);
         btnJpVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -337,7 +337,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         btnJpConfiguracion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnJpConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/configuracion32x32.png"))); // NOI18N
         btnJpConfiguracion.setText("CONFIGURACIÓN");
-        btnJpConfiguracion.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        btnJpConfiguracion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnJpConfiguracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnJpConfiguracion.setEnabled(false);
         btnJpConfiguracion.setHideActionText(true);
@@ -351,7 +351,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         btnJpReportes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnJpReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/reporte32x32.png"))); // NOI18N
         btnJpReportes.setText("REPORTES");
-        btnJpReportes.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        btnJpReportes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnJpReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnJpReportes.setHideActionText(true);
         btnJpReportes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -369,7 +369,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         btnJpMantenimiento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnJpMantenimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/mantenimiento32x32.png"))); // NOI18N
         btnJpMantenimiento.setText("MANTENIMIENTO");
-        btnJpMantenimiento.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        btnJpMantenimiento.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnJpMantenimiento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnJpMantenimiento.setHideActionText(true);
         btnJpMantenimiento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -452,9 +452,9 @@ public class JFPrincipal extends javax.swing.JFrame {
                 "COD.", "NOMBRE", "RUC", "DNI", "SEXO", "CORREO", "ESTADO"
             }
         ));
-        jScrollPane4.setViewportView(tblReClientes);
+        jSPReClientes.setViewportView(tblReClientes);
 
-        jpVerClientes.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 116, 950, 390));
+        jpVerClientes.add(jSPReClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 116, 950, 390));
 
         btnImpClientes.setText("IMPRIMIR");
         btnImpClientes.setEnabled(false);
@@ -466,7 +466,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jpVerProductos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jpVerProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tblReProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -474,9 +474,9 @@ public class JFPrincipal extends javax.swing.JFrame {
                 "COD.", "NOMBRE", "PRECIO VENTA", "STOCK", "TOTAL VENDIDO", "MONTO ACUMULADO"
             }
         ));
-        jScrollPane5.setViewportView(jTable5);
+        jSPReProductos.setViewportView(tblReProductos);
 
-        jpVerProductos.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 116, 950, 390));
+        jpVerProductos.add(jSPReProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 116, 950, 390));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1396,7 +1396,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jpVenta.add(lblNBoleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 18, 220, 34));
 
         jpBuscarProducto.setBackground(new java.awt.Color(255, 255, 255));
-        jpBuscarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECCIONAR PRODUCTO", 0, 0, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jpBuscarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECCIONAR PRODUCTO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jpBuscarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel52.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1481,7 +1481,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jpVenta.add(jSPDVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 340, 820, 220));
 
         jpBuscarCliente.setBackground(new java.awt.Color(255, 255, 255));
-        jpBuscarCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECCIONAR CLIENTE", 0, 0, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jpBuscarCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECCIONAR CLIENTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jpBuscarCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel56.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1887,13 +1887,12 @@ public class JFPrincipal extends javax.swing.JFrame {
     public static javax.swing.JScrollPane jSPDVenta;
     public static javax.swing.JScrollPane jSPEmp;
     public static javax.swing.JScrollPane jSPProd;
+    public static javax.swing.JScrollPane jSPReClientes;
+    public static javax.swing.JScrollPane jSPReProductos;
     public static javax.swing.JScrollPane jSPReVenta;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     public static javax.swing.JTabbedPane jTPMAntenimiento;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable5;
     private javax.swing.JTextField jTextField1;
     public static com.toedter.calendar.JDateChooser jdcFechaBoleta;
     public static javax.swing.JPanel jpBase;
@@ -1945,6 +1944,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     public static javax.swing.JTable tblEmpleado;
     public static javax.swing.JTable tblProducto;
     public static javax.swing.JTable tblReClientes;
+    public static javax.swing.JTable tblReProductos;
     public static javax.swing.JTable tblReVenta;
     public static javax.swing.JTextField txtArticuloProd;
     public static javax.swing.JTextField txtArticuloProdM;

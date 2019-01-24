@@ -31,7 +31,7 @@ public class Principal {
         ModeloEmpleado mdlEmp = new ModeloEmpleado();
         ModeloProducto mdlProd = new ModeloProducto();
         ModeloVenta mdlVenta = new ModeloVenta();
-        ModeloReporteVenta mdlReVenta = new ModeloReporteVenta();
+        ModeloReportes mdlReVenta = new ModeloReportes();
         
         Controlador ctrl = new Controlador(vst, mdl, mdlCli, mdlEmp, mdlProd, mdlVenta, mdlReVenta);
         ctrl.iniciar();
