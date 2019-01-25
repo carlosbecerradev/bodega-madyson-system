@@ -11,12 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import vista.JFPrincipal;
-/* itex */
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.*;
 import java.io.FileOutputStream;
 import java.sql.SQLException;
 
@@ -189,7 +183,6 @@ public class ModeloVenta extends Conexion {
                     psDv.setFloat(6, dv.getImporte());
                     psDv.executeUpdate();
                 }
-                generarBoletaPDF();
                 limpiarVenta();
                 JOptionPane.showMessageDialog(null, "Boleta Registrada.");
             } catch (Exception e) {
@@ -264,57 +257,5 @@ public class ModeloVenta extends Conexion {
         numeroBoleta();
     }
 
-    private void generarBoletaPDF() {
-        int codVentaG = Integer.parseInt(vp.lblNBoleta.getText());
-        Document documento = new Document();
-
-        try {
-            String ruta = System.getProperty("user.home");
-            PdfWriter.getInstance(documento, new FileOutputStream(ruta + "/Desktop/boleta" + codVentaG+".pdf"));
-            documento.open();
-            Paragraph titulo = new Paragraph("Boleta de Venta");
-            documento.add(titulo);
-
-            PdfPTable tabla = new PdfPTable(4);
-            tabla.addCell("Producto");
-            tabla.addCell("precio unit.");
-            tabla.addCell("cantidad");
-            tabla.addCell("importe");
-            try {
-                this.conectarBD();
-                PreparedStatement ps = this.conexion.prepareStatement("select articulo, precioVenta,cantidad, importe\n "
-                        + "from Venta\n "
-                        + "inner join DetalleVenta on Venta.codVenta = DetalleVenta.codVenta\n "
-                        + "inner join Producto on DetalleVenta.codProd = Producto.codProd\n "
-                        + "where Venta.codVenta = " + codVentaG);
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    double importe = Math.ceil(Double.parseDouble(rs.getString(4)));
-                    do {
-                        tabla.addCell(rs.getString(1));
-                        tabla.addCell(rs.getString(2));
-                        tabla.addCell(rs.getString(3));
-                        tabla.addCell(String.valueOf(importe));
-                    } while (rs.next());
-                    documento.add(tabla);
-                }
-                Paragraph monto = new Paragraph("Monto a Pagar");
-                documento.add(monto);
-                Paragraph total = new Paragraph("S/");
-                documento.add(total);
-                Paragraph salto = new Paragraph("\n");
-                documento.add(salto);
-                Paragraph estado = new Paragraph("CANCELADO");
-                documento.add(estado);
-            } catch (DocumentException | SQLException e) {
-                JOptionPane.showMessageDialog(null, "sql " + e);
-            } finally {
-                documento.close();
-                this.desconectarBD();
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "mdl " + e);
-        }
-    }
+    
 }

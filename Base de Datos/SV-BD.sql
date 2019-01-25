@@ -108,4 +108,8 @@ select codCli, nombApeCli, dniCli, genCli, correoCli, totalVenta
 from Venta 
 inner join Cliente on Venta.codCli1 = Cliente.codCli
 
+--Creando Vistas--
+create view list_cli as
+	select * from Cliente
 
+select * from list_cli
