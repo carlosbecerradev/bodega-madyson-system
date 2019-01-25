@@ -5,5 +5,5 @@ Becerra Hernández, Carlos Alberto
 Bengolea Sánchez, Anderson
 Carhuajulca Morales, Anthony
 ----
-inicio: 22/12/2018
-Fin:
+inicio: 27/10/2018
+Fin: 24/01/2019
