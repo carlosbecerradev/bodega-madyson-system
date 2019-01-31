@@ -5,11 +5,15 @@
  */
 package vista;
 
+import com.sun.webkit.ContextMenu;
 import dao.Conexion;
+import java.awt.Color;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,11 +22,19 @@ import javax.swing.JPanel;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     Conexion cc = new Conexion();
-    CRUDEmpleado crudEmp = new CRUDEmpleado();
+    private DefaultTableModel mdlTblDVenta;
 
     public MenuPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("SISTEMA DE VENTAS");
+        tabla();
+        numeroBoleta();
+    }
+
+    public void tabla() {
+        mdlTblDVenta = (DefaultTableModel) tblDVenta.getModel();
+        jSPDVenta.getViewport().setBackground(Color.white);
     }
 
     /**
@@ -43,30 +55,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnJpMEmpleados = new javax.swing.JButton();
         btnJpReportes = new javax.swing.JButton();
         jpCardOpc = new javax.swing.JPanel();
-        jpReportes = new javax.swing.JPanel();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jpVerVentas = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel66 = new javax.swing.JLabel();
-        jLabel67 = new javax.swing.JLabel();
-        btnMostrarTodasVentas = new javax.swing.JButton();
-        btnMostrarDetalleVenta = new javax.swing.JButton();
-        jSPReVenta = new javax.swing.JScrollPane();
-        tblReVenta = new javax.swing.JTable();
-        btnImpVentas = new javax.swing.JButton();
-        jpVerClientes = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        btnClientesTop = new javax.swing.JButton();
-        jSPReClientes = new javax.swing.JScrollPane();
-        tblReClientes = new javax.swing.JTable();
-        btnImpClientes = new javax.swing.JButton();
-        jpVerProductos = new javax.swing.JPanel();
-        jSPReProductos = new javax.swing.JScrollPane();
-        tblReProductos = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
-        btnProdMasVendidos = new javax.swing.JButton();
-        btnProdMenosVendidos = new javax.swing.JButton();
-        btnImpProd = new javax.swing.JButton();
         jpRealizarVenta = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         lblNBoleta = new javax.swing.JLabel();
@@ -102,6 +90,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel60 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         lblSCodEmpleado = new javax.swing.JLabel();
+        jpReportes = new javax.swing.JPanel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jpVerVentas = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        btnMostrarTodasVentas = new javax.swing.JButton();
+        btnMostrarDetalleVenta = new javax.swing.JButton();
+        jSPReVenta = new javax.swing.JScrollPane();
+        tblReVenta = new javax.swing.JTable();
+        btnImpVentas = new javax.swing.JButton();
+        jpVerClientes = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        btnClientesTop = new javax.swing.JButton();
+        jSPReClientes = new javax.swing.JScrollPane();
+        tblReClientes = new javax.swing.JTable();
+        btnImpClientes = new javax.swing.JButton();
+        jpVerProductos = new javax.swing.JPanel();
+        jSPReProductos = new javax.swing.JScrollPane();
+        tblReProductos = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        btnProdMasVendidos = new javax.swing.JButton();
+        btnProdMenosVendidos = new javax.swing.JButton();
+        btnImpProd = new javax.swing.JButton();
         jpTitulo = new javax.swing.JPanel();
         lblNombNegocio = new javax.swing.JLabel();
         lblIcoUser = new javax.swing.JLabel();
@@ -110,6 +122,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnSistema = new javax.swing.JMenu();
         mnItemCerrarSesion = new javax.swing.JMenuItem();
         mnItemSalir = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -213,6 +227,212 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpSistemaon.add(jpMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 600));
 
         jpCardOpc.setLayout(new java.awt.CardLayout());
+
+        jpRealizarVenta.setBackground(new java.awt.Color(255, 255, 255));
+        jpRealizarVenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel23.setText("N° DE BOLETA:");
+        jpRealizarVenta.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 30));
+
+        lblNBoleta.setBackground(new java.awt.Color(255, 255, 255));
+        lblNBoleta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblNBoleta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNBoleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpRealizarVenta.add(lblNBoleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 18, 220, 34));
+
+        jpBuscarProducto.setBackground(new java.awt.Color(255, 255, 255));
+        jpBuscarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECCIONAR PRODUCTO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jpBuscarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel52.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel52.setText("CANTIDAD:");
+        jpBuscarProducto.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 100, 30));
+
+        txtSNombreProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtSNombreProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSNombreProd.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jpBuscarProducto.add(txtSNombreProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 350, 30));
+
+        btnSeleccionarProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSeleccionarProd.setText("CONSULTAR");
+        btnSeleccionarProd.setMaximumSize(new java.awt.Dimension(180, 50));
+        btnSeleccionarProd.setMinimumSize(new java.awt.Dimension(180, 50));
+        btnSeleccionarProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionarProdActionPerformed(evt);
+            }
+        });
+        jpBuscarProducto.add(btnSeleccionarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 25, 150, 30));
+
+        jLabel53.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel53.setText("PRODUCTO:");
+        jpBuscarProducto.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 100, 30));
+
+        txtSStock.setEditable(false);
+        txtSStock.setBackground(new java.awt.Color(255, 255, 255));
+        txtSStock.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtSStock.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSStock.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jpBuscarProducto.add(txtSStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 80, 30));
+
+        jLabel54.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel54.setText("PRECIO: S/");
+        jpBuscarProducto.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 100, 25));
+
+        txtSPrecioProd.setEditable(false);
+        txtSPrecioProd.setBackground(new java.awt.Color(255, 255, 255));
+        txtSPrecioProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtSPrecioProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSPrecioProd.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jpBuscarProducto.add(txtSPrecioProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 80, 30));
+
+        jLabel55.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel55.setText("STOCK:");
+        jpBuscarProducto.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 60, 25));
+
+        btnAgregarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnAgregarPedido.setText("AGREGAR PEDIDO");
+        btnAgregarPedido.setMaximumSize(new java.awt.Dimension(180, 50));
+        btnAgregarPedido.setMinimumSize(new java.awt.Dimension(180, 50));
+        btnAgregarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarPedidoActionPerformed(evt);
+            }
+        });
+        jpBuscarProducto.add(btnAgregarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 195, 200, 40));
+        jpBuscarProducto.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 480, 10));
+
+        spiSCantidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jpBuscarProducto.add(spiSCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 70, 30));
+
+        jLabel61.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel61.setText("CÓDIGO:");
+        jpBuscarProducto.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 45, 100, 30));
+
+        txtSCodPro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtSCodPro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSCodPro.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jpBuscarProducto.add(txtSCodPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 45, 150, 30));
+
+        jpRealizarVenta.add(jpBuscarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 550, 250));
+
+        tblDVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tblDVenta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Producto", "Precio", "Cantidad", "Importe"
+            }
+        ));
+        tblDVenta.setOpaque(false);
+        tblDVenta.setSelectionBackground(new java.awt.Color(0, 0, 0));
+        tblDVenta.setSelectionForeground(new java.awt.Color(255, 255, 0));
+        tblDVenta.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jSPDVenta.setViewportView(tblDVenta);
+
+        jpRealizarVenta.add(jSPDVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 340, 820, 220));
+
+        jpBuscarCliente.setBackground(new java.awt.Color(255, 255, 255));
+        jpBuscarCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECCIONAR CLIENTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jpBuscarCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel56.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel56.setText("CODIGO:");
+        jpBuscarCliente.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 35, 80, 30));
+
+        txtSNombreCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtSNombreCli.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSNombreCli.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jpBuscarCliente.add(txtSNombreCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 300, 30));
+
+        btnSeleccionarCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSeleccionarCli.setText("CONSULTAR");
+        btnSeleccionarCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSeleccionarCliActionPerformed(evt);
+            }
+        });
+        jpBuscarCliente.add(btnSeleccionarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 25, 150, 30));
+
+        jLabel59.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel59.setText("CLIENTE:");
+        jpBuscarCliente.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 80, 30));
+
+        txtSCodCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtSCodCli.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSCodCli.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jpBuscarCliente.add(txtSCodCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 150, 30));
+
+        jpRealizarVenta.add(jpBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 200, 490, 130));
+
+        btnRegistrarVenta.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegistrarVenta.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnRegistrarVenta.setText("REGISTRAR VENTA");
+        btnRegistrarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarVentaActionPerformed(evt);
+            }
+        });
+        jpRealizarVenta.add(btnRegistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 500, 200, 50));
+
+        jLabel57.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel57.setText("MONTO FINAL:");
+        jpRealizarVenta.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 400, 160, -1));
+
+        txtMontoFinal.setBackground(new java.awt.Color(0, 0, 0));
+        txtMontoFinal.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtMontoFinal.setForeground(new java.awt.Color(255, 255, 0));
+        txtMontoFinal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMontoFinal.setText("0");
+        txtMontoFinal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpRealizarVenta.add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 425, 170, 50));
+
+        jLabel58.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel58.setText("SELECCIONAR FECHA:");
+        jpRealizarVenta.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 170, 30));
+
+        jdcFechaBoleta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jpRealizarVenta.add(jdcFechaBoleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 220, 30));
+
+        btnQuitarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnQuitarPedido.setText("QUITAR PEDIDO");
+        btnQuitarPedido.setMaximumSize(new java.awt.Dimension(180, 50));
+        btnQuitarPedido.setMinimumSize(new java.awt.Dimension(180, 50));
+        btnQuitarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitarPedidoActionPerformed(evt);
+            }
+        });
+        jpRealizarVenta.add(btnQuitarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 340, 160, 40));
+
+        lblAtendidoPor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblAtendidoPor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAtendidoPor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jpRealizarVenta.add(lblAtendidoPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 355, 30));
+
+        jLabel60.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel60.setText("ATENDIDO POR:");
+        jpRealizarVenta.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 120, 30));
+
+        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 0));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField1.setText("S/");
+        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpRealizarVenta.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 425, 32, 50));
+
+        lblSCodEmpleado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblSCodEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        lblSCodEmpleado.setEnabled(false);
+        jpRealizarVenta.add(lblSCodEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 1, 1));
+
+        jpCardOpc.add(jpRealizarVenta, "card2");
 
         jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane2.setForeground(new java.awt.Color(0, 0, 51));
@@ -328,197 +548,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jpCardOpc.add(jpReportes, "card4");
 
-        jpRealizarVenta.setBackground(new java.awt.Color(255, 255, 255));
-        jpRealizarVenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel23.setText("N° DE BOLETA:");
-        jpRealizarVenta.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 30));
-
-        lblNBoleta.setBackground(new java.awt.Color(255, 255, 255));
-        lblNBoleta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblNBoleta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNBoleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jpRealizarVenta.add(lblNBoleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 18, 220, 34));
-
-        jpBuscarProducto.setBackground(new java.awt.Color(255, 255, 255));
-        jpBuscarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECCIONAR PRODUCTO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
-        jpBuscarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel52.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel52.setText("CANTIDAD:");
-        jpBuscarProducto.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 100, 30));
-
-        txtSNombreProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txtSNombreProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSNombreProd.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jpBuscarProducto.add(txtSNombreProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 350, 30));
-
-        btnSeleccionarProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSeleccionarProd.setText("CONSULTAR");
-        btnSeleccionarProd.setMaximumSize(new java.awt.Dimension(180, 50));
-        btnSeleccionarProd.setMinimumSize(new java.awt.Dimension(180, 50));
-        btnSeleccionarProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSeleccionarProdActionPerformed(evt);
-            }
-        });
-        jpBuscarProducto.add(btnSeleccionarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 25, 150, 30));
-
-        jLabel53.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel53.setText("PRODUCTO:");
-        jpBuscarProducto.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 100, 30));
-
-        txtSStock.setEditable(false);
-        txtSStock.setBackground(new java.awt.Color(255, 255, 255));
-        txtSStock.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txtSStock.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSStock.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jpBuscarProducto.add(txtSStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 80, 30));
-
-        jLabel54.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel54.setText("PRECIO: S/");
-        jpBuscarProducto.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 100, 25));
-
-        txtSPrecioProd.setEditable(false);
-        txtSPrecioProd.setBackground(new java.awt.Color(255, 255, 255));
-        txtSPrecioProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txtSPrecioProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSPrecioProd.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jpBuscarProducto.add(txtSPrecioProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 80, 30));
-
-        jLabel55.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel55.setText("STOCK:");
-        jpBuscarProducto.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 60, 25));
-
-        btnAgregarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnAgregarPedido.setText("AGREGAR PEDIDO");
-        btnAgregarPedido.setMaximumSize(new java.awt.Dimension(180, 50));
-        btnAgregarPedido.setMinimumSize(new java.awt.Dimension(180, 50));
-        jpBuscarProducto.add(btnAgregarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 195, 200, 40));
-        jpBuscarProducto.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 480, 10));
-
-        spiSCantidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jpBuscarProducto.add(spiSCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 70, 30));
-
-        jLabel61.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel61.setText("CÓDIGO:");
-        jpBuscarProducto.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 45, 100, 30));
-
-        txtSCodPro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txtSCodPro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSCodPro.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jpBuscarProducto.add(txtSCodPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 45, 150, 30));
-
-        jpRealizarVenta.add(jpBuscarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 550, 250));
-
-        tblDVenta.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Código", "Producto", "Precio", "Cantidad", "Importe"
-            }
-        ));
-        jSPDVenta.setViewportView(tblDVenta);
-
-        jpRealizarVenta.add(jSPDVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 340, 820, 220));
-
-        jpBuscarCliente.setBackground(new java.awt.Color(255, 255, 255));
-        jpBuscarCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECCIONAR CLIENTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
-        jpBuscarCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel56.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel56.setText("CODIGO:");
-        jpBuscarCliente.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 35, 80, 30));
-
-        txtSNombreCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txtSNombreCli.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSNombreCli.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jpBuscarCliente.add(txtSNombreCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 300, 30));
-
-        btnSeleccionarCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSeleccionarCli.setText("CONSULTAR");
-        btnSeleccionarCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSeleccionarCliActionPerformed(evt);
-            }
-        });
-        jpBuscarCliente.add(btnSeleccionarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 25, 150, 30));
-
-        jLabel59.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel59.setText("CLIENTE:");
-        jpBuscarCliente.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 80, 30));
-
-        txtSCodCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txtSCodCli.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSCodCli.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jpBuscarCliente.add(txtSCodCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 150, 30));
-
-        jpRealizarVenta.add(jpBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 200, 490, 130));
-
-        btnRegistrarVenta.setBackground(new java.awt.Color(255, 255, 255));
-        btnRegistrarVenta.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnRegistrarVenta.setText("REGISTRAR VENTA");
-        btnRegistrarVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarVentaActionPerformed(evt);
-            }
-        });
-        jpRealizarVenta.add(btnRegistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 500, 200, 50));
-
-        jLabel57.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel57.setText("MONTO FINAL:");
-        jpRealizarVenta.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 400, 160, -1));
-
-        txtMontoFinal.setBackground(new java.awt.Color(0, 0, 0));
-        txtMontoFinal.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        txtMontoFinal.setForeground(new java.awt.Color(255, 255, 0));
-        txtMontoFinal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtMontoFinal.setText("0");
-        txtMontoFinal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jpRealizarVenta.add(txtMontoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 425, 170, 50));
-
-        jLabel58.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel58.setText("SELECCIONAR FECHA:");
-        jpRealizarVenta.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 170, 30));
-
-        jdcFechaBoleta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jpRealizarVenta.add(jdcFechaBoleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 220, 30));
-
-        btnQuitarPedido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnQuitarPedido.setText("QUITAR PEDIDO");
-        btnQuitarPedido.setMaximumSize(new java.awt.Dimension(180, 50));
-        btnQuitarPedido.setMinimumSize(new java.awt.Dimension(180, 50));
-        jpRealizarVenta.add(btnQuitarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 340, 160, 40));
-
-        lblAtendidoPor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblAtendidoPor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAtendidoPor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jpRealizarVenta.add(lblAtendidoPor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 355, 30));
-
-        jLabel60.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel60.setText("ATENDIDO POR:");
-        jpRealizarVenta.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 120, 30));
-
-        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 0));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField1.setText("S/");
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jpRealizarVenta.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 425, 32, 50));
-
-        lblSCodEmpleado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblSCodEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        lblSCodEmpleado.setEnabled(false);
-        jpRealizarVenta.add(lblSCodEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 1, 1));
-
-        jpCardOpc.add(jpRealizarVenta, "card2");
-
         jpSistemaon.add(jpCardOpc, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 1140, 600));
 
         jpBase.add(jpSistemaon, "card3");
@@ -577,6 +606,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(mnSistema);
 
+        jMenu1.setText("VENTAS");
+        jMenu1.setPreferredSize(new java.awt.Dimension(100, 21));
+
+        jMenuItem1.setText("VER VENTAS");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -632,7 +674,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSeleccionarCliActionPerformed
 
     private void btnRegistrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarVentaActionPerformed
-        // TODO add your handling code here:
+        registrarVenta();
     }//GEN-LAST:event_btnRegistrarVentaActionPerformed
 
     private void btnJpMClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJpMClientesActionPerformed
@@ -648,6 +690,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         initEmp();
     }//GEN-LAST:event_btnJpMEmpleadosActionPerformed
+
+    private void btnAgregarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPedidoActionPerformed
+        agregarPedido();
+    }//GEN-LAST:event_btnAgregarPedidoActionPerformed
+
+    private void btnQuitarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarPedidoActionPerformed
+        quitarPedido();
+    }//GEN-LAST:event_btnQuitarPedidoActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        RUVentas ruv = new RUVentas();
+        ruv.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -716,7 +771,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
+    private javax.swing.JMenu jMenu1;
     public static javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -763,6 +820,220 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JTextField txtSStock;
     // End of variables declaration//GEN-END:variables
 
+    public void numeroBoleta() {
+        int nextBoleta = 0;
+        try {
+            cc.conectarBD();
+            Statement st = cc.conexion.createStatement();
+            ResultSet rs = st.executeQuery("select codVenta from Venta");
+            while (rs.next()) {
+                nextBoleta = rs.getInt(1);
+            }
+            nextBoleta += 1;
+            lblNBoleta.setText(String.valueOf(nextBoleta));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            cc.desconectarBD();
+        }
+    }
+
+    private void registrarVenta() {
+        boolean validar = jdcFechaBoleta.getDate() == null || txtSNombreCli.getText().equals("")
+                || mdlTblDVenta.getRowCount() <= 0;
+
+        if (!validar) {
+            try {
+                cc.conectarBD();
+                PreparedStatement ps = cc.conexion.prepareStatement("insert into Venta values (?, ?, ?, ?)");
+                ps.setDate(1, fechaVenta());
+                ps.setString(2, totalVenta());
+                ps.setString(3, codEmpleado1());
+                ps.setString(4, codCliente1());
+                ps.executeUpdate();
+                /* Tabla Detalle de Venta */
+                int filas = mdlTblDVenta.getRowCount();
+                for (int i = 0; i < filas; i++) {
+                    PreparedStatement psDv = cc.conexion.prepareStatement("insert into DetalleVenta values (?,?,?,?,?,?)");
+                    psDv.setInt(1, codVenta());
+                    psDv.setInt(2, codProdcto(i));
+                    psDv.setString(3, codCliente1());
+                    psDv.setString(4, codEmpleado1());
+                    psDv.setInt(5, cantidad(i));
+                    psDv.setFloat(6, importe(i));
+                    psDv.executeUpdate();
+                }
+                //creacionBoleta();
+                limpiarVenta();
+                JOptionPane.showMessageDialog(null, "Boleta Registrada.");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            } finally {
+                cc.desconectarBD();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos.");
+        }
+    }
+
+    private void agregarPedido() {
+        boolean validar = txtSNombreProd.equals("");
+        int codProd = Integer.parseInt(txtSCodPro.getText());
+        int stockA = Integer.parseInt(txtSStock.getText());
+        if (!validar) {
+            if (validarStockCantidad()) {
+                int cantidad = (int) spiSCantidad.getValue();
+                float precioV = Float.parseFloat(txtSPrecioProd.getText());
+                float importe = cantidad * precioV;
+                mdlTblDVenta.addRow(new Object[]{
+                    codProd,
+                    txtSNombreProd.getText(),
+                    txtSPrecioProd.getText(),
+                    spiSCantidad.getValue(),
+                    String.valueOf(String.format("%.2f", importe).replace(",", "."))
+                });
+                try {
+                    cc.conectarBD();
+                    PreparedStatement ps = cc.conexion.prepareStatement("update Producto set stock = " + (stockA - cantidad)
+                            + " where codProd = " + codProd);
+                    txtSStock.setText(String.valueOf((stockA - cantidad)));
+                    ps.executeUpdate();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                } finally {
+                    cc.desconectarBD();
+                }
+                float importes = 0;
+                int cantFilas = mdlTblDVenta.getRowCount();
+                for (int i = 0; i < cantFilas; i++) {
+                    String sImp = (String) mdlTblDVenta.getValueAt(i, 4);
+                    float fImporte = Float.parseFloat(sImp);
+                    importes += fImporte;
+                }
+                txtMontoFinal.setText(String.valueOf(importes));
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un producto.");
+        }
+    }
+
+    private void quitarPedido() {
+        int fila = tblDVenta.getSelectedRow();
+        int confir = JOptionPane.showConfirmDialog(null, "Estas seguro de quitar este pedido.");
+
+        if (fila >= 0) {
+            if (confir == 0) {
+                int cod = (int) mdlTblDVenta.getValueAt(fila, 0);
+                int cantidad = (int) mdlTblDVenta.getValueAt(fila, 3);
+                String im = (String) mdlTblDVenta.getValueAt(fila, 4);
+                float importe = Float.parseFloat(im);
+                try {
+                    cc.conectarBD();
+                    Statement st = cc.conexion.createStatement();
+                    ResultSet rs = st.executeQuery("select stock from Producto where codProd = " + cod);
+                    rs.next();
+                    int nuevoStock = rs.getInt(1) + cantidad;
+                    PreparedStatement ps2 = cc.conexion.prepareStatement("update Producto set stock = " + nuevoStock
+                            + " where codProd = " + cod);
+                    ps2.executeUpdate();
+                    txtSStock.setText(String.valueOf(nuevoStock));
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                } finally {
+                    cc.desconectarBD();
+                }
+                float importes = 0;
+                mdlTblDVenta.removeRow(fila);
+                int cantFilas = mdlTblDVenta.getRowCount();
+                for (int i = 0; i < cantFilas; i++) {
+                    importes += importe;
+                }
+                txtMontoFinal.setText(String.valueOf(importes));
+                spiSCantidad.requestFocus();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila.");
+        }
+    }
+
+    public boolean validarStockCantidad() {
+        int cantidad = (int) spiSCantidad.getValue();
+        int stockActual = Integer.parseInt(txtSStock.getText());
+        if (cantidad > 0) {
+            if (stockActual >= cantidad) {
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "El stock no abarca la cantidad seleccionada.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No ha elegido una unidad.");
+            spiSCantidad.setValue(0);
+        }
+        return false;
+    }
+
+    private java.sql.Date fechaVenta() {
+        java.util.Date jdate;
+        jdate = jdcFechaBoleta.getDate();
+        java.sql.Date fecha = new java.sql.Date(jdate.getTime());
+        return fecha;
+    }
+
+    private String totalVenta() {
+        return txtMontoFinal.getText();
+    }
+
+    private String codEmpleado1() {
+        return lblSCodEmpleado.getText();
+    }
+
+    private String codCliente1() {
+        return txtSCodCli.getText();
+    }
+
+    private int codVenta() {
+        return Integer.parseInt(lblNBoleta.getText());
+    }
+
+    private int codProdcto(int i) {
+        int codPro = (int) mdlTblDVenta.getValueAt(i, 0);
+        return codPro;
+    }
+
+    private int cantidad(int i) {
+        int cantidad = (int) mdlTblDVenta.getValueAt(i, 3);
+        return cantidad;
+    }
+
+    private float importe(int i) {
+        String fl = (String) mdlTblDVenta.getValueAt(i, 4);
+        float importe = Float.parseFloat(fl);
+        return importe;
+    }
+
+    public void limpiarVenta() {
+        // Fecha
+        jdcFechaBoleta.setDate(null);
+        // Datos Cliente
+        txtSCodCli.setText("");
+        txtSNombreCli.setText("");
+        // Datos Producto
+        txtSCodPro.setText("");
+        txtSNombreProd.setText("");
+        txtSPrecioProd.setText("");
+        txtSStock.setText("");
+        spiSCantidad.setValue(0);
+        // Detalle Venta
+        int filas = mdlTblDVenta.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            mdlTblDVenta.removeRow(0);
+        }
+        // Monto Final
+        txtMontoFinal.setText("");
+        /* nueva boleta*/
+        numeroBoleta();
+    }
+
     private void initProd() {
         CRUDProducto crudProd = new CRUDProducto();
         /* Dando privilegios */
@@ -789,6 +1060,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     private void initEmp() {
+        CRUDEmpleado crudEmp = new CRUDEmpleado();
         crudEmp.setVisible(true);
     }
 
@@ -805,24 +1077,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.dispose();
     }
 
-    public void numeroBoleta() {
-        int nextBoleta = 0;
-        try {
-            cc.conectarBD();
-            Statement st = cc.conexion.createStatement();
-            ResultSet rs = st.executeQuery("select codVenta from Venta");
-            while (rs.next()) {
-                nextBoleta = rs.getInt(1);
-            }
-            nextBoleta += 1;
-            lblNBoleta.setText(String.valueOf(nextBoleta));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        } finally {
-            cc.desconectarBD();
-        }
-    }
-
     public void cambiarJPanel(JPanel card, JPanel jp) {
         card.removeAll();
         card.repaint();
@@ -830,4 +1084,5 @@ public class MenuPrincipal extends javax.swing.JFrame {
         card.repaint();
         card.revalidate();
     }
+
 }

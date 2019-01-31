@@ -52,6 +52,13 @@ public class CRUDCliente extends javax.swing.JFrame {
         btnActualizarCli = new javax.swing.JButton();
         btnEliminarCli = new javax.swing.JButton();
         jpCardCli = new javax.swing.JPanel();
+        jpConsultaCli = new javax.swing.JPanel();
+        jSPCli = new javax.swing.JScrollPane();
+        tblCliente = new javax.swing.JTable();
+        btnExtraerCli = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        btnListarCli = new javax.swing.JButton();
+        txtFiltroNombre = new javax.swing.JTextField();
         jpDatos = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         txtNombreCli = new javax.swing.JTextField();
@@ -64,13 +71,6 @@ public class CRUDCliente extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         txtCodigoCli = new javax.swing.JTextField();
         cboArroba = new javax.swing.JComboBox<>();
-        jpConsultaCli = new javax.swing.JPanel();
-        jSPCli = new javax.swing.JScrollPane();
-        tblCliente = new javax.swing.JTable();
-        btnExtraerCli = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
-        btnListarCli = new javax.swing.JButton();
-        txtFiltroNombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -178,6 +178,73 @@ public class CRUDCliente extends javax.swing.JFrame {
 
         jpCardCli.setLayout(new java.awt.CardLayout());
 
+        jpConsultaCli.setBackground(new java.awt.Color(255, 255, 255));
+        jpConsultaCli.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jSPCli.setBackground(new java.awt.Color(255, 255, 255));
+        jSPCli.setOpaque(false);
+
+        tblCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tblCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "CÓDIGO", "NOMBRES Y APELLIDOS", "DNI", "CORREO", "GÉNERO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblCliente.setOpaque(false);
+        tblCliente.setSelectionBackground(new java.awt.Color(51, 51, 51));
+        tblCliente.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblCliente.getTableHeader().setResizingAllowed(false);
+        tblCliente.getTableHeader().setReorderingAllowed(false);
+        tblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblClienteMouseClicked(evt);
+            }
+        });
+        jSPCli.setViewportView(tblCliente);
+
+        jpConsultaCli.add(jSPCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 930, 280));
+
+        btnExtraerCli.setBackground(new java.awt.Color(255, 255, 255));
+        btnExtraerCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnExtraerCli.setText("MODIFICAR CLIENTE");
+        btnExtraerCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExtraerCliActionPerformed(evt);
+            }
+        });
+        jpConsultaCli.add(btnExtraerCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 220, 30));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setText("FILTRAR POR NOMBRE O APELLIDO:");
+        jpConsultaCli.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 260, 30));
+
+        btnListarCli.setBackground(new java.awt.Color(255, 255, 255));
+        btnListarCli.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnListarCli.setText("LISTAR");
+        btnListarCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarCliActionPerformed(evt);
+            }
+        });
+        jpConsultaCli.add(btnListarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 15, 120, 40));
+
+        txtFiltroNombre.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jpConsultaCli.add(txtFiltroNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 300, 30));
+
+        jpCardCli.add(jpConsultaCli, "card3");
+
         jpDatos.setBackground(new java.awt.Color(255, 255, 255));
         jpDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -253,73 +320,6 @@ public class CRUDCliente extends javax.swing.JFrame {
         jpDatos.add(cboArroba, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 200, 30));
 
         jpCardCli.add(jpDatos, "card4");
-
-        jpConsultaCli.setBackground(new java.awt.Color(255, 255, 255));
-        jpConsultaCli.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jSPCli.setBackground(new java.awt.Color(255, 255, 255));
-        jSPCli.setOpaque(false);
-
-        tblCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        tblCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "CÓDIGO", "NOMBRES Y APELLIDOS", "DNI", "CORREO", "GÉNERO"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblCliente.setOpaque(false);
-        tblCliente.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblCliente.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblCliente.getTableHeader().setResizingAllowed(false);
-        tblCliente.getTableHeader().setReorderingAllowed(false);
-        tblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblClienteMouseClicked(evt);
-            }
-        });
-        jSPCli.setViewportView(tblCliente);
-
-        jpConsultaCli.add(jSPCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 930, 280));
-
-        btnExtraerCli.setBackground(new java.awt.Color(255, 255, 255));
-        btnExtraerCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnExtraerCli.setText("MODIFICAR CLIENTE");
-        btnExtraerCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExtraerCliActionPerformed(evt);
-            }
-        });
-        jpConsultaCli.add(btnExtraerCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 220, 30));
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel15.setText("FILTRAR POR NOMBRE O APELLIDO:");
-        jpConsultaCli.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 260, 30));
-
-        btnListarCli.setBackground(new java.awt.Color(255, 255, 255));
-        btnListarCli.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnListarCli.setText("LISTAR");
-        btnListarCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListarCliActionPerformed(evt);
-            }
-        });
-        jpConsultaCli.add(btnListarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 15, 120, 40));
-
-        txtFiltroNombre.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jpConsultaCli.add(txtFiltroNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 300, 30));
-
-        jpCardCli.add(jpConsultaCli, "card3");
 
         jpMClientes.add(jpCardCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 140, 970, 400));
 
@@ -460,19 +460,29 @@ public class CRUDCliente extends javax.swing.JFrame {
     public static javax.swing.JTextField txtFiltroNombre;
     public static javax.swing.JTextField txtNombreCli;
     // End of variables declaration//GEN-END:variables
+    private boolean validarCampos() {
+        boolean verificar = nombres().equals("")
+                || dni().equals("")
+                || cboGeneroCli.getSelectedIndex() == 0;
+        return verificar;
+    }
 
     private void registrar() {
         try {
-            cc.conectarBD();
-            PreparedStatement ps = cc.conexion.prepareStatement("insert into Cliente values (?, ?, ?, ?)");
-            ps.setString(1, nombres());
-            ps.setString(2, dni());
-            ps.setString(3, correo());
-            ps.setString(4, genero());
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Cliente Registrado");
-            btnRegistrarCli.setEnabled(false);
-            traerCodCli();
+            if (!validarCampos()) {
+                cc.conectarBD();
+                PreparedStatement ps = cc.conexion.prepareStatement("insert into Cliente values (?, ?, ?, ?)");
+                ps.setString(1, nombres());
+                ps.setString(2, dni());
+                ps.setString(3, correo());
+                ps.setString(4, genero());
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Cliente Registrado");
+                btnRegistrarCli.setEnabled(false);
+                traerCodCli();
+            } else {
+                JOptionPane.showMessageDialog(null, "Rellene todos los campos.");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "registrar " + e);
         } finally {
@@ -528,7 +538,8 @@ public class CRUDCliente extends javax.swing.JFrame {
 
     private void actualizar() {
         try {
-            cc.conectarBD();
+            if (!validarCampos()) {
+                cc.conectarBD();
             PreparedStatement ps = cc.conexion.prepareStatement("update Cliente set nombApeCli = '" + nombres()
                     + "', dniCli = '" + dni() + "', correoCli = '" + correo() + "', genCli = '" + genero()
                     + "'  where codCli = " + codigo());
@@ -536,6 +547,9 @@ public class CRUDCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Datos Actualizados");
             btnActualizarCli.setEnabled(false);
             btnNuevoCli.setEnabled(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Rellene los campos faltantes.");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "actualizar " + e);
         } finally {
@@ -629,6 +643,7 @@ public class CRUDCliente extends javax.swing.JFrame {
         cboGeneroCli.setSelectedIndex(0);
         btnRegistrarCli.setEnabled(true);
         btnActualizarCli.setEnabled(false);
+        btnEliminarCli.setEnabled(false);
     }
 
     /* Modificar */
@@ -702,15 +717,6 @@ public class CRUDCliente extends javax.swing.JFrame {
     private void soloLetras(KeyEvent evt) {
         Character c = evt.getKeyChar();
         if (Character.isAlphabetic(c) || Character.isWhitespace(c)) {
-
-        } else {
-            evt.consume();
-        }
-    }
-
-    private void soloNumeros(KeyEvent evt) {
-        Character c = evt.getKeyChar();
-        if (Character.isDigit(c)) {
 
         } else {
             evt.consume();

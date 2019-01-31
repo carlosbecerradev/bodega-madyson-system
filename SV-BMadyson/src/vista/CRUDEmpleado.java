@@ -5,18 +5,35 @@
  */
 package vista;
 
+import dao.Conexion;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author hoarlos
  */
 public class CRUDEmpleado extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CRUDEmpleado
-     */
+    Conexion cc = new Conexion();
+    DefaultTableModel mdlTblEmp;
+
     public CRUDEmpleado() {
         initComponents();
         this.setLocationRelativeTo(null);
+        tabla();
+    }
+
+    public void tabla() {
+        mdlTblEmp = (DefaultTableModel) tblEmpleado.getModel();
+        jSPEmp.getViewport().setBackground(Color.white);
     }
 
     /**
@@ -34,7 +51,7 @@ public class CRUDEmpleado extends javax.swing.JFrame {
         jpOpcionesEmp = new javax.swing.JPanel();
         btnNuevoEmp = new javax.swing.JButton();
         btnRegistrarEmp = new javax.swing.JButton();
-        btnBuscarEmp = new javax.swing.JButton();
+        btnConsultarEmp = new javax.swing.JButton();
         btnActualizarEmp = new javax.swing.JButton();
         btnEliminarEmp = new javax.swing.JButton();
         jpCardEmp = new javax.swing.JPanel();
@@ -46,37 +63,22 @@ public class CRUDEmpleado extends javax.swing.JFrame {
         btnListarEmp = new javax.swing.JButton();
         txtFiltroNombreEmp = new javax.swing.JTextField();
         jpDatosEmp = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        txtNombreEmp = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        txtNombresEmp = new javax.swing.JTextField();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
         txtUsuarioEmp = new javax.swing.JTextField();
-        jLabel28 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
         txtDniEmp = new javax.swing.JTextField();
-        jLabel29 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
         txtContraEmp = new javax.swing.JTextField();
-        jLabel30 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
         cboCargoEmp = new javax.swing.JComboBox<>();
         cboGeneroEmp = new javax.swing.JComboBox<>();
         cboEstadoEmp = new javax.swing.JComboBox<>();
-        jLabel31 = new javax.swing.JLabel();
-        jpModificarEmp = new javax.swing.JPanel();
-        jLabel33 = new javax.swing.JLabel();
-        txtNombresEmpM = new javax.swing.JTextField();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        txtUsuarioEmpM = new javax.swing.JTextField();
-        jLabel36 = new javax.swing.JLabel();
-        txtDniEmpM = new javax.swing.JTextField();
-        jLabel37 = new javax.swing.JLabel();
-        txtContraEmpM = new javax.swing.JTextField();
-        jLabel38 = new javax.swing.JLabel();
-        cboCargoEmpM = new javax.swing.JComboBox<>();
-        cboGeneroEmpM = new javax.swing.JComboBox<>();
-        cboEstadoEmpM = new javax.swing.JComboBox<>();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        txtCodigoEmpM = new javax.swing.JTextField();
+        txtCodigoEmp = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -127,22 +129,27 @@ public class CRUDEmpleado extends javax.swing.JFrame {
         btnRegistrarEmp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnRegistrarEmp.setPreferredSize(new java.awt.Dimension(120, 75));
         btnRegistrarEmp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jpOpcionesEmp.add(btnRegistrarEmp);
-
-        btnBuscarEmp.setBackground(new java.awt.Color(204, 204, 204));
-        btnBuscarEmp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnBuscarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/search32x32.png"))); // NOI18N
-        btnBuscarEmp.setText("CONSULTAR");
-        btnBuscarEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBuscarEmp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnBuscarEmp.setPreferredSize(new java.awt.Dimension(120, 75));
-        btnBuscarEmp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnBuscarEmp.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarEmpActionPerformed(evt);
+                btnRegistrarEmpActionPerformed(evt);
             }
         });
-        jpOpcionesEmp.add(btnBuscarEmp);
+        jpOpcionesEmp.add(btnRegistrarEmp);
+
+        btnConsultarEmp.setBackground(new java.awt.Color(204, 204, 204));
+        btnConsultarEmp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnConsultarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/search32x32.png"))); // NOI18N
+        btnConsultarEmp.setText("CONSULTAR");
+        btnConsultarEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnConsultarEmp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnConsultarEmp.setPreferredSize(new java.awt.Dimension(120, 75));
+        btnConsultarEmp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnConsultarEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarEmpActionPerformed(evt);
+            }
+        });
+        jpOpcionesEmp.add(btnConsultarEmp);
 
         btnActualizarEmp.setBackground(new java.awt.Color(204, 204, 204));
         btnActualizarEmp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -153,6 +160,11 @@ public class CRUDEmpleado extends javax.swing.JFrame {
         btnActualizarEmp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnActualizarEmp.setPreferredSize(new java.awt.Dimension(120, 75));
         btnActualizarEmp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnActualizarEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarEmpActionPerformed(evt);
+            }
+        });
         jpOpcionesEmp.add(btnActualizarEmp);
 
         btnEliminarEmp.setBackground(new java.awt.Color(204, 204, 204));
@@ -163,6 +175,11 @@ public class CRUDEmpleado extends javax.swing.JFrame {
         btnEliminarEmp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEliminarEmp.setPreferredSize(new java.awt.Dimension(120, 75));
         btnEliminarEmp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEliminarEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarEmpActionPerformed(evt);
+            }
+        });
         jpOpcionesEmp.add(btnEliminarEmp);
 
         jpMUsuarios.add(jpOpcionesEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 50, 970, 85));
@@ -205,6 +222,11 @@ public class CRUDEmpleado extends javax.swing.JFrame {
         btnExtraerEmp.setBackground(new java.awt.Color(255, 255, 255));
         btnExtraerEmp.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnExtraerEmp.setText("MODIFICAR USUARIO");
+        btnExtraerEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExtraerEmpActionPerformed(evt);
+            }
+        });
         jpConsultaEmp.add(btnExtraerEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 220, 30));
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -214,6 +236,11 @@ public class CRUDEmpleado extends javax.swing.JFrame {
         btnListarEmp.setBackground(new java.awt.Color(255, 255, 255));
         btnListarEmp.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnListarEmp.setText("LISTAR");
+        btnListarEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarEmpActionPerformed(evt);
+            }
+        });
         jpConsultaEmp.add(btnListarEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 15, 120, 40));
 
         txtFiltroNombreEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -224,184 +251,109 @@ public class CRUDEmpleado extends javax.swing.JFrame {
         jpDatosEmp.setBackground(new java.awt.Color(255, 255, 255));
         jpDatosEmp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel11.setText("NOMBRES Y APELLIDOS:");
-        jpDatosEmp.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, 30));
+        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel33.setText("NOMBRES Y APELLIDOS:");
+        jpDatosEmp.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 30));
 
-        txtNombreEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtNombreEmp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNombreEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtNombreEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpDatosEmp.add(txtNombreEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 300, 30));
+        txtNombresEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtNombresEmp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNombresEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtNombresEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtNombresEmp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombresEmpKeyTyped(evt);
+            }
+        });
+        jpDatosEmp.add(txtNombresEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 300, 30));
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel17.setText("CARGO:");
-        jpDatosEmp.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 30));
+        jLabel34.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel34.setText("CARGO:");
+        jpDatosEmp.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 200, 30));
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel18.setText("USUARIO:");
-        jpDatosEmp.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 200, 30));
+        jLabel35.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel35.setText("USUARIO:");
+        jpDatosEmp.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 200, 30));
 
         txtUsuarioEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txtUsuarioEmp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUsuarioEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtUsuarioEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpDatosEmp.add(txtUsuarioEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 220, 30));
+        jpDatosEmp.add(txtUsuarioEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 220, 30));
 
-        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel28.setText("D.N.I.:");
-        jpDatosEmp.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 200, 30));
+        jLabel36.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel36.setText("D.N.I.:");
+        jpDatosEmp.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, 30));
 
         txtDniEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txtDniEmp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDniEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtDniEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpDatosEmp.add(txtDniEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
+        txtDniEmp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDniEmpKeyTyped(evt);
+            }
+        });
+        jpDatosEmp.add(txtDniEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 220, 30));
 
-        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel29.setText("CONTRASEÑA:");
-        jpDatosEmp.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 200, 30));
+        jLabel37.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel37.setText("CONTRASEÑA:");
+        jpDatosEmp.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 200, 30));
 
         txtContraEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txtContraEmp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtContraEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtContraEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpDatosEmp.add(txtContraEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 220, 30));
+        jpDatosEmp.add(txtContraEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 220, 30));
 
-        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel30.setText("GÉNERO:");
-        jpDatosEmp.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 200, 30));
+        jLabel38.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel38.setText("GÉNERO:");
+        jpDatosEmp.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 200, 30));
 
         cboCargoEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         cboCargoEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Administrador", "Cajero" }));
         cboCargoEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         cboCargoEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cboCargoEmp.setEditor(null);
-        jpDatosEmp.add(cboCargoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 220, 30));
+        jpDatosEmp.add(cboCargoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
 
         cboGeneroEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboGeneroEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Hombre", "Mujer" }));
+        cboGeneroEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Masculino", "Femenino" }));
         cboGeneroEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         cboGeneroEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cboGeneroEmp.setEditor(null);
         jpDatosEmp.add(cboGeneroEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 220, 30));
 
         cboEstadoEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboEstadoEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Activo", "Inactivo" }));
+        cboEstadoEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
         cboEstadoEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         cboEstadoEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cboEstadoEmp.setEditor(null);
         jpDatosEmp.add(cboEstadoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 220, 30));
 
-        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel31.setText("ESTADO:");
-        jpDatosEmp.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 200, 30));
-
-        jpCardEmp.add(jpDatosEmp, "card2");
-
-        jpModificarEmp.setBackground(new java.awt.Color(255, 255, 255));
-        jpModificarEmp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel33.setText("NOMBRES Y APELLIDOS:");
-        jpModificarEmp.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 30));
-
-        txtNombresEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtNombresEmpM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtNombresEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtNombresEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpModificarEmp.add(txtNombresEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 300, 30));
-
-        jLabel34.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel34.setText("CARGO:");
-        jpModificarEmp.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 200, 30));
-
-        jLabel35.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel35.setText("USUARIO:");
-        jpModificarEmp.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 200, 30));
-
-        txtUsuarioEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtUsuarioEmpM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUsuarioEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtUsuarioEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpModificarEmp.add(txtUsuarioEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 220, 30));
-
-        jLabel36.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel36.setText("D.N.I.:");
-        jpModificarEmp.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 200, 30));
-
-        txtDniEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtDniEmpM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDniEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtDniEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpModificarEmp.add(txtDniEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 220, 30));
-
-        jLabel37.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel37.setText("CONTRASEÑA:");
-        jpModificarEmp.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 200, 30));
-
-        txtContraEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtContraEmpM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtContraEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtContraEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpModificarEmp.add(txtContraEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 220, 30));
-
-        jLabel38.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel38.setText("GÉNERO:");
-        jpModificarEmp.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 200, 30));
-
-        cboCargoEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboCargoEmpM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Administrador", "Cajero" }));
-        cboCargoEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboCargoEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboCargoEmpM.setEditor(null);
-        jpModificarEmp.add(cboCargoEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
-
-        cboGeneroEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboGeneroEmpM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Hombre", "Mujer" }));
-        cboGeneroEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboGeneroEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboGeneroEmpM.setEditor(null);
-        jpModificarEmp.add(cboGeneroEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 220, 30));
-
-        cboEstadoEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboEstadoEmpM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Activo", "Inactivo" }));
-        cboEstadoEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboEstadoEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboEstadoEmpM.setEditor(null);
-        jpModificarEmp.add(cboEstadoEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 220, 30));
-
         jLabel39.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel39.setText("ESTADO:");
-        jpModificarEmp.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 200, 30));
+        jpDatosEmp.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 200, 30));
 
         jLabel40.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel40.setText("CÓDIGO:");
-        jpModificarEmp.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, 30));
+        jpDatosEmp.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, 30));
 
-        txtCodigoEmpM.setEditable(false);
-        txtCodigoEmpM.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtCodigoEmpM.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtCodigoEmpM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtCodigoEmpM.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jpModificarEmp.add(txtCodigoEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 220, 30));
+        txtCodigoEmp.setEditable(false);
+        txtCodigoEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtCodigoEmp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCodigoEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtCodigoEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jpDatosEmp.add(txtCodigoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 220, 30));
 
-        jpCardEmp.add(jpModificarEmp, "card4");
+        jpCardEmp.add(jpDatosEmp, "card4");
 
         jpMUsuarios.add(jpCardEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 140, 970, 400));
 
@@ -430,12 +382,40 @@ public class CRUDEmpleado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevoEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoEmpActionPerformed
-
+        nuevo();
     }//GEN-LAST:event_btnNuevoEmpActionPerformed
 
-    private void btnBuscarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpActionPerformed
+    private void btnConsultarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarEmpActionPerformed
+        consultar();
+    }//GEN-LAST:event_btnConsultarEmpActionPerformed
 
-    }//GEN-LAST:event_btnBuscarEmpActionPerformed
+    private void btnExtraerEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExtraerEmpActionPerformed
+        extraer();
+    }//GEN-LAST:event_btnExtraerEmpActionPerformed
+
+    private void btnListarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEmpActionPerformed
+        listar();
+    }//GEN-LAST:event_btnListarEmpActionPerformed
+
+    private void btnEliminarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEmpActionPerformed
+        eliminar();
+    }//GEN-LAST:event_btnEliminarEmpActionPerformed
+
+    private void btnActualizarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarEmpActionPerformed
+        actualizar();
+    }//GEN-LAST:event_btnActualizarEmpActionPerformed
+
+    private void btnRegistrarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEmpActionPerformed
+        registrar();
+    }//GEN-LAST:event_btnRegistrarEmpActionPerformed
+
+    private void txtDniEmpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniEmpKeyTyped
+        soloDni(evt);
+    }//GEN-LAST:event_txtDniEmpKeyTyped
+
+    private void txtNombresEmpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombresEmpKeyTyped
+        soloLetras(evt);
+    }//GEN-LAST:event_txtNombresEmpKeyTyped
 
     /**
      * @param args the command line arguments
@@ -474,27 +454,17 @@ public class CRUDEmpleado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnActualizarEmp;
-    public static javax.swing.JButton btnBuscarEmp;
+    public static javax.swing.JButton btnConsultarEmp;
     public static javax.swing.JButton btnEliminarEmp;
     public static javax.swing.JButton btnExtraerEmp;
     public static javax.swing.JButton btnListarEmp;
     public static javax.swing.JButton btnNuevoEmp;
     public static javax.swing.JButton btnRegistrarEmp;
     public static javax.swing.JComboBox<String> cboCargoEmp;
-    public static javax.swing.JComboBox<String> cboCargoEmpM;
     public static javax.swing.JComboBox<String> cboEstadoEmp;
-    public static javax.swing.JComboBox<String> cboEstadoEmpM;
     public static javax.swing.JComboBox<String> cboGeneroEmp;
-    public static javax.swing.JComboBox<String> cboGeneroEmpM;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -509,18 +479,347 @@ public class CRUDEmpleado extends javax.swing.JFrame {
     public static javax.swing.JPanel jpConsultaEmp;
     public static javax.swing.JPanel jpDatosEmp;
     public static javax.swing.JPanel jpMUsuarios;
-    public static javax.swing.JPanel jpModificarEmp;
     public static javax.swing.JPanel jpOpcionesEmp;
     public static javax.swing.JTable tblEmpleado;
-    public static javax.swing.JTextField txtCodigoEmpM;
+    public static javax.swing.JTextField txtCodigoEmp;
     public static javax.swing.JTextField txtContraEmp;
-    public static javax.swing.JTextField txtContraEmpM;
     public static javax.swing.JTextField txtDniEmp;
-    public static javax.swing.JTextField txtDniEmpM;
     public static javax.swing.JTextField txtFiltroNombreEmp;
-    public static javax.swing.JTextField txtNombreEmp;
-    public static javax.swing.JTextField txtNombresEmpM;
+    public static javax.swing.JTextField txtNombresEmp;
     public static javax.swing.JTextField txtUsuarioEmp;
-    public static javax.swing.JTextField txtUsuarioEmpM;
     // End of variables declaration//GEN-END:variables
+    private boolean validarCampos() {
+        boolean verificar = nombres().equals("")
+                || cboCargoEmp.getSelectedIndex() == 0
+                || dni().equals("")
+                || usuario().equals("")
+                || contrasenia().equals("")
+                || cboGeneroEmp.getSelectedIndex() == 0;
+        return verificar;
+    }
+
+    private void registrar() {
+        try {
+            if (!validarCampos()) {
+                cc.conectarBD();
+                PreparedStatement ps = cc.conexion.prepareStatement("insert into Empleado values (?, ?, ?, ?, ?, ?, ?)");
+                ps.setString(1, nombres());
+                ps.setString(2, cargo());
+                ps.setString(3, dni());
+                ps.setString(4, usuario());
+                ps.setString(5, contrasenia());
+                ps.setString(6, genero());
+                ps.setInt(7, estado());
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Empleado Registrado");
+                btnRegistrarEmp.setEnabled(false);
+                traerCodEmp();
+            } else {
+                JOptionPane.showMessageDialog(null, "Rellene los campos faltantes.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "registrar " + e);
+        } finally {
+            cc.desconectarBD();
+        }
+    }
+
+    private void extraer() {
+        try {
+            int fila = tblEmpleado.getSelectedRow();
+            if (fila >= 0) {
+                String cod = (String) tblEmpleado.getValueAt(fila, 0);
+                cc.conectarBD();
+                Statement st = cc.conexion.createStatement();
+                ResultSet rs = st.executeQuery("select * from Empleado where codEmp = " + cod);
+                String datos[] = new String[7];
+                rs.next();
+                datos[0] = rs.getString(2);
+                datos[1] = rs.getString(3);
+                datos[2] = rs.getString(4);
+                datos[3] = rs.getString(5);
+                datos[4] = rs.getString(6);
+                datos[5] = rs.getString(7);
+                datos[6] = rs.getString(8);
+
+                txtCodigoEmp.setText(cod);
+                txtNombresEmp.setText(datos[0]);
+                cboCargoEmp.setSelectedItem(datos[1]);
+                txtDniEmp.setText(datos[2]);
+                txtUsuarioEmp.setText(datos[3]);
+                txtContraEmp.setText(datos[4]);
+                String genero = datos[5];
+                switch (genero) {
+                    case "M":
+                        cboGeneroEmp.setSelectedIndex(1);
+                        break;
+                    case "F":
+                        cboGeneroEmp.setSelectedIndex(2);
+                        break;
+                    default:
+                        cboGeneroEmp.setSelectedIndex(0);
+                        break;
+                }
+                String estado = datos[6];
+                switch (estado) {
+                    case "1":
+                        cboEstadoEmp.setSelectedIndex(0);
+                        break;
+                    case "0":
+                        cboEstadoEmp.setSelectedIndex(1);
+                        break;
+                    default:
+                        cboEstadoEmp.setSelectedIndex(0);
+                        break;
+                }
+                /**/
+                btnActualizarEmp.setEnabled(true);
+                btnEliminarEmp.setEnabled(false);
+                cambiarJPanel(jpCardEmp, jpDatosEmp);
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione una fila de la tabla para modificar.");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "extraer " + e);
+        } finally {
+            cc.desconectarBD();
+        }
+    }
+
+    private void actualizar() {
+        try {
+            if (!validarCampos()) {
+                cc.conectarBD();
+            PreparedStatement ps = cc.conexion.prepareStatement("update Empleado set nombApeEmp = '" + nombres()
+                    + "', cargoEmp = '" + cargo() + "', dniEmp = '" + dni() + "', usuEmp = '" + usuario()
+                    + "', contraEmp = '" + contrasenia() + "', genEmp = '" + genero() + "', estado = '" + estado()
+                    + "'  where codEmp = " + codigo());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Datos Actualizados");
+            btnActualizarEmp.setEnabled(false);
+            btnNuevoEmp.setEnabled(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Rellene los campos faltantes.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "actualizar " + e);
+        } finally {
+            cc.desconectarBD();
+        }
+    }
+
+    private void eliminar() {
+        int fila = tblEmpleado.getSelectedRow();
+        if (fila >= 0) {
+            int confirmar = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar el empleado?");
+            if (confirmar == 0) {
+                String cod = (String) tblEmpleado.getValueAt(fila, 0);
+                try {
+                    cc.conectarBD();
+                    PreparedStatement ps = cc.conexion.prepareStatement("delete from Empleado where codEmp = " + cod);
+                    ps.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Empleado eliminado");
+                    listar();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "eliminar " + e);
+                } finally {
+                    cc.desconectarBD();
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila.");
+        }
+    }
+
+    private void listar() {
+        //limpiar la tabla
+        int filas = mdlTblEmp.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            mdlTblEmp.removeRow(0);
+        }
+        /**
+         * ** TRAER DATOS DE SQL SERVER HACIA LA TABLA ***
+         */
+        try {
+            String datos[] = new String[6];
+            cc.conectarBD();
+            Statement st = cc.conexion.createStatement();
+            ResultSet rs = st.executeQuery(buscar());
+
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
+                String usuario = rs.getString(5);//ocultar
+                String contrasenia = rs.getString(6);//ocultar
+                datos[4] = rs.getString(7);
+                String estado = "";
+                switch (rs.getInt(8)) {
+                    case 1:
+                        estado = "Activo";
+                        break;
+                    case 0:
+                        estado = "Inactivo";
+                        break;
+                    default:
+                        break;
+                }
+                datos[5] = estado;
+                mdlTblEmp.addRow(datos);
+            }
+            txtFiltroNombreEmp.requestFocus();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "listar " + e);
+        } finally {
+            cc.desconectarBD();
+        }
+    }
+
+    private void consultar() {
+        cambiarJPanel(jpCardEmp, jpConsultaEmp);
+        listar();
+        btnActualizarEmp.setEnabled(false);
+        btnRegistrarEmp.setEnabled(false);
+        btnEliminarEmp.setEnabled(true);
+        btnNuevoEmp.setEnabled(true);
+    }
+
+    private String buscar() {
+        String consultar = "";
+        try {
+            if (filtroNombre().equals("")) {
+                consultar = "select * from Empleado";
+            } else {
+                consultar = "select * from Empleado where nombApeEmp  like '%" + filtroNombre() + "%'";
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo mostrar los datos");
+        }
+        return consultar;
+    }
+
+    private void nuevo() {
+        cambiarJPanel(jpCardEmp, jpDatosEmp);
+        traerCodEmp();
+        txtNombresEmp.setText("");
+        cboCargoEmp.setSelectedIndex(0);
+        txtDniEmp.setText("");
+        cboGeneroEmp.setSelectedIndex(0);
+        cboEstadoEmp.setSelectedIndex(0);
+        txtUsuarioEmp.setText("");
+        txtContraEmp.setText("");
+        btnRegistrarEmp.setEnabled(true);
+        btnActualizarEmp.setEnabled(false);
+        btnEliminarEmp.setEnabled(false);
+    }
+
+    /* Filtros */
+    private String filtroNombre() {
+        return txtFiltroNombreEmp.getText();
+    }
+
+    /* Modificar */
+    private int codigo() {
+        return Integer.parseInt(txtCodigoEmp.getText());
+    }
+
+    /* REGISTRAR*/
+    private String nombres() {
+        return txtNombresEmp.getText();
+    }
+
+    private String cargo() {
+        return (String) cboCargoEmp.getSelectedItem();
+    }
+
+    private String dni() {
+        return txtDniEmp.getText();
+    }
+
+    private String usuario() {
+        return txtUsuarioEmp.getText();
+    }
+
+    private String contrasenia() {
+        return txtContraEmp.getText();
+    }
+
+    private String genero() {
+        int genero = cboGeneroEmp.getSelectedIndex();
+        String gen = null;
+        switch (genero) {
+            case 1:
+                gen = "M";
+                break;
+            case 2:
+                gen = "F";
+                break;
+            default:
+                break;
+        }
+        return gen;
+    }
+
+    private int estado() {
+        int estado = cboEstadoEmp.getSelectedIndex();
+        int est = 1;
+        switch (estado) {
+            case 0:
+                est = 1;
+                break;
+            case 1:
+                est = 0;
+                break;
+            default:
+                break;
+        }
+        return est;
+    }
+
+    private void cambiarJPanel(JPanel card, JPanel jp) {
+        card.removeAll();
+        card.repaint();
+        card.add(jp);
+        card.repaint();
+        card.revalidate();
+    }
+
+    private void traerCodEmp() {
+        int nextEmp = 0;
+        try {
+            cc.conectarBD();
+            Statement st = cc.conexion.createStatement();
+            ResultSet rs = st.executeQuery("select codEmp from Empleado");
+            while (rs.next()) {
+                nextEmp = rs.getInt(1);
+            }
+            nextEmp += 1;
+            txtCodigoEmp.setText(String.valueOf(nextEmp));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            cc.desconectarBD();
+        }
+    }
+
+    private void soloLetras(KeyEvent evt) {
+        Character c = evt.getKeyChar();
+        if (Character.isAlphabetic(c) || Character.isWhitespace(c)) {
+
+        } else {
+            evt.consume();
+        }
+    }
+
+    private void soloDni(KeyEvent evt) {
+        Character c = evt.getKeyChar();
+        if (Character.isDigit(c)) {
+            if (txtDniEmp.getText().length() == 8) {
+                evt.consume();
+            }
+        } else {
+            evt.consume();
+        }
+    }
 }

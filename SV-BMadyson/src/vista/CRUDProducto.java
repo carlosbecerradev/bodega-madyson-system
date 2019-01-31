@@ -16,20 +16,6 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import static vista.CRUDCliente.btnActualizarCli;
-import static vista.CRUDCliente.btnEliminarCli;
-import static vista.CRUDCliente.btnNuevoCli;
-import static vista.CRUDCliente.btnRegistrarCli;
-import static vista.CRUDCliente.cboGeneroCli;
-import static vista.CRUDCliente.jpCardCli;
-import static vista.CRUDCliente.jpConsultaCli;
-import static vista.CRUDCliente.jpDatos;
-import static vista.CRUDCliente.tblCliente;
-import static vista.CRUDCliente.txtCodigoCli;
-import static vista.CRUDCliente.txtCorreoCli;
-import static vista.CRUDCliente.txtDniCli;
-import static vista.CRUDCliente.txtFiltroNombre;
-import static vista.CRUDCliente.txtNombreCli;
 
 /**
  *
@@ -71,6 +57,13 @@ public class CRUDProducto extends javax.swing.JFrame {
         btnActualizarProd = new javax.swing.JButton();
         btnEliminarProd = new javax.swing.JButton();
         jpCardProd = new javax.swing.JPanel();
+        jpConsultaProd = new javax.swing.JPanel();
+        jSPProd = new javax.swing.JScrollPane();
+        tblProducto = new javax.swing.JTable();
+        btnExtraerProd = new javax.swing.JButton();
+        jLabel50 = new javax.swing.JLabel();
+        btnListarProd = new javax.swing.JButton();
+        txtFiltroNombreProd = new javax.swing.JTextField();
         jpDatosProd = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         txtArticuloProd = new javax.swing.JTextField();
@@ -82,13 +75,6 @@ public class CRUDProducto extends javax.swing.JFrame {
         cboMarcaProd = new javax.swing.JComboBox<>();
         txtCodigoProd = new javax.swing.JTextField();
         jLabel51 = new javax.swing.JLabel();
-        jpConsultaProd = new javax.swing.JPanel();
-        jSPProd = new javax.swing.JScrollPane();
-        tblProducto = new javax.swing.JTable();
-        btnExtraerProd = new javax.swing.JButton();
-        jLabel50 = new javax.swing.JLabel();
-        btnListarProd = new javax.swing.JButton();
-        txtFiltroNombreProd = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -196,6 +182,75 @@ public class CRUDProducto extends javax.swing.JFrame {
 
         jpCardProd.setLayout(new java.awt.CardLayout());
 
+        jpConsultaProd.setBackground(new java.awt.Color(255, 255, 255));
+        jpConsultaProd.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jSPProd.setBackground(new java.awt.Color(255, 255, 255));
+        jSPProd.setOpaque(false);
+
+        tblProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tblProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tblProducto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "CÓDIGO", "ARTÍCULO", "MARCA", "PRECIO VENTA", "STOCK"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblProducto.setOpaque(false);
+        tblProducto.setSelectionBackground(new java.awt.Color(102, 0, 0));
+        tblProducto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblProducto.getTableHeader().setResizingAllowed(false);
+        tblProducto.getTableHeader().setReorderingAllowed(false);
+        tblProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblProductoMouseClicked(evt);
+            }
+        });
+        jSPProd.setViewportView(tblProducto);
+
+        jpConsultaProd.add(jSPProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 930, 280));
+
+        btnExtraerProd.setBackground(new java.awt.Color(255, 255, 255));
+        btnExtraerProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnExtraerProd.setText("MODIFICAR PRODUCTO");
+        btnExtraerProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExtraerProdActionPerformed(evt);
+            }
+        });
+        jpConsultaProd.add(btnExtraerProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 250, 30));
+
+        jLabel50.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel50.setText("FILTRAR POR ARTÍCULO:");
+        jpConsultaProd.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 260, 30));
+
+        btnListarProd.setBackground(new java.awt.Color(255, 255, 255));
+        btnListarProd.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnListarProd.setForeground(new java.awt.Color(51, 51, 51));
+        btnListarProd.setText("LISTAR");
+        btnListarProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarProdActionPerformed(evt);
+            }
+        });
+        jpConsultaProd.add(btnListarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 15, 120, 40));
+
+        txtFiltroNombreProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jpConsultaProd.add(txtFiltroNombreProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 300, 30));
+
+        jpCardProd.add(jpConsultaProd, "card3");
+
         jpDatosProd.setBackground(new java.awt.Color(255, 255, 255));
         jpDatosProd.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -272,75 +327,6 @@ public class CRUDProducto extends javax.swing.JFrame {
         jpDatosProd.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, 30));
 
         jpCardProd.add(jpDatosProd, "card4");
-
-        jpConsultaProd.setBackground(new java.awt.Color(255, 255, 255));
-        jpConsultaProd.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jSPProd.setBackground(new java.awt.Color(255, 255, 255));
-        jSPProd.setOpaque(false);
-
-        tblProducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        tblProducto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tblProducto.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "CÓDIGO", "ARTÍCULO", "MARCA", "PRECIO VENTA", "STOCK", "CATEGORÍA"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblProducto.setOpaque(false);
-        tblProducto.setSelectionBackground(new java.awt.Color(102, 0, 0));
-        tblProducto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblProducto.getTableHeader().setResizingAllowed(false);
-        tblProducto.getTableHeader().setReorderingAllowed(false);
-        tblProducto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblProductoMouseClicked(evt);
-            }
-        });
-        jSPProd.setViewportView(tblProducto);
-
-        jpConsultaProd.add(jSPProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 930, 280));
-
-        btnExtraerProd.setBackground(new java.awt.Color(255, 255, 255));
-        btnExtraerProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnExtraerProd.setText("MODIFICAR PRODUCTO");
-        btnExtraerProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExtraerProdActionPerformed(evt);
-            }
-        });
-        jpConsultaProd.add(btnExtraerProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 250, 30));
-
-        jLabel50.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel50.setText("FILTRAR POR ARTÍCULO:");
-        jpConsultaProd.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 260, 30));
-
-        btnListarProd.setBackground(new java.awt.Color(255, 255, 255));
-        btnListarProd.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnListarProd.setForeground(new java.awt.Color(51, 51, 51));
-        btnListarProd.setText("LISTAR");
-        btnListarProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListarProdActionPerformed(evt);
-            }
-        });
-        jpConsultaProd.add(btnListarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 15, 120, 40));
-
-        txtFiltroNombreProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jpConsultaProd.add(txtFiltroNombreProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 300, 30));
-
-        jpCardProd.add(jpConsultaProd, "card3");
 
         jpMProductos.add(jpCardProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 140, 970, 400));
 
@@ -484,18 +470,30 @@ public class CRUDProducto extends javax.swing.JFrame {
     public static javax.swing.JTextField txtPrecioVentaPro;
     public static javax.swing.JTextField txtStockProd;
     // End of variables declaration//GEN-END:variables
+    private boolean validarCampos() {
+        boolean verificar = articulo().equals("")
+                || cboMarcaProd.getSelectedIndex() == 0
+                || precioVenta().equals("")
+                || stock().equals("");
+        return verificar;
+    }
+
     private void registrar() {
         try {
-            cc.conectarBD();
-            PreparedStatement ps = cc.conexion.prepareStatement("insert into Producto values (?, ?, ?, ?)");
-            ps.setString(1, articulo());
-            ps.setString(2, marca());
-            ps.setString(3, precioVenta());
-            ps.setString(4, stock());
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Producto Registrado");
-            btnRegistrarProd.setEnabled(false);
-            traerCodProd();
+            if (!validarCampos()) {
+                cc.conectarBD();
+                PreparedStatement ps = cc.conexion.prepareStatement("insert into Producto values (?, ?, ?, ?)");
+                ps.setString(1, articulo());
+                ps.setString(2, marca());
+                ps.setString(3, precioVenta());
+                ps.setString(4, stock());
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Producto Registrado");
+                btnRegistrarProd.setEnabled(false);
+                traerCodProd();
+            } else {
+                JOptionPane.showMessageDialog(null, "Rellene los campos faltantes.");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "registrar " + e);
         } finally {
@@ -527,7 +525,7 @@ public class CRUDProducto extends javax.swing.JFrame {
                 /**/
                 btnActualizarProd.setEnabled(true);
                 btnEliminarProd.setEnabled(false);
-                cambiarJPanel(jpCardProd,jpDatosProd);
+                cambiarJPanel(jpCardProd, jpDatosProd);
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila de la tabla para modificar.");
             }
@@ -540,14 +538,18 @@ public class CRUDProducto extends javax.swing.JFrame {
 
     private void actualizar() {
         try {
-            cc.conectarBD();
-            PreparedStatement ps = cc.conexion.prepareStatement("update Producto set articulo = '" + 
-                    articulo() + "', marca = '" + marca() + "', precioVenta = '" + precioVenta() + 
-                    "', stock = '" + stock() + "'  where codProd = " + codigo());
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Datos Actualizados");
-            btnActualizarProd.setEnabled(false);
-            btnNuevoProd.setEnabled(true);
+            if (!validarCampos()) {
+                cc.conectarBD();
+                PreparedStatement ps = cc.conexion.prepareStatement("update Producto set articulo = '"
+                        + articulo() + "', marca = '" + marca() + "', precioVenta = '" + precioVenta()
+                        + "', stock = '" + stock() + "'  where codProd = " + codigo());
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Datos Actualizados");
+                btnActualizarProd.setEnabled(false);
+                btnNuevoProd.setEnabled(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Rellene los campos faltantes.");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "actualizar " + e);
         } finally {
@@ -560,7 +562,7 @@ public class CRUDProducto extends javax.swing.JFrame {
         if (fila >= 0) {
             int confirmar = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar el producto?");
             if (confirmar == 0) {
-                String cod = (String)tblProducto.getValueAt(fila, 0);
+                String cod = (String) tblProducto.getValueAt(fila, 0);
                 try {
                     cc.conectarBD();
                     PreparedStatement ps = cc.conexion.prepareStatement("delete from Producto where codProd = " + cod);
@@ -616,7 +618,7 @@ public class CRUDProducto extends javax.swing.JFrame {
         btnRegistrarProd.setEnabled(false);
         btnEliminarProd.setEnabled(true);
         btnNuevoProd.setEnabled(true);
-        
+
     }
 
     private String buscar() {
@@ -642,6 +644,7 @@ public class CRUDProducto extends javax.swing.JFrame {
         txtStockProd.setText("");
         btnRegistrarProd.setEnabled(true);
         btnActualizarProd.setEnabled(false);
+        btnEliminarProd.setEnabled(false);
     }
 
 
