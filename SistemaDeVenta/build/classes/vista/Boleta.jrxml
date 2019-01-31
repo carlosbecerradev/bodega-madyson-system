@@ -13,12 +13,13 @@
 			<style backcolor="#E6DAC3"/>
 		</conditionalStyle>
 	</style>
-	<queryString language="SQL">
+	<parameter name="numBoletaRasper" class="java.lang.String"/>
+	<queryString>
 		<![CDATA[select DetalleVenta.codVenta, articulo, marca,cantidad, importe
 from Venta
 inner join DetalleVenta on Venta.codVenta = DetalleVenta.codVenta
 inner join Producto on DetalleVenta.codProd = Producto.codProd
-where Venta.codVenta = 2]]>
+where Venta.codVenta = $P{numBoletaRasper}]]>
 	</queryString>
 	<field name="codVenta" class="java.lang.Integer"/>
 	<field name="articulo" class="java.lang.String"/>

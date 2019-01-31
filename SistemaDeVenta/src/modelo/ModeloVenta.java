@@ -12,7 +12,18 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import vista.JFPrincipal;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class ModeloVenta extends Conexion {
 
@@ -58,6 +69,7 @@ public class ModeloVenta extends Conexion {
                     this.conectarBD();
                     PreparedStatement ps = this.conexion.prepareStatement("update Producto set stock = " + (stockA - cantidad)
                             + " where codProd = " + codProd);
+                    vp.txtSStock.setText(String.valueOf((stockA - cantidad)));
                     ps.executeUpdate();
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e);
@@ -183,6 +195,7 @@ public class ModeloVenta extends Conexion {
                     psDv.setFloat(6, dv.getImporte());
                     psDv.executeUpdate();
                 }
+                creacionBoleta();
                 limpiarVenta();
                 JOptionPane.showMessageDialog(null, "Boleta Registrada.");
             } catch (Exception e) {
@@ -256,6 +269,26 @@ public class ModeloVenta extends Conexion {
         /* nueva boleta*/
         numeroBoleta();
     }
+    
+    public void creacionBoleta(){
+        this.conectarBD();
+        JasperReport jasr = null;
+        String archivo = "E:/GITHUB/Bodega-Madyson/SistemaDeVenta/src/vista/Boleta.jasper";
+        try {
+            /* creando el parámetro de la boleta */
+            Map parametro = new HashMap();
+            parametro.put("numBoletaRasper", vp.lblNBoleta.getText());
+            /* Inicializando boleta */
+            jasr = (JasperReport)JRLoader.loadObject(archivo);
+            JasperPrint jasp = JasperFillManager.fillReport(jasr, parametro, this.conexion);
+            JasperViewer jasv = new JasperViewer(jasp);            
+            jasv.setVisible(true);
+            jasv.setTitle("Boleta de Ventas");
+        } catch (JRException ex) {
+            Logger.getLogger(ModeloVenta.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+    }
+    
     
 }
