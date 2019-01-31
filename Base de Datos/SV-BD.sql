@@ -5,7 +5,7 @@ create database BodegaMadyson
 
 use BodegaMadyson
 
--- CREACIÓN DE LOGIN ADMINISTRADOR --
+-- CREACIÓN DE LOGIN ADMINISTRADOR /sa/123 --
 create login madyson
 with password = '12345',
 default_database = BodegaMadyson
@@ -108,8 +108,3 @@ select codCli, nombApeCli, dniCli, genCli, correoCli, totalVenta
 from Venta 
 inner join Cliente on Venta.codCli1 = Cliente.codCli
 
---Creando Vistas--
-create view list_cli as
-	select * from Cliente
-
-select * from list_cli
