@@ -55,8 +55,8 @@ fechaVenta date,
 totalVenta float,
 codEmp1 int,
 codCli1 int,
-constraint fk_ccl1 foreign key (codCli1) references Cliente (codCli),
-constraint fk_cem1 foreign key (codEmp1) references Empleado (codEmp)
+foreign key (codCli1) references Cliente (codCli),
+foreign key (codEmp1) references Empleado (codEmp)
 )
 
 create table DetalleVenta(
@@ -66,10 +66,10 @@ codCliente int,
 codEmpleado int,
 cantidad int,
 importe float,
-constraint fk_cv1 foreign key (codVenta) references Venta (codVenta),
-constraint fk_cpr1 foreign key (codProd) references Producto (codProd),
-constraint fk_ccl2 foreign key (codCliente) references Cliente (codCli),
-constraint fk_cem2 foreign key (codEmpleado) references Empleado (codEmp)
+foreign key (codVenta) references Venta (codVenta),
+foreign key (codProd) references Producto (codProd),
+foreign key (codCliente) references Cliente (codCli),
+foreign key (codEmpleado) references Empleado (codEmp)
 )
 
 select * from Cliente
@@ -97,7 +97,7 @@ inner join Cliente on Venta.codCli1 = Cliente.codCli
 inner join Empleado on Venta.codEmp1 = Empleado.codEmp
 
 -- Mostrar detalle de venta --
-select DetalleVenta.codVenta, articulo, marca,cantidad, importe
+select Producto.codProd, articulo, precioVenta,cantidad, importe
 from Venta
 inner join DetalleVenta on Venta.codVenta = DetalleVenta.codVenta
 inner join Producto on DetalleVenta.codProd = Producto.codProd

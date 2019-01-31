@@ -73,7 +73,7 @@ public class Login extends javax.swing.JFrame {
         jLabel8.setText("CONTRASEÑA:");
         jpIniciarSesion.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 140, 30));
 
-        txtContrasenia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtContrasenia.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txtContrasenia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtContrasenia.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         txtContrasenia.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -84,7 +84,7 @@ public class Login extends javax.swing.JFrame {
         });
         jpIniciarSesion.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, 200, 30));
 
-        txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));

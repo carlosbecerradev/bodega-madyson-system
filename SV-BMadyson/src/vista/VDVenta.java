@@ -5,20 +5,26 @@
  */
 package vista;
 
+import java.awt.Color;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Administrador
  */
-public class JFReVDetalle1 extends javax.swing.JFrame {
+public class VDVenta extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JFReVDetalle
-     */
-    public JFReVDetalle1() {
+    DefaultTableModel mdlVDVentas;
+    public VDVenta() {
         initComponents();
         this.setLocationRelativeTo(null);
+        tabla();
+        
     }
-
+    public void tabla() {
+        mdlVDVentas = (DefaultTableModel) tblVDVenta.getModel();
+        jSPVDetalleVenta.getViewport().setBackground(Color.white);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,34 +36,47 @@ public class JFReVDetalle1 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jSPVDetalleVenta = new javax.swing.JScrollPane();
-        tblReDetallVenta = new javax.swing.JTable();
+        tblVDVenta = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblReDetallVenta.setModel(new javax.swing.table.DefaultTableModel(
+        jSPVDetalleVenta.setBackground(new java.awt.Color(255, 255, 255));
+        jSPVDetalleVenta.setOpaque(false);
+
+        tblVDVenta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tblVDVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Articulo", "precio unit.", "cantidad", "importe"
+                "codigo", "Articulo", "precio unit.", "cantidad", "importe"
             }
-        ));
-        jSPVDetalleVenta.setViewportView(tblReDetallVenta);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
-        jPanel1.add(jSPVDetalleVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 550, 310));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblVDVenta.setOpaque(false);
+        jSPVDetalleVenta.setViewportView(tblVDVenta);
+
+        jPanel1.add(jSPVDetalleVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 640, 240));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         pack();
@@ -80,21 +99,35 @@ public class JFReVDetalle1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFReVDetalle1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VDVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFReVDetalle1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VDVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFReVDetalle1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VDVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFReVDetalle1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VDVenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFReVDetalle1().setVisible(true);
+                new VDVenta().setVisible(true);
             }
         });
     }
@@ -102,6 +135,6 @@ public class JFReVDetalle1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JScrollPane jSPVDetalleVenta;
-    public static javax.swing.JTable tblReDetallVenta;
+    public static javax.swing.JTable tblVDVenta;
     // End of variables declaration//GEN-END:variables
 }

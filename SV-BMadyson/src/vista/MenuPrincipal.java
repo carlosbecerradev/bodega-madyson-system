@@ -5,7 +5,6 @@
  */
 package vista;
 
-import com.sun.webkit.ContextMenu;
 import dao.Conexion;
 import java.awt.Color;
 import java.sql.PreparedStatement;
@@ -22,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     Conexion cc = new Conexion();
-    private DefaultTableModel mdlTblDVenta;
+    private DefaultTableModel mdlTblDVenta, mdlVVentas;
 
     public MenuPrincipal() {
         initComponents();
@@ -30,11 +29,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.setTitle("SISTEMA DE VENTAS");
         tabla();
         numeroBoleta();
+        tablaRV();
     }
 
     public void tabla() {
         mdlTblDVenta = (DefaultTableModel) tblDVenta.getModel();
         jSPDVenta.getViewport().setBackground(Color.white);
+    }
+
+    public void tablaRV() {
+        mdlVVentas = (DefaultTableModel) tblVVenta.getModel();
+        jSPReVenta.getViewport().setBackground(Color.white);
     }
 
     /**
@@ -94,26 +99,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jpVerVentas = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel66 = new javax.swing.JLabel();
-        jLabel67 = new javax.swing.JLabel();
         btnMostrarTodasVentas = new javax.swing.JButton();
         btnMostrarDetalleVenta = new javax.swing.JButton();
         jSPReVenta = new javax.swing.JScrollPane();
-        tblReVenta = new javax.swing.JTable();
+        tblVVenta = new javax.swing.JTable();
         btnImpVentas = new javax.swing.JButton();
-        jpVerClientes = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        btnClientesTop = new javax.swing.JButton();
-        jSPReClientes = new javax.swing.JScrollPane();
-        tblReClientes = new javax.swing.JTable();
-        btnImpClientes = new javax.swing.JButton();
-        jpVerProductos = new javax.swing.JPanel();
-        jSPReProductos = new javax.swing.JScrollPane();
-        tblReProductos = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
-        btnProdMasVendidos = new javax.swing.JButton();
-        btnProdMenosVendidos = new javax.swing.JButton();
-        btnImpProd = new javax.swing.JButton();
+        btnCalcularGanancia = new javax.swing.JButton();
+        txtGanancia = new javax.swing.JTextField();
         jpTitulo = new javax.swing.JPanel();
         lblNombNegocio = new javax.swing.JLabel();
         lblIcoUser = new javax.swing.JLabel();
@@ -122,8 +114,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnSistema = new javax.swing.JMenu();
         mnItemCerrarSesion = new javax.swing.JMenuItem();
         mnItemSalir = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -319,7 +309,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jpRealizarVenta.add(jpBuscarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 550, 250));
 
-        tblDVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tblDVenta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tblDVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -327,7 +317,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             new String [] {
                 "Código", "Producto", "Precio", "Cantidad", "Importe"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblDVenta.setOpaque(false);
         tblDVenta.setSelectionBackground(new java.awt.Color(0, 0, 0));
         tblDVenta.setSelectionForeground(new java.awt.Color(255, 255, 0));
@@ -369,9 +367,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jpRealizarVenta.add(jpBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 200, 490, 130));
 
-        btnRegistrarVenta.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegistrarVenta.setBackground(new java.awt.Color(0, 204, 51));
         btnRegistrarVenta.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnRegistrarVenta.setText("REGISTRAR VENTA");
+        btnRegistrarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnRegistrarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarVentaActionPerformed(evt);
@@ -445,104 +444,75 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpVerVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel66.setPreferredSize(new java.awt.Dimension(50, 50));
-        jPanel3.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 5, -1, -1));
-
-        jLabel67.setPreferredSize(new java.awt.Dimension(100, 0));
-        jPanel3.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 30, -1, -1));
-
+        btnMostrarTodasVentas.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnMostrarTodasVentas.setText("MOSTRAR TODO");
-        jPanel3.add(btnMostrarTodasVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 18, 250, 30));
+        btnMostrarTodasVentas.setPreferredSize(new java.awt.Dimension(200, 40));
+        btnMostrarTodasVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarTodasVentasActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnMostrarTodasVentas);
 
+        btnMostrarDetalleVenta.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnMostrarDetalleVenta.setText("VER DETALLE");
-        jPanel3.add(btnMostrarDetalleVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 18, 250, 30));
+        btnMostrarDetalleVenta.setPreferredSize(new java.awt.Dimension(200, 40));
+        btnMostrarDetalleVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarDetalleVentaActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnMostrarDetalleVenta);
 
-        jpVerVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 950, 60));
+        jpVerVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 950, 50));
 
-        tblReVenta.setModel(new javax.swing.table.DefaultTableModel(
+        jSPReVenta.setOpaque(false);
+
+        tblVVenta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tblVVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
                 "N° VENTA", "COD. CLI.", "CLIENTE", "FECHA", "TOTAL", "COD. VEND.", "VENDEDOR"
             }
-        ));
-        jSPReVenta.setViewportView(tblReVenta);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
 
-        jpVerVentas.add(jSPReVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 116, 950, 380));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblVVenta.setOpaque(false);
+        tblVVenta.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jSPReVenta.setViewportView(tblVVenta);
 
+        jpVerVentas.add(jSPReVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 950, 340));
+
+        btnImpVentas.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnImpVentas.setText("IMPRIMIR");
         btnImpVentas.setEnabled(false);
-        jpVerVentas.add(btnImpVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(853, 513, 150, 30));
+        jpVerVentas.add(btnImpVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 480, 190, 40));
+
+        btnCalcularGanancia.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnCalcularGanancia.setText("CALCULAR TOTAL");
+        btnCalcularGanancia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcularGananciaActionPerformed(evt);
+            }
+        });
+        jpVerVentas.add(btnCalcularGanancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 190, 40));
+
+        txtGanancia.setEditable(false);
+        txtGanancia.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtGanancia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtGanancia.setText("S/ ");
+        jpVerVentas.add(txtGanancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 480, 180, 40));
 
         jTabbedPane2.addTab("VER VENTAS  ", new javax.swing.ImageIcon(getClass().getResource("/iconos/bolsa-de-la-compra.png")), jpVerVentas); // NOI18N
-
-        jpVerClientes.setBackground(new java.awt.Color(255, 255, 255));
-        jpVerClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnClientesTop.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnClientesTop.setText("CLIENTES TOP");
-        btnClientesTop.setPreferredSize(new java.awt.Dimension(200, 40));
-        jPanel5.add(btnClientesTop);
-
-        jpVerClientes.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 36, 950, -1));
-
-        tblReClientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "COD.", "NOMBRE", "RUC", "DNI", "SEXO", "CORREO", "ESTADO"
-            }
-        ));
-        jSPReClientes.setViewportView(tblReClientes);
-
-        jpVerClientes.add(jSPReClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 116, 950, 390));
-
-        btnImpClientes.setText("IMPRIMIR");
-        btnImpClientes.setEnabled(false);
-        jpVerClientes.add(btnImpClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, 150, 30));
-
-        jTabbedPane2.addTab("VER CLIENTES  ", new javax.swing.ImageIcon(getClass().getResource("/iconos/subastador.png")), jpVerClientes); // NOI18N
-
-        jpVerProductos.setBackground(new java.awt.Color(255, 255, 255));
-        jpVerProductos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jpVerProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tblReProductos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "COD.", "NOMBRE", "PRECIO VENTA", "STOCK", "TOTAL VENDIDO", "MONTO ACUMULADO"
-            }
-        ));
-        jSPReProductos.setViewportView(tblReProductos);
-
-        jpVerProductos.add(jSPReProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 116, 950, 390));
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnProdMasVendidos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnProdMasVendidos.setText("MAS VENDIDOS");
-        btnProdMasVendidos.setPreferredSize(new java.awt.Dimension(200, 40));
-        jPanel6.add(btnProdMasVendidos);
-
-        btnProdMenosVendidos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnProdMenosVendidos.setText("MENOS VENDIDOS");
-        btnProdMenosVendidos.setPreferredSize(new java.awt.Dimension(200, 40));
-        jPanel6.add(btnProdMenosVendidos);
-
-        jpVerProductos.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 36, 950, -1));
-
-        btnImpProd.setText("IMPRIMIR");
-        jpVerProductos.add(btnImpProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, 150, 30));
-
-        jTabbedPane2.addTab("VER PRODUCTOS  ", new javax.swing.ImageIcon(getClass().getResource("/iconos/estar-de-pie.png")), jpVerProductos); // NOI18N
 
         jpReportes.add(jTabbedPane2);
 
@@ -605,19 +575,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnSistema.add(mnItemSalir);
 
         jMenuBar1.add(mnSistema);
-
-        jMenu1.setText("VENTAS");
-        jMenu1.setPreferredSize(new java.awt.Dimension(100, 21));
-
-        jMenuItem1.setText("VER VENTAS");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -699,10 +656,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         quitarPedido();
     }//GEN-LAST:event_btnQuitarPedidoActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        RUVentas ruv = new RUVentas();
-        ruv.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void btnMostrarTodasVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTodasVentasActionPerformed
+        verTodasVentas();
+    }//GEN-LAST:event_btnMostrarTodasVentasActionPerformed
+
+    private void btnMostrarDetalleVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarDetalleVentaActionPerformed
+        verDetalleVenta();
+    }//GEN-LAST:event_btnMostrarDetalleVentaActionPerformed
+
+    private void btnCalcularGananciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularGananciaActionPerformed
+        calcularGanancia();
+    }//GEN-LAST:event_btnCalcularGananciaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -741,9 +705,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAgregarPedido;
-    public static javax.swing.JButton btnClientesTop;
-    private javax.swing.JButton btnImpClientes;
-    private javax.swing.JButton btnImpProd;
+    private javax.swing.JButton btnCalcularGanancia;
     private javax.swing.JButton btnImpVentas;
     public static javax.swing.JButton btnJpMClientes;
     public static javax.swing.JButton btnJpMEmpleados;
@@ -752,8 +714,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JButton btnJpVenta;
     public static javax.swing.JButton btnMostrarDetalleVenta;
     public static javax.swing.JButton btnMostrarTodasVentas;
-    public static javax.swing.JButton btnProdMasVendidos;
-    public static javax.swing.JButton btnProdMenosVendidos;
     public static javax.swing.JButton btnQuitarPedido;
     public static javax.swing.JButton btnRegistrarVenta;
     public static javax.swing.JButton btnSeleccionarCli;
@@ -769,17 +729,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel66;
-    private javax.swing.JLabel jLabel67;
-    private javax.swing.JMenu jMenu1;
     public static javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     public static javax.swing.JScrollPane jSPDVenta;
-    public static javax.swing.JScrollPane jSPReClientes;
-    public static javax.swing.JScrollPane jSPReProductos;
     public static javax.swing.JScrollPane jSPReVenta;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane2;
@@ -794,9 +746,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JPanel jpReportes;
     public static javax.swing.JPanel jpSistemaon;
     private static javax.swing.JPanel jpTitulo;
-    public static javax.swing.JPanel jpVerClientes;
-    private javax.swing.JPanel jpVerProductos;
-    public static javax.swing.JPanel jpVerVentas;
+    private javax.swing.JPanel jpVerVentas;
     public static javax.swing.JLabel lblAtendidoPor;
     private javax.swing.JLabel lblIcoUser;
     public static javax.swing.JLabel lblNBoleta;
@@ -808,9 +758,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JMenu mnSistema;
     public static javax.swing.JSpinner spiSCantidad;
     public static javax.swing.JTable tblDVenta;
-    public static javax.swing.JTable tblReClientes;
-    public static javax.swing.JTable tblReProductos;
-    public static javax.swing.JTable tblReVenta;
+    public static javax.swing.JTable tblVVenta;
+    private javax.swing.JTextField txtGanancia;
     public static javax.swing.JTextField txtMontoFinal;
     public static javax.swing.JTextField txtSCodCli;
     public static javax.swing.JTextField txtSCodPro;
@@ -843,33 +792,36 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 || mdlTblDVenta.getRowCount() <= 0;
 
         if (!validar) {
-            try {
-                cc.conectarBD();
-                PreparedStatement ps = cc.conexion.prepareStatement("insert into Venta values (?, ?, ?, ?)");
-                ps.setDate(1, fechaVenta());
-                ps.setString(2, totalVenta());
-                ps.setString(3, codEmpleado1());
-                ps.setString(4, codCliente1());
-                ps.executeUpdate();
-                /* Tabla Detalle de Venta */
-                int filas = mdlTblDVenta.getRowCount();
-                for (int i = 0; i < filas; i++) {
-                    PreparedStatement psDv = cc.conexion.prepareStatement("insert into DetalleVenta values (?,?,?,?,?,?)");
-                    psDv.setInt(1, codVenta());
-                    psDv.setInt(2, codProdcto(i));
-                    psDv.setString(3, codCliente1());
-                    psDv.setString(4, codEmpleado1());
-                    psDv.setInt(5, cantidad(i));
-                    psDv.setFloat(6, importe(i));
-                    psDv.executeUpdate();
+            int seguro = JOptionPane.showConfirmDialog(null, "Estas seguro de registrar esta venta. Una vez registrada no podrá ser eliminada.");
+            if (seguro == 0) {
+                try {
+                    cc.conectarBD();
+                    PreparedStatement ps = cc.conexion.prepareStatement("insert into Venta values (?, ?, ?, ?)");
+                    ps.setDate(1, fechaVenta());
+                    ps.setString(2, totalVenta());
+                    ps.setString(3, codEmpleado1());
+                    ps.setString(4, codCliente1());
+                    ps.executeUpdate();
+                    /* Tabla Detalle de Venta */
+                    int filas = mdlTblDVenta.getRowCount();
+                    for (int i = 0; i < filas; i++) {
+                        PreparedStatement psDv = cc.conexion.prepareStatement("insert into DetalleVenta values (?,?,?,?,?,?)");
+                        psDv.setInt(1, codVenta());
+                        psDv.setInt(2, codProdcto(i));
+                        psDv.setString(3, codCliente1());
+                        psDv.setString(4, codEmpleado1());
+                        psDv.setInt(5, cantidad(i));
+                        psDv.setFloat(6, importe(i));
+                        psDv.executeUpdate();
+                    }
+                    //creacionBoleta();
+                    limpiarVenta();
+                    JOptionPane.showMessageDialog(null, "Boleta Registrada.");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                } finally {
+                    cc.desconectarBD();
                 }
-                //creacionBoleta();
-                limpiarVenta();
-                JOptionPane.showMessageDialog(null, "Boleta Registrada.");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
-            } finally {
-                cc.desconectarBD();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos.");
@@ -911,6 +863,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     importes += fImporte;
                 }
                 txtMontoFinal.setText(String.valueOf(importes));
+                limpiarSProd();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione un producto.");
@@ -923,11 +876,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         if (fila >= 0) {
             if (confir == 0) {
-                int cod = (int) mdlTblDVenta.getValueAt(fila, 0);
-                int cantidad = (int) mdlTblDVenta.getValueAt(fila, 3);
                 String im = (String) mdlTblDVenta.getValueAt(fila, 4);
                 float importe = Float.parseFloat(im);
                 try {
+                    int cod = (int) mdlTblDVenta.getValueAt(fila, 0);
+                    int cantidad = (int) mdlTblDVenta.getValueAt(fila, 3);
                     cc.conectarBD();
                     Statement st = cc.conexion.createStatement();
                     ResultSet rs = st.executeQuery("select stock from Producto where codProd = " + cod);
@@ -936,7 +889,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     PreparedStatement ps2 = cc.conexion.prepareStatement("update Producto set stock = " + nuevoStock
                             + " where codProd = " + cod);
                     ps2.executeUpdate();
-                    txtSStock.setText(String.valueOf(nuevoStock));
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e);
                 } finally {
@@ -1018,11 +970,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         txtSCodCli.setText("");
         txtSNombreCli.setText("");
         // Datos Producto
-        txtSCodPro.setText("");
-        txtSNombreProd.setText("");
-        txtSPrecioProd.setText("");
-        txtSStock.setText("");
-        spiSCantidad.setValue(0);
+        limpiarSProd();
         // Detalle Venta
         int filas = mdlTblDVenta.getRowCount();
         for (int i = 0; i < filas; i++) {
@@ -1034,6 +982,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         numeroBoleta();
     }
 
+    private void limpiarSProd() {
+        txtSCodPro.setText("");
+        txtSNombreProd.setText("");
+        txtSPrecioProd.setText("");
+        txtSStock.setText("");
+        spiSCantidad.setValue(0);
+    }
+
+    /* Iniciar CRUDs */
     private void initProd() {
         CRUDProducto crudProd = new CRUDProducto();
         /* Dando privilegios */
@@ -1064,17 +1021,121 @@ public class MenuPrincipal extends javax.swing.JFrame {
         crudEmp.setVisible(true);
     }
 
-    private void salirSistema() {
-        int a = JOptionPane.showConfirmDialog(null, "Estas seguro de salir");
-        if (a == 0) {
-            System.exit(0);
+    /* REPORTES */
+    private void verTodasVentas() {
+        try {
+            cc.conectarBD();
+            PreparedStatement ps = cc.conexion.prepareStatement("select codVenta, codCli,nombApeCli,fechaVenta, totalVenta, codEmp, nombApeEmp\n "
+                    + "from Venta\n "
+                    + "inner join Cliente on Venta.codCli1 = Cliente.codCli\n "
+                    + "inner join Empleado on Venta.codEmp1 = Empleado.codEmp ");
+            ResultSet rs = ps.executeQuery();
+            //limpiar la tabla
+            int filas = mdlVVentas.getRowCount();
+            for (int i = 0; i < filas; i++) {
+                mdlVVentas.removeRow(0);
+            }
+            while (rs.next()) {
+                Float tot = rs.getFloat(5);
+                mdlVVentas.addRow(new Object[]{
+                    rs.getInt(1),//codVenta
+                    rs.getString(2),//codCli
+                    rs.getString(3),//Cliente
+                    rs.getDate(4),//fechaVenta
+                    Math.ceil(tot),//TotalVenta
+                    rs.getString(6),//codEmp
+                    rs.getString(7)//Empleado
+                });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            cc.desconectarBD();
         }
     }
 
+    private void verDetalleVenta() {
+        int filas = tblVVenta.getSelectedRow();
+        if (filas >= 0) {
+            VDVenta vDV = new VDVenta();
+            vDV.setVisible(true);
+            int codVenta = (int) tblVVenta.getValueAt(filas, 0);
+            try {
+                cc.conectarBD();
+                PreparedStatement ps = cc.conexion.prepareStatement("select Producto.codProd,articulo, precioVenta,cantidad, importe\n "
+                        + "from Venta\n "
+                        + "inner join DetalleVenta on Venta.codVenta = DetalleVenta.codVenta\n "
+                        + "inner join Producto on DetalleVenta.codProd = Producto.codProd\n "
+                        + "where Venta.codVenta = " + codVenta);
+                ResultSet rs = ps.executeQuery();
+                //limpiar la tabla detalle de venta
+                int filas2 = vDV.mdlVDVentas.getRowCount();
+                for (int i = 0; i < filas2; i++) {
+                    mdlVVentas.removeRow(0);
+                }
+                while (rs.next()) {
+                    Float imp = rs.getFloat(5);
+                    vDV.mdlVDVentas.addRow(new Object[]{
+                        rs.getString(1),//codProd
+                        rs.getString(2),//articulo
+                        rs.getString(3),//precio
+                        rs.getString(4),//cantidad
+                        Math.ceil(imp),//importe
+                    });
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "here" + e);
+            } finally {
+                cc.desconectarBD();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una venta.");
+        }
+
+    }
+
+    private void calcularGanancia() {
+        int filas = mdlVVentas.getRowCount();
+        float ganancia = 0;
+        if (filas >= 0) {
+            for (int i = 0; i < filas; i++) {
+                ganancia += (Double) mdlVVentas.getValueAt(i, 4);
+            }
+            txtGanancia.setText("S/ " + ganancia);
+        }
+    }
+
+    /* Menus */
     private void cerrarSesion() {
         Login lg = new Login();
         lg.setVisible(true);
         this.dispose();
+    }
+
+    private void salirSistema() {
+        int a = JOptionPane.showConfirmDialog(null, "Estas seguro de salir");
+        if (a == 0) {
+            int filas = mdlTblDVenta.getRowCount();
+            for (int i = 0; i < filas; i++) {
+                try {
+                    int cod = (int) mdlTblDVenta.getValueAt(i, 0);
+                    int cantidad = (int) mdlTblDVenta.getValueAt(i, 3);
+                    cc.conectarBD();
+                    Statement st = cc.conexion.createStatement();
+                    ResultSet rs = st.executeQuery("select stock from Producto where codProd = " + cod);
+                    rs.next();
+                    int nuevoStock = rs.getInt(1) + cantidad;
+                    PreparedStatement ps2 = cc.conexion.prepareStatement("update Producto set stock = " + nuevoStock
+                            + " where codProd = " + cod);
+                    ps2.executeUpdate();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                } finally {
+                    cc.desconectarBD();
+                }
+            }
+            System.exit(0);
+        }
     }
 
     public void cambiarJPanel(JPanel card, JPanel jp) {
