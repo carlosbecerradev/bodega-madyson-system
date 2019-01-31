@@ -45,9 +45,9 @@ codProd int identity primary key not null,
 articulo varchar(100),
 marca varchar(30),
 precioVenta float,
-stock int,
-categoria varchar(30)
+stock int
 )
+
 
 create table Venta(
 codVenta int identity primary key not null,
@@ -84,11 +84,11 @@ insert into Empleado values('Cajero', 'Cajero', 10000000, 'cajero', '12345', 'M'
 --Cliente--
 insert into Cliente values('Cliente Casual', 10000000, 'casualM@hotmail.com', 'M')
 -- Producto --
-insert into Producto values('Helado 1lt de chocolate', 'Donofrio', 9.90, 200,'Comestible')
-insert into Producto values('Detergente de 500gr', 'Bolivar', 3, 200,'Limpieza')
-insert into Producto values('Jabón para lavar 200g ', 'Bolivar', 2, 200,'Limpieza')
-insert into Producto values('Gaseosa de 2lt retornable', 'Coca Cola', 5, 200,'Bebida')
-insert into Producto values('Gaseosa de 3lt retornable', 'Coca Cola', 8, 200,'Bebida')
+insert into Producto values('Helado 1lt de chocolate', 'Donofrio', 9.90, 200)
+insert into Producto values('Detergente de 500gr', 'Bolivar', 3, 200)
+insert into Producto values('Jabón para lavar 200g ', 'Bolivar', 2, 200)
+insert into Producto values('Gaseosa de 2lt retornable', 'Coca Cola', 5, 200)
+insert into Producto values('Gaseosa de 3lt retornable', 'Coca Cola', 8, 200)
 
 --Mostrar boletas--
 select codVenta, codCli,nombApeCli,fechaVenta, totalVenta, codEmp, nombApeEmp
