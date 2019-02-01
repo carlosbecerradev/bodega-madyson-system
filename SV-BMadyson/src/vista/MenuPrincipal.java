@@ -515,6 +515,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpVerVentas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 200, 40));
 
         cboVFecha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cboVFecha.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboVFechaItemStateChanged(evt);
+            }
+        });
         jpVerVentas.add(cboVFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, 200, 40));
 
         jTabbedPane2.addTab("VER VENTAS  ", new javax.swing.ImageIcon(getClass().getResource("/iconos/bolsa-de-la-compra.png")), jpVerVentas); // NOI18N
@@ -625,6 +630,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnJpReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJpReportesActionPerformed
         cambiarJPanel(jpCardOpc, jpReportes);
+        llenarCombobox();
     }//GEN-LAST:event_btnJpReportesActionPerformed
 
     private void btnSeleccionarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarProdActionPerformed
@@ -662,7 +668,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuitarPedidoActionPerformed
 
     private void btnMostrarTodasVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTodasVentasActionPerformed
-        verTodasVentas();
+        String sentencia = "select codVenta, codCli,nombApeCli,fechaVenta, totalVenta, codEmp, nombApeEmp\n "
+                    + "from Venta\n "
+                    + "inner join Cliente on Venta.codCli1 = Cliente.codCli\n "
+                    + "inner join Empleado on Venta.codEmp1 = Empleado.codEmp ";
+        verTodasVentas(sentencia);
     }//GEN-LAST:event_btnMostrarTodasVentasActionPerformed
 
     private void btnCalcularGananciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularGananciaActionPerformed
@@ -670,8 +680,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCalcularGananciaActionPerformed
 
     private void btnMostrarDetalleVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarDetalleVentaActionPerformed
-        // TODO add your handling code here:
+        verDetalleVenta();
     }//GEN-LAST:event_btnMostrarDetalleVentaActionPerformed
+
+    private void cboVFechaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboVFechaItemStateChanged
+        String fecha = (String)cboVFecha.getSelectedItem();
+        String sentencia = "select codVenta, codCli,nombApeCli,fechaVenta, totalVenta, codEmp, nombApeEmp\n "
+                    + "from Venta\n "
+                    + "inner join Cliente on Venta.codCli1 = Cliente.codCli\n "
+                    + "inner join Empleado on Venta.codEmp1 = Empleado.codEmp "
+                    + "where Venta.fechaVenta = '" +  fecha + "'";
+        verTodasVentas(sentencia);
+    }//GEN-LAST:event_cboVFechaItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -1028,13 +1048,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     /* REPORTES */
-    private void verTodasVentas() {
+    private void verTodasVentas(String sentencia) {
         try {
             cc.conectarBD();
-            PreparedStatement ps = cc.conexion.prepareStatement("select codVenta, codCli,nombApeCli,fechaVenta, totalVenta, codEmp, nombApeEmp\n "
-                    + "from Venta\n "
-                    + "inner join Cliente on Venta.codCli1 = Cliente.codCli\n "
-                    + "inner join Empleado on Venta.codEmp1 = Empleado.codEmp ");
+            PreparedStatement ps = cc.conexion.prepareStatement(sentencia);
             ResultSet rs = ps.executeQuery();
             //limpiar la tabla
             int filas = mdlVVentas.getRowCount();
@@ -1152,6 +1169,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         card.add(jp);
         card.repaint();
         card.revalidate();
+    }
+    /* Reporte Ventas por fechas */
+    public void llenarCombobox(){
+        try {
+            cc.conectarBD();
+            Statement st = cc.conexion.createStatement();
+            ResultSet rs = st.executeQuery("select distinct fechaVenta from Venta");
+            while(rs.next()){
+                cboVFecha.addItem(rs.getString(1));
+            }
+        } catch (Exception e) {
+        }
     }
 
 }

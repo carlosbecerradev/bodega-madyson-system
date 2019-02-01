@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 public class Conexion {
     // variable que permite consultar a bd
