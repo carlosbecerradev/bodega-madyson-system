@@ -37,6 +37,7 @@ public class VDVenta extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jSPVDetalleVenta = new javax.swing.JScrollPane();
         tblVDVenta = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -66,7 +67,12 @@ public class VDVenta extends javax.swing.JFrame {
         tblVDVenta.setOpaque(false);
         jSPVDetalleVenta.setViewportView(tblVDVenta);
 
-        jPanel1.add(jSPVDetalleVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 640, 240));
+        jPanel1.add(jSPVDetalleVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 640, 240));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("DETALLE DE VENTA");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 640, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,7 +82,7 @@ public class VDVenta extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
         );
 
         pack();
@@ -133,6 +139,7 @@ public class VDVenta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JScrollPane jSPVDetalleVenta;
     public static javax.swing.JTable tblVDVenta;

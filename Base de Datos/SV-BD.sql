@@ -103,8 +103,10 @@ inner join DetalleVenta on Venta.codVenta = DetalleVenta.codVenta
 inner join Producto on DetalleVenta.codProd = Producto.codProd
 where Venta.codVenta = 2
 
--- Cliente top --
-select codCli, nombApeCli, dniCli, genCli, correoCli, totalVenta
-from Venta 
+-- Mostrar boletas por fecha --
+select codVenta, codCli,nombApeCli,fechaVenta, totalVenta, codEmp, nombApeEmp
+from Venta
 inner join Cliente on Venta.codCli1 = Cliente.codCli
+inner join Empleado on Venta.codEmp1 = Empleado.codEmp 
+where fechaVenta = '2019-02-01' or fechaVenta = '2019-01-31'
 

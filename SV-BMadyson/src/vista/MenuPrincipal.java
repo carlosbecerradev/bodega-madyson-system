@@ -98,14 +98,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpReportes = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jpVerVentas = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        btnMostrarTodasVentas = new javax.swing.JButton();
-        btnMostrarDetalleVenta = new javax.swing.JButton();
         jSPReVenta = new javax.swing.JScrollPane();
         tblVVenta = new javax.swing.JTable();
         btnImpVentas = new javax.swing.JButton();
         btnCalcularGanancia = new javax.swing.JButton();
         txtGanancia = new javax.swing.JTextField();
+        btnMostrarDetalleVenta = new javax.swing.JButton();
+        btnMostrarTodasVentas = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        cboVFecha = new javax.swing.JComboBox<>();
         jpTitulo = new javax.swing.JPanel();
         lblNombNegocio = new javax.swing.JLabel();
         lblIcoUser = new javax.swing.JLabel();
@@ -367,7 +368,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jpRealizarVenta.add(jpBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 200, 490, 130));
 
-        btnRegistrarVenta.setBackground(new java.awt.Color(0, 204, 51));
+        btnRegistrarVenta.setBackground(new java.awt.Color(255, 255, 255));
         btnRegistrarVenta.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnRegistrarVenta.setText("REGISTRAR VENTA");
         btnRegistrarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -443,30 +444,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpVerVentas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jpVerVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnMostrarTodasVentas.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnMostrarTodasVentas.setText("MOSTRAR TODO");
-        btnMostrarTodasVentas.setPreferredSize(new java.awt.Dimension(200, 40));
-        btnMostrarTodasVentas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarTodasVentasActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnMostrarTodasVentas);
-
-        btnMostrarDetalleVenta.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        btnMostrarDetalleVenta.setText("VER DETALLE");
-        btnMostrarDetalleVenta.setPreferredSize(new java.awt.Dimension(200, 40));
-        btnMostrarDetalleVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarDetalleVentaActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnMostrarDetalleVenta);
-
-        jpVerVentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 950, 50));
-
         jSPReVenta.setOpaque(false);
 
         tblVVenta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -495,7 +472,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnImpVentas.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnImpVentas.setText("IMPRIMIR");
         btnImpVentas.setEnabled(false);
-        jpVerVentas.add(btnImpVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 480, 190, 40));
+        jpVerVentas.add(btnImpVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 490, 190, 40));
 
         btnCalcularGanancia.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         btnCalcularGanancia.setText("CALCULAR TOTAL");
@@ -504,13 +481,41 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 btnCalcularGananciaActionPerformed(evt);
             }
         });
-        jpVerVentas.add(btnCalcularGanancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 190, 40));
+        jpVerVentas.add(btnCalcularGanancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 490, 190, 40));
 
         txtGanancia.setEditable(false);
         txtGanancia.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtGanancia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtGanancia.setText("S/ ");
-        jpVerVentas.add(txtGanancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 480, 180, 40));
+        jpVerVentas.add(txtGanancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 180, 40));
+
+        btnMostrarDetalleVenta.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnMostrarDetalleVenta.setText("VER DETALLE");
+        btnMostrarDetalleVenta.setPreferredSize(new java.awt.Dimension(200, 40));
+        btnMostrarDetalleVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarDetalleVentaActionPerformed(evt);
+            }
+        });
+        jpVerVentas.add(btnMostrarDetalleVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 490, -1, -1));
+
+        btnMostrarTodasVentas.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnMostrarTodasVentas.setText("MOSTRAR TODO");
+        btnMostrarTodasVentas.setPreferredSize(new java.awt.Dimension(200, 40));
+        btnMostrarTodasVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarTodasVentasActionPerformed(evt);
+            }
+        });
+        jpVerVentas.add(btnMostrarTodasVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 200, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setText("MOSTRAR POR FECHA:");
+        jpVerVentas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 200, 40));
+
+        cboVFecha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jpVerVentas.add(cboVFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, 200, 40));
 
         jTabbedPane2.addTab("VER VENTAS  ", new javax.swing.ImageIcon(getClass().getResource("/iconos/bolsa-de-la-compra.png")), jpVerVentas); // NOI18N
 
@@ -660,13 +665,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         verTodasVentas();
     }//GEN-LAST:event_btnMostrarTodasVentasActionPerformed
 
-    private void btnMostrarDetalleVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarDetalleVentaActionPerformed
-        verDetalleVenta();
-    }//GEN-LAST:event_btnMostrarDetalleVentaActionPerformed
-
     private void btnCalcularGananciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularGananciaActionPerformed
         calcularGanancia();
     }//GEN-LAST:event_btnCalcularGananciaActionPerformed
+
+    private void btnMostrarDetalleVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarDetalleVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMostrarDetalleVentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -718,6 +723,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JButton btnRegistrarVenta;
     public static javax.swing.JButton btnSeleccionarCli;
     public static javax.swing.JButton btnSeleccionarProd;
+    private javax.swing.JComboBox<String> cboVFecha;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
@@ -730,7 +737,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     public static javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel3;
     public static javax.swing.JScrollPane jSPDVenta;
     public static javax.swing.JScrollPane jSPReVenta;
     private javax.swing.JSeparator jSeparator1;
@@ -746,7 +752,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public static javax.swing.JPanel jpReportes;
     public static javax.swing.JPanel jpSistemaon;
     private static javax.swing.JPanel jpTitulo;
-    private javax.swing.JPanel jpVerVentas;
+    public static javax.swing.JPanel jpVerVentas;
     public static javax.swing.JLabel lblAtendidoPor;
     private javax.swing.JLabel lblIcoUser;
     public static javax.swing.JLabel lblNBoleta;
@@ -1105,13 +1111,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }
 
+    
+    
     /* Menus */
     private void cerrarSesion() {
         Login lg = new Login();
         lg.setVisible(true);
         this.dispose();
     }
-
+    
     private void salirSistema() {
         int a = JOptionPane.showConfirmDialog(null, "Estas seguro de salir");
         if (a == 0) {

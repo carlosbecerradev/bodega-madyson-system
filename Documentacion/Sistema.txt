@@ -1,4 +1,6 @@
-Implementación de un Sistema de Ventas a la bodega Madyson 
+
+Implementación de un Sistema de Ventas para la bodega Madyson
+
 SV-BMadyson (Sistema de Ventas de la Bodega Madyson
 ----------------
 Becerra Hernández, Carlos Alberto
