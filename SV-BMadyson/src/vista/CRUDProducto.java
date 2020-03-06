@@ -72,9 +72,9 @@ public class CRUDProducto extends javax.swing.JFrame {
         txtStockProd = new javax.swing.JTextField();
         jLabel48 = new javax.swing.JLabel();
         txtPrecioVentaPro = new javax.swing.JTextField();
-        cboMarcaProd = new javax.swing.JComboBox<>();
         txtCodigoProd = new javax.swing.JTextField();
         jLabel51 = new javax.swing.JLabel();
+        cboMarcaProd = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -307,13 +307,6 @@ public class CRUDProducto extends javax.swing.JFrame {
         });
         jpDatosProd.add(txtPrecioVentaPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 220, 30));
 
-        cboMarcaProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboMarcaProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Bolivar", "Coca Cola", "Donofrio" }));
-        cboMarcaProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboMarcaProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboMarcaProd.setEditor(null);
-        jpDatosProd.add(cboMarcaProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
-
         txtCodigoProd.setEditable(false);
         txtCodigoProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         txtCodigoProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -325,6 +318,11 @@ public class CRUDProducto extends javax.swing.JFrame {
         jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel51.setText("CÓDIGO:");
         jpDatosProd.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, 30));
+
+        cboMarcaProd.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cboMarcaProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Bolivar", "Coca Cola", "Donofrio", "Gloria", "Nestle", "Pepsi", "Ambrosoli" }));
+        cboMarcaProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jpDatosProd.add(cboMarcaProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
 
         jpCardProd.add(jpDatosProd, "card4");
 
@@ -448,7 +446,7 @@ public class CRUDProducto extends javax.swing.JFrame {
     public static javax.swing.JButton btnListarProd;
     public static javax.swing.JButton btnNuevoProd;
     public static javax.swing.JButton btnRegistrarProd;
-    public static javax.swing.JComboBox<String> cboMarcaProd;
+    private javax.swing.JComboBox<String> cboMarcaProd;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel45;

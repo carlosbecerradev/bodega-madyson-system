@@ -1244,7 +1244,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         try {
             cc.conectarBD();
             Statement st = cc.conexion.createStatement();
-            ResultSet rs = st.executeQuery("select distinct fechaVenta from Venta");
+            ResultSet rs = st.executeQuery("select distinct fechaVenta from Venta group by fechaVenta");
             while (rs.next()) {
                 cboVFecha.addItem(rs.getString(1));
             }

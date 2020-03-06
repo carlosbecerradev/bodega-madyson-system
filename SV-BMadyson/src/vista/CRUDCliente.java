@@ -67,9 +67,9 @@ public class CRUDCliente extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         txtCorreoCli = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        cboGeneroCli = new javax.swing.JComboBox<>();
         jLabel26 = new javax.swing.JLabel();
         txtCodigoCli = new javax.swing.JTextField();
+        cboGeneroCli = new javax.swing.JComboBox<>();
         cboArroba = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -296,13 +296,6 @@ public class CRUDCliente extends javax.swing.JFrame {
         jLabel24.setText("GÉNERO:");
         jpDatos.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 200, 30));
 
-        cboGeneroCli.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboGeneroCli.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Masculino", "Femenino" }));
-        cboGeneroCli.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboGeneroCli.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboGeneroCli.setEditor(null);
-        jpDatos.add(cboGeneroCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 220, 30));
-
         jLabel26.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel26.setText("CÓDIGO:");
@@ -315,8 +308,15 @@ public class CRUDCliente extends javax.swing.JFrame {
         txtCodigoCli.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jpDatos.add(txtCodigoCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 220, 30));
 
+        cboGeneroCli.setBackground(new java.awt.Color(69, 73, 74));
+        cboGeneroCli.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cboGeneroCli.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Masculino", "Femenino" }));
+        cboGeneroCli.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jpDatos.add(cboGeneroCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 220, 30));
+
         cboArroba.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         cboArroba.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "@gmail.com", "@hotmail.com", "@outlook.com", "@yahoo.com" }));
+        cboArroba.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jpDatos.add(cboArroba, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 200, 30));
 
         jpCardCli.add(jpDatos, "card4");
@@ -438,7 +438,7 @@ public class CRUDCliente extends javax.swing.JFrame {
     public static javax.swing.JButton btnNuevoCli;
     public static javax.swing.JButton btnRegistrarCli;
     private javax.swing.JComboBox<String> cboArroba;
-    public static javax.swing.JComboBox<String> cboGeneroCli;
+    private javax.swing.JComboBox<String> cboGeneroCli;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;

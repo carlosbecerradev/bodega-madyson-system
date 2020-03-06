@@ -73,12 +73,12 @@ public class CRUDEmpleado extends javax.swing.JFrame {
         jLabel37 = new javax.swing.JLabel();
         txtContraEmp = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
-        cboCargoEmp = new javax.swing.JComboBox<>();
-        cboGeneroEmp = new javax.swing.JComboBox<>();
-        cboEstadoEmp = new javax.swing.JComboBox<>();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         txtCodigoEmp = new javax.swing.JTextField();
+        cboGeneroEmp = new javax.swing.JComboBox<>();
+        cboCargoEmp = new javax.swing.JComboBox<>();
+        cboEstadoEmp1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -315,27 +315,6 @@ public class CRUDEmpleado extends javax.swing.JFrame {
         jLabel38.setText("GÉNERO:");
         jpDatosEmp.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 200, 30));
 
-        cboCargoEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboCargoEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Administrador", "Cajero" }));
-        cboCargoEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboCargoEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboCargoEmp.setEditor(null);
-        jpDatosEmp.add(cboCargoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
-
-        cboGeneroEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboGeneroEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Masculino", "Femenino" }));
-        cboGeneroEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboGeneroEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboGeneroEmp.setEditor(null);
-        jpDatosEmp.add(cboGeneroEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 220, 30));
-
-        cboEstadoEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        cboEstadoEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
-        cboEstadoEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cboEstadoEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cboEstadoEmp.setEditor(null);
-        jpDatosEmp.add(cboEstadoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 220, 30));
-
         jLabel39.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel39.setText("ESTADO:");
@@ -352,6 +331,21 @@ public class CRUDEmpleado extends javax.swing.JFrame {
         txtCodigoEmp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtCodigoEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jpDatosEmp.add(txtCodigoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 220, 30));
+
+        cboGeneroEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cboGeneroEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Masculino", "Femenino" }));
+        cboGeneroEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jpDatosEmp.add(cboGeneroEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 220, 30));
+
+        cboCargoEmp.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cboCargoEmp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Administrador", "Cajero" }));
+        cboCargoEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jpDatosEmp.add(cboCargoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 220, 30));
+
+        cboEstadoEmp1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cboEstadoEmp1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        cboEstadoEmp1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jpDatosEmp.add(cboEstadoEmp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 220, 30));
 
         jpCardEmp.add(jpDatosEmp, "card4");
 
@@ -460,9 +454,9 @@ public class CRUDEmpleado extends javax.swing.JFrame {
     public static javax.swing.JButton btnListarEmp;
     public static javax.swing.JButton btnNuevoEmp;
     public static javax.swing.JButton btnRegistrarEmp;
-    public static javax.swing.JComboBox<String> cboCargoEmp;
-    public static javax.swing.JComboBox<String> cboEstadoEmp;
-    public static javax.swing.JComboBox<String> cboGeneroEmp;
+    private javax.swing.JComboBox<String> cboCargoEmp;
+    private javax.swing.JComboBox<String> cboEstadoEmp1;
+    private javax.swing.JComboBox<String> cboGeneroEmp;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel32;
@@ -563,13 +557,13 @@ public class CRUDEmpleado extends javax.swing.JFrame {
                 String estado = datos[6];
                 switch (estado) {
                     case "1":
-                        cboEstadoEmp.setSelectedIndex(0);
+                        cboGeneroEmp.setSelectedIndex(0);
                         break;
                     case "0":
-                        cboEstadoEmp.setSelectedIndex(1);
+                        cboGeneroEmp.setSelectedIndex(1);
                         break;
                     default:
-                        cboEstadoEmp.setSelectedIndex(0);
+                        cboGeneroEmp.setSelectedIndex(0);
                         break;
                 }
                 /**/
@@ -706,7 +700,7 @@ public class CRUDEmpleado extends javax.swing.JFrame {
         cboCargoEmp.setSelectedIndex(0);
         txtDniEmp.setText("");
         cboGeneroEmp.setSelectedIndex(0);
-        cboEstadoEmp.setSelectedIndex(0);
+        cboGeneroEmp.setSelectedIndex(0);
         txtUsuarioEmp.setText("");
         txtContraEmp.setText("");
         btnRegistrarEmp.setEnabled(true);
@@ -762,7 +756,7 @@ public class CRUDEmpleado extends javax.swing.JFrame {
     }
 
     private int estado() {
-        int estado = cboEstadoEmp.getSelectedIndex();
+        int estado = cboGeneroEmp.getSelectedIndex();
         int est = 1;
         switch (estado) {
             case 0:
