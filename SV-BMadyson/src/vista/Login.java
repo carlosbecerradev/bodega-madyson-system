@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author hoarlos
+ * @author cbherit
  */
 public class Login extends javax.swing.JFrame {
 

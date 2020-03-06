@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author hoarlos
+ * @author cbherit
  */
 public class CRUDProducto extends javax.swing.JFrame {
 
@@ -744,6 +744,7 @@ public class CRUDProducto extends javax.swing.JFrame {
                 PreparedStatement ps = cc.conexion.prepareStatement("select articulo,precioVenta,stock from Producto where codProd = " + cod);
                 ResultSet rs = ps.executeQuery();
                 rs.next();
+                MenuPrincipal.spiSCantidad.setEnabled(true);
                 MenuPrincipal.txtSCodPro.setText(cod);
                 MenuPrincipal.txtSNombreProd.setText(rs.getString(1));
                 MenuPrincipal.txtSPrecioProd.setText(rs.getString(2));

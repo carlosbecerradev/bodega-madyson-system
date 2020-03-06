@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author hoarlos
+ * @author cbherit
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
@@ -240,6 +240,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel52.setText("CANTIDAD:");
         jpBuscarProducto.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 100, 30));
 
+        txtSNombreProd.setEditable(false);
         txtSNombreProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtSNombreProd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtSNombreProd.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -297,12 +298,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jpBuscarProducto.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 480, 10));
 
         spiSCantidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        spiSCantidad.setEnabled(false);
         jpBuscarProducto.add(spiSCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 70, 30));
 
         jLabel61.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel61.setText("CÓDIGO:");
         jpBuscarProducto.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 45, 100, 30));
 
+        txtSCodPro.setEditable(false);
         txtSCodPro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtSCodPro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtSCodPro.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -343,6 +346,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel56.setText("CODIGO:");
         jpBuscarCliente.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 35, 80, 30));
 
+        txtSNombreCli.setEditable(false);
         txtSNombreCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtSNombreCli.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtSNombreCli.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -361,9 +365,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel59.setText("CLIENTE:");
         jpBuscarCliente.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 80, 30));
 
+        txtSCodCli.setEditable(false);
         txtSCodCli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtSCodCli.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtSCodCli.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtSCodCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSCodCliActionPerformed(evt);
+            }
+        });
         jpBuscarCliente.add(txtSCodCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 150, 30));
 
         jpRealizarVenta.add(jpBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 200, 490, 130));
@@ -661,6 +671,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnAgregarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPedidoActionPerformed
         agregarPedido();
+        spiSCantidad.setEnabled(false);
     }//GEN-LAST:event_btnAgregarPedidoActionPerformed
 
     private void btnQuitarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarPedidoActionPerformed
@@ -669,9 +680,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnMostrarTodasVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTodasVentasActionPerformed
         String sentencia = "select codVenta, codCli,nombApeCli,fechaVenta, totalVenta, codEmp, nombApeEmp\n "
-                    + "from Venta\n "
-                    + "inner join Cliente on Venta.codCli1 = Cliente.codCli\n "
-                    + "inner join Empleado on Venta.codEmp1 = Empleado.codEmp ";
+                + "from Venta\n "
+                + "inner join Cliente on Venta.codCli1 = Cliente.codCli\n "
+                + "inner join Empleado on Venta.codEmp1 = Empleado.codEmp ";
         verTodasVentas(sentencia);
     }//GEN-LAST:event_btnMostrarTodasVentasActionPerformed
 
@@ -684,14 +695,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMostrarDetalleVentaActionPerformed
 
     private void cboVFechaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboVFechaItemStateChanged
-        String fecha = (String)cboVFecha.getSelectedItem();
+        String fecha = (String) cboVFecha.getSelectedItem();
         String sentencia = "select codVenta, codCli,nombApeCli,fechaVenta, totalVenta, codEmp, nombApeEmp\n "
-                    + "from Venta\n "
-                    + "inner join Cliente on Venta.codCli1 = Cliente.codCli\n "
-                    + "inner join Empleado on Venta.codEmp1 = Empleado.codEmp "
-                    + "where Venta.fechaVenta = '" +  fecha + "'";
+                + "from Venta\n "
+                + "inner join Cliente on Venta.codCli1 = Cliente.codCli\n "
+                + "inner join Empleado on Venta.codEmp1 = Empleado.codEmp "
+                + "where Venta.fechaVenta = '" + fecha + "'";
         verTodasVentas(sentencia);
     }//GEN-LAST:event_cboVFechaItemStateChanged
+
+    private void txtSCodCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSCodCliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSCodCliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -855,45 +870,86 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     private void agregarPedido() {
-        boolean validar = txtSNombreProd.equals("");
-        int codProd = Integer.parseInt(txtSCodPro.getText());
-        int stockA = Integer.parseInt(txtSStock.getText());
+        boolean validar = txtSNombreProd.equals("") && txtSCodPro.equals("");
+
         if (!validar) {
+            
             if (validarStockCantidad()) {
+                int codProd = Integer.parseInt(txtSCodPro.getText());
+                int stockA = Integer.parseInt(txtSStock.getText());
+
                 int cantidad = (int) spiSCantidad.getValue();
                 float precioV = Float.parseFloat(txtSPrecioProd.getText());
                 float importe = cantidad * precioV;
-                mdlTblDVenta.addRow(new Object[]{
-                    codProd,
-                    txtSNombreProd.getText(),
-                    txtSPrecioProd.getText(),
-                    spiSCantidad.getValue(),
-                    String.valueOf(String.format("%.2f", importe).replace(",", "."))
-                });
-                try {
-                    cc.conectarBD();
-                    PreparedStatement ps = cc.conexion.prepareStatement("update Producto set stock = " + (stockA - cantidad)
-                            + " where codProd = " + codProd);
-                    txtSStock.setText(String.valueOf((stockA - cantidad)));
-                    ps.executeUpdate();
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e);
-                } finally {
-                    cc.desconectarBD();
+
+                if (estaAgregado(codProd)) {
+                    int rowRepetida = 0;
+                    for (int i = 0; i < mdlTblDVenta.getRowCount(); i++) {
+                        Integer tblCodigoProducto = (Integer) mdlTblDVenta.getValueAt(i, 0);
+                        if (tblCodigoProducto == codProd) {
+                            rowRepetida = i;
+                            break;
+                        }
+                    }
+                    int cantidadAntigua = (Integer) mdlTblDVenta.getValueAt(rowRepetida, 3);
+                    String importeAntiguo = (String) mdlTblDVenta.getValueAt(rowRepetida, 4);
+
+                    int cantidadNueva = cantidadAntigua + cantidad;
+                    double importeNuevo = Float.parseFloat(importeAntiguo) + importe;
+
+                    mdlTblDVenta.setValueAt(cantidadNueva, rowRepetida, 3);
+                    mdlTblDVenta.setValueAt(String.format("%.2f", importeNuevo).replace(",", "."), rowRepetida, 4);
+                    agregarCambioStock(codProd, stockA, cantidadNueva);
+                } else {
+                    mdlTblDVenta.addRow(new Object[]{
+                        codProd,
+                        txtSNombreProd.getText(),
+                        txtSPrecioProd.getText(),
+                        spiSCantidad.getValue(),
+                        String.valueOf(String.format("%.2f", importe).replace(",", "."))
+                    });
+                    agregarCambioStock(codProd, stockA, cantidad);
                 }
-                float importes = 0;
-                int cantFilas = mdlTblDVenta.getRowCount();
-                for (int i = 0; i < cantFilas; i++) {
-                    String sImp = (String) mdlTblDVenta.getValueAt(i, 4);
-                    float fImporte = Float.parseFloat(sImp);
-                    importes += fImporte;
-                }
-                txtMontoFinal.setText(String.valueOf(importes));
+
+                calcularMontoFinal();
                 limpiarSProd();
             }
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione un producto.");
         }
+    }
+
+    public void agregarCambioStock(int codProd, int stockA, int cantidad) {
+        try {
+            cc.conectarBD();
+            PreparedStatement ps = cc.conexion.prepareStatement("update Producto set stock = " + (stockA - cantidad)
+                    + " where codProd = " + codProd);
+            txtSStock.setText(String.valueOf((stockA - cantidad)));
+            ps.executeUpdate();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            cc.desconectarBD();
+        }
+    }
+
+    // 2020
+    public boolean estaAgregado(Integer id_prodructo) {
+
+        int filas = mdlTblDVenta.getRowCount();
+        boolean resultado = false;
+
+        if (filas >= 0) {
+            for (int i = 0; i < filas; i++) {
+                Integer tblCodigoProducto = (Integer) mdlTblDVenta.getValueAt(i, 0);
+                if (tblCodigoProducto == id_prodructo) {
+                    resultado = true;
+                    break;
+                }
+            }
+        }
+
+        return resultado;
     }
 
     private void quitarPedido() {
@@ -902,8 +958,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         if (fila >= 0) {
             if (confir == 0) {
-                String im = (String) mdlTblDVenta.getValueAt(fila, 4);
-                float importe = Float.parseFloat(im);
+
                 try {
                     int cod = (int) mdlTblDVenta.getValueAt(fila, 0);
                     int cantidad = (int) mdlTblDVenta.getValueAt(fila, 3);
@@ -920,13 +975,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 } finally {
                     cc.desconectarBD();
                 }
-                float importes = 0;
+
                 mdlTblDVenta.removeRow(fila);
-                int cantFilas = mdlTblDVenta.getRowCount();
-                for (int i = 0; i < cantFilas; i++) {
-                    importes += importe;
-                }
-                txtMontoFinal.setText(String.valueOf(importes));
+                calcularMontoFinal();
                 spiSCantidad.requestFocus();
             }
         } else {
@@ -934,19 +985,38 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }
 
+    // 200
+    public void calcularMontoFinal() {
+        int filas = mdlTblDVenta.getRowCount();
+        float montoFinal = 0;
+        if (filas >= 0) {
+            for (int i = 0; i < filas; i++) {
+                String sImp = (String) mdlTblDVenta.getValueAt(i, 4);
+                montoFinal += Float.parseFloat(sImp);
+            }
+        }
+
+        txtMontoFinal.setText(String.valueOf(montoFinal));
+        spiSCantidad.requestFocus();
+    }
+
     public boolean validarStockCantidad() {
         int cantidad = (int) spiSCantidad.getValue();
-        int stockActual = Integer.parseInt(txtSStock.getText());
-        if (cantidad > 0) {
-            if (stockActual >= cantidad) {
-                return true;
+
+        if (!txtSStock.equals("")) {
+            int stockActual = Integer.parseInt(txtSStock.getText());
+            if (cantidad > 0) {
+                if (stockActual >= cantidad) {
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "El stock no abarca la cantidad seleccionada.");
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "El stock no abarca la cantidad seleccionada.");
+                JOptionPane.showMessageDialog(null, "No ha elegido una unidad.");
+                spiSCantidad.setValue(0);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "No ha elegido una unidad.");
-            spiSCantidad.setValue(0);
         }
+
         return false;
     }
 
@@ -1128,15 +1198,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }
 
-    
-    
     /* Menus */
     private void cerrarSesion() {
         Login lg = new Login();
         lg.setVisible(true);
         this.dispose();
     }
-    
+
     private void salirSistema() {
         int a = JOptionPane.showConfirmDialog(null, "Estas seguro de salir");
         if (a == 0) {
@@ -1170,13 +1238,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         card.repaint();
         card.revalidate();
     }
+
     /* Reporte Ventas por fechas */
-    public void llenarCombobox(){
+    public void llenarCombobox() {
         try {
             cc.conectarBD();
             Statement st = cc.conexion.createStatement();
             ResultSet rs = st.executeQuery("select distinct fechaVenta from Venta");
-            while(rs.next()){
+            while (rs.next()) {
                 cboVFecha.addItem(rs.getString(1));
             }
         } catch (Exception e) {

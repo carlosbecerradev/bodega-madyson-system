@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author hoarlos
+ * @author cbherit
  */
 public class CRUDEmpleado extends javax.swing.JFrame {
 
