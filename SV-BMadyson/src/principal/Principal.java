@@ -11,7 +11,7 @@ import vista.Login;
 
 /**
  *
- * @author hoarlos
+ * @author cbherit
  */
 public class Principal {
     public static void main(String[] args) {
